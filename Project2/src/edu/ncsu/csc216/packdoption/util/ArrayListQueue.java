@@ -11,6 +11,9 @@ public class ArrayListQueue<E> implements Queue<E> {
 	private int size;
 	
 	@SuppressWarnings("unchecked")
+	/**
+	 * Constructs an ArrayListQueue list 
+	 */
 	public ArrayListQueue() {
 		this.list = (E[]) new Object[10];
 		this.size = 0;
