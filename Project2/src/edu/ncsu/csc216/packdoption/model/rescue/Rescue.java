@@ -6,6 +6,13 @@ import edu.ncsu.csc216.packdoption.util.Date;
 import edu.ncsu.csc216.packdoption.util.Note;
 import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 
+/**
+ * This class represents a an animal Rescue that will contain many animals 
+ * and vetrinarian appointments for those animals
+ * 
+ * @author John Widdifield
+ *
+ */
 public class Rescue implements Comparable<Rescue> {
 
 	/** name of the Rescue */
@@ -60,7 +67,7 @@ public class Rescue implements Comparable<Rescue> {
 	 * @param name name of the animal you would like to get
 	 * @param birthday Date of birth of the animal you would like to receive
 	 * @return Animal with the matching name and birthday
-	 * @throws Throws an IllegalArgumentException if (1) name is null or (2) birthday is null.
+	 * @throws IllegalArgumentException if (1) name is null or (2) birthday is null.
 	 */
 	public Animal getAnimal(String name, Date birthday) {
 		return null;

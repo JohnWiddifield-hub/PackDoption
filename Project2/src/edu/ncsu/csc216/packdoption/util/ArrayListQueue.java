@@ -1,5 +1,11 @@
 package edu.ncsu.csc216.packdoption.util;
 
+/**
+ * This class creates a queue implementation of an arrayList
+ * @author John Widdifield
+ *
+ * @param <E>
+ */
 public class ArrayListQueue<E> implements Queue<E>{
 	private E list[];
 	private int size;
@@ -26,7 +32,6 @@ public class ArrayListQueue<E> implements Queue<E>{
 	 * Removes the head element from the queue. 
 	 * 
 	 * @return The element which was removed.
-	 * @throws NoSuchElementException if this queue is empty
 	 */
 	@Override
 	public E remove() {
@@ -38,7 +43,6 @@ public class ArrayListQueue<E> implements Queue<E>{
 	 * Gets the next element in the queue
 	 * 
 	 * @return The element at the head of the queue.
-	 * @throws NoSuchElementException if this queue is empty
 	 */
 	@Override
 	public E element() {

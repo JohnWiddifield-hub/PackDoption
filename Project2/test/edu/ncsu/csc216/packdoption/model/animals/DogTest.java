@@ -45,6 +45,9 @@ class DogTest {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Tests the getBreed function for proper retrieval of the Dogs Breed
+	 */
 	@Test
 	void testGetBreed() {
 		fail("Not yet implemented");

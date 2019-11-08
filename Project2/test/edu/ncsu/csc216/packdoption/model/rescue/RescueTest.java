@@ -68,11 +68,17 @@ class RescueTest {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Tests the contains method for proper reporting if the Rescue contains the parameter
+	 */
 	@Test
 	void testContains() {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Tests the addNote method for proper adding of notes to Animals
+	 */
 	@Test
 	void testAddNote() {
 		fail("Not yet implemented");

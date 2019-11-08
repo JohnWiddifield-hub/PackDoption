@@ -62,8 +62,7 @@ public class PackDoptionManager {
 	
 	/**
 	 * Sets the name of the file that this PackDoptionManager instance will be using
-	 * 
-	 * @return name of the file that is being used by this class
+	 * @param filename 	Name of the file that is going to be set for PackDoptionManager
 	 * @throws IllegalArgumentException if the filename is null or an string of whitespace
 	 */
 	public void setFilename(String filename) {

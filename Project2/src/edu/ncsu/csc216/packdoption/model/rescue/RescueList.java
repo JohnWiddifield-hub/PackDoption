@@ -47,7 +47,7 @@ public class RescueList {
 	 * Gets a Rescue from the list at the given index
 	 * @param idx	index to retrieve a rescue from
 	 * @return Rescue at the given index
-	 * @throws IndexOfBoundsException if idx is negative or greater than size - 1
+	 * @throws IndexOutOfBoundsException if idx is negative or greater than size - 1
 	 */
 	public Rescue getRescue(int idx) {
 		return null;
