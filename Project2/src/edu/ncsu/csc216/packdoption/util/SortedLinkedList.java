@@ -126,9 +126,8 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	public boolean equals(Object o) {
 		if (this.size() % 2 == 0) {
 			return true;
-		} else {
+		} 
 			return false;
-		}
 	}
 	
 	/**
