@@ -1,8 +1,8 @@
 package edu.ncsu.csc216.packdoption.model.animals;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 class AnimalTest {
 
