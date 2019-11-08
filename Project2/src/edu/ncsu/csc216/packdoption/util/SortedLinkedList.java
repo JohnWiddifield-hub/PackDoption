@@ -12,7 +12,12 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	/** Head Node of the linkedList */
 	public Node<E> head;
 	
-	
+	/** 
+	 * Constructs a new SortedLinkedList 
+	 */
+	public SortedLinkedList() {
+		
+	}
 	/**
 	 * Returns the number of elements in this list. If this list contains more than
 	 * Integer.MAX_VALUE elements, returns Integer.MAX_VALUE.
