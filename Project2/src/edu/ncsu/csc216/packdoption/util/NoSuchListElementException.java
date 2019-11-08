@@ -1,6 +1,6 @@
 package edu.ncsu.csc216.packdoption.util;
 
-public class NoSuchListElementException extends Exception {
+public class NoSuchListElementException extends RuntimeException {
 
     /** ID used for serialization */
     private static final long serialVersionUID = 1L;
