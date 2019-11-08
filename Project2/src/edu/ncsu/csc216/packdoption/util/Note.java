@@ -6,7 +6,7 @@ package edu.ncsu.csc216.packdoption.util;
  * @author John Widdifield
  *
  */
-public class Note implements Comparable<Note>{
+public class Note implements Comparable<Note> {
 
 	/** Message of the note */
 	private String message;

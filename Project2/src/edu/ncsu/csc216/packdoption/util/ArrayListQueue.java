@@ -6,7 +6,7 @@ package edu.ncsu.csc216.packdoption.util;
  *
  * @param <E>
  */
-public class ArrayListQueue<E> implements Queue<E>{
+public class ArrayListQueue<E> implements Queue<E> {
 	private E list[];
 	private int size;
 	

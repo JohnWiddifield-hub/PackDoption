@@ -8,7 +8,7 @@ package edu.ncsu.csc216.packdoption.util;
  * @author John Widdifield
  *
  */
-public class Date implements Comparable<Date>{
+public class Date implements Comparable<Date> {
 	/** The month of the date */
 	private int month;
 	/** The day of the date */
@@ -32,7 +32,6 @@ public class Date implements Comparable<Date>{
 	 * @param date  String which represents the date in the format (M/D/YYYY) M/D means one 
 	 * or two digits for day and month
 	 * 
-	 * @param Date String in format M/D/YYYY to turn into a Date object
 	 * @throws IllegalArgumentException if date is not in the correct format or 
 	 * the month day and year do not form a valid date
 	 */

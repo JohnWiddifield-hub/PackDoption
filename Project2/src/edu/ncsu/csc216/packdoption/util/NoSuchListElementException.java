@@ -1,5 +1,11 @@
 package edu.ncsu.csc216.packdoption.util;
 
+/**
+ * Creates a custom exception for use when there is no such element in a list, allows for a custom message
+ * 
+ * @author John Widdifield
+ *
+ */
 public class NoSuchListElementException extends RuntimeException {
 
     /** ID used for serialization */
