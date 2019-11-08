@@ -13,8 +13,7 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 public class Dog extends Animal {
 
 	/**Enumeration for different types of breeds of dogs*/
-	public enum Breed { BEAGLE, BULLDOG, FRENCH_BULLDOG, GERMAN_SHEPHERD, POINTER_GERMAN_SHORTHAIRED, 
-		POODLE, RETRIEVER_GOLDEN, RETRIEVER_LABRADOR, ROTTWEILER, YORKSHIRE_TERRIER, MIXED, OTHER }
+	public enum Breed { BEAGLE, BULLDOG, FRENCH_BULLDOG, GERMAN_SHEPHERD, POINTER_GERMAN_SHORTHAIRED, POODLE, RETRIEVER_GOLDEN, RETRIEVER_LABRADOR, ROTTWEILER, YORKSHIRE_TERRIER, MIXED, OTHER }
 
 	/** The Dog's breed */
 	public Breed breed;
@@ -22,16 +21,17 @@ public class Dog extends Animal {
 	/**
 	 * This constructs a cat with adoption data
 	 * 
-	 * @param name			Name of the cat
-	 * @param birthday		The cats birthday as a Date
-	 * @param size			Size of the cat
-	 * @param houseTrained	Boolean for if the cat is House trained or not
-	 * @param goodWithKids	Boolean for if the cat is good with kids
-	 * @param notes			All of the cats notes
-	 * @param dateEnterRescue	 Date that the cat entered the rescue
-	 * @param adopted			Boolean for if the cat is adopted
-	 * @param dateAdopted		Date that the cat was adopted, null if cat isn't adopted
-	 * @param owner				The cats owner's name
+	 * @param name			Name of the dog
+	 * @param birthday		The dogs birthday as a Date
+	 * @param size			Size of the dog
+	 * @param houseTrained	Boolean for if the dog is House trained or not
+	 * @param goodWithKids	Boolean for if the dog is good with kids
+	 * @param notes			All of the dogs notes
+	 * @param dateEnterRescue	 Date that the dog entered the rescue
+	 * @param adopted			Boolean for if the dog is adopted
+	 * @param dateAdopted		Date that the dog was adopted, null if cat isn't adopted
+	 * @param owner				The dogs owner's name
+	 * @param breed				Breed of the dog
 	 * @throws IllegalArgumentException if any of the following are true: name is null
 				name is whitespace only
 				name contains \n or ,
@@ -55,16 +55,14 @@ public class Dog extends Animal {
 	/**
 	 * This constructs a cat with adoption data
 	 * 
-	 * @param name			Name of the cat
-	 * @param birthday		The cats birthday as a Date
-	 * @param size			Size of the cat
-	 * @param houseTrained	Boolean for if the cat is House trained or not
-	 * @param goodWithKids	Boolean for if the cat is good with kids
-	 * @param notes			All of the cats notes
-	 * @param dateEnterRescue	 Date that the cat entered the rescue
-	 * @param adopted			Boolean for if the cat is adopted
-	 * @param dateAdopted		Date that the cat was adopted, null if cat isn't adopted
-	 * @param owner				The cats owner's name
+	 * @param name			Name of the dog
+	 * @param birthday		The dogs birthday as a Date
+	 * @param size			Size of the dog
+	 * @param houseTrained	Boolean for if the dog is House trained or not
+	 * @param goodWithKids	Boolean for if the dog is good with kids
+	 * @param notes			All of the dogs notes
+	 * @param dateEnterRescue	 Date that the dog entered the rescue
+	 * @param breed 		Breed of the Dog
 	 * @throws IllegalArgumentException if any of the following are true: name is null
 				name is whitespace only
 				name contains \n or ,

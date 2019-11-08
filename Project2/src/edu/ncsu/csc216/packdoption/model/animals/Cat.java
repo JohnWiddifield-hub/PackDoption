@@ -57,9 +57,6 @@ public class Cat extends Animal {
 	 * @param goodWithKids	Boolean for if the cat is good with kids
 	 * @param notes			All of the cats notes
 	 * @param dateEnterRescue	 Date that the cat entered the rescue
-	 * @param adopted			Boolean for if the cat is adopted
-	 * @param dateAdopted		Date that the cat was adopted, null if cat isn't adopted
-	 * @param owner				The cats owner's name
 	 * @throws IllegalArgumentException if any of the following are true: name is null
 				name is whitespace only
 				name contains \n or ,

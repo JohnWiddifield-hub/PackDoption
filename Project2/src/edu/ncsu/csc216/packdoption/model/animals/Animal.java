@@ -11,7 +11,7 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
  * @author John Widdifield
  *
  */
-public abstract class Animal implements Comparable<Animal>{
+public abstract class Animal implements Comparable<Animal> {
 	
 	/** Name of the Animal */
 	private String name;
