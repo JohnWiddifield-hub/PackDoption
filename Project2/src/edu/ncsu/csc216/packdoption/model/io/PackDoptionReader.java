@@ -16,7 +16,7 @@ public class PackDoptionReader {
 	 * @return List of Rescues which were included in the file
 	 * @throws IllegalArgumentException if any error or incorrect formatting problems arise
 	 */
-	public RescueList readRescueListFile(String filename) {
+	public static RescueList readRescueListFile(String filename) {
 		return null;
 	}
 }
