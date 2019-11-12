@@ -10,7 +10,7 @@ import org.junit.Test;
  * @author John Widdifield
  *
  */
-class PackDoptionManagerTest {
+	public class PackDoptionManagerTest {
 
 	/**
 	 * Tests the getInstance method for proper getting of the instance of PackDoptionManager

@@ -10,7 +10,7 @@ import org.junit.Test;
  * @author John Widdifield
  *
  */
-class SortedLinkedListTest {
+	public class SortedLinkedListTest {
 
 	/**
 	 * This class tests the hashcode function for proper hashCode generation of this class/object

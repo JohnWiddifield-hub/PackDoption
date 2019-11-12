@@ -10,7 +10,7 @@ import org.junit.Test;
  * @author John Widdifield
  *
  */
-class CatTest {
+	public class CatTest {
 
 	/**
 	 * Tests the getAgeCategory method for proper retrieval of the cat's age category

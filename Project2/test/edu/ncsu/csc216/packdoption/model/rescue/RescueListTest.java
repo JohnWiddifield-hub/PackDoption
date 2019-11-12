@@ -10,7 +10,7 @@ import org.junit.Test;
  * @author John Widdifield
  *
  */
-class RescueListTest {
+	public class RescueListTest {
 
 	/**
 	 * Tests the RescueList constructor for proper creation of a RescueList

@@ -10,7 +10,7 @@ import org.junit.Test;
  * @author John Widdifield
  *
  */
-class PackDoptionWriterTest {
+	public class PackDoptionWriterTest {
 
 	/**
 	 * Tests the writeRescueListFile method for proper writing of Rescues to a save file

@@ -10,7 +10,7 @@ import org.junit.Test;
  * @author John Widdifield
  *
  */
-class PackDoptionReaderTest {
+	public class PackDoptionReaderTest {
 
 	/**
 	 * Tests the readRescueListFile method for proper reading of Rescues from a save file

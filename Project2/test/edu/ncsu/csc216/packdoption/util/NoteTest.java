@@ -10,7 +10,7 @@ import org.junit.Test;
  * @author John Widdifield
  *
  */
-class NoteTest {
+	public class NoteTest {
 
 	/**
 	 * This method tests the hashcode function for proper hashCode generation of this class/object

@@ -10,7 +10,7 @@ import org.junit.Test;
  * @author John Widdifield
  *
  */
-class ArrayListQueueTest {
+	public class ArrayListQueueTest {
 
 	/**
 	 * Tests the ArrayListQueue Constructor for proper creating of a queue.

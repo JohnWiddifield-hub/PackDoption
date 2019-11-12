@@ -10,7 +10,7 @@ import org.junit.Test;
  * @author John Widdifield
  *
  */
-class DogTest {
+	public class DogTest {
 
 	/**
 	 * Tests the getAgeCategory method for proper retrieval of the dog's age category
