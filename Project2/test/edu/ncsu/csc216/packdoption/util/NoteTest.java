@@ -16,8 +16,11 @@ import org.junit.Test;
 	 * This method tests the hashcode function for proper hashCode generation of this class/object
 	 */
 	@Test
-	public void testHashCode() {
-		fail("Not yet implemented");
+	public void testHashCodeEquals() {
+		Note note1 = new Note(new Date(1, 1, 2000), "a note");
+		Note note2 = new Note(new Date(1, 1, 2000), "a note");
+		assertTrue(note1.equals(note2));
+		assertTrue(note1.hashCode() == note2.hashCode());
 	}
 
 	/**
@@ -25,23 +28,9 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testNote() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * This tests the getDate method for proper retrieval of the Date
-	 */
-	@Test
-	public void testGetDate() {
-		fail("Not yet implemented");
-	}
-
-	/** 
-	 * This method tests the getMessage method for proper retrieval of the message in the Note
-	 */
-	@Test
-	public void testGetMessage() {
-		fail("Not yet implemented");
+		Note note1 = new Note(new Date(1, 1, 2000), "a note");
+		assertEquals(note1.getMessage(), "a note");
+		assertEquals(note1.getDate().toString(), "1/1/2000");
 	}
 
 	/**
@@ -49,7 +38,13 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testCompareTo() {
-		fail("Not yet implemented");
+		Note note1 = new Note(new Date(1, 1, 2000), "a note");
+		Note note2 = new Note(new Date(1, 1, 2000), "a note");
+		assertEquals(note1.compareTo(note2), 0);
+		Note note3 = new Note(new Date(1, 1, 2001), "a note");
+		assertTrue(note3.compareTo(note2) > 0);
+		Note note4 = new Note(new Date(1, 1, 2001), "a note2");
+		assertTrue(note3.compareTo(note4) < 0);
 	}
 
 	/**
@@ -58,15 +53,8 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testToString() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * This method tests the equals method for proper reporting of equivalent Notes and non equivalent Notes
-	 */
-	@Test
-	public void testEqualsObject() {
-		fail("Not yet implemented");
+		Note note1 = new Note(new Date(1, 1, 2001), "a note");
+		assertEquals(note1.toString(), "1/1/2001 a note");
 	}
 
 }
