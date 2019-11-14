@@ -58,7 +58,7 @@ import org.junit.Test;
 		Note note2 = new Note(new Date(1, 1, 2000), "a note");
 		assertEquals(note1.compareTo(note2), 0);
 		Note note3 = new Note(new Date(1, 1, 2001), "a note");
-		assertTrue(note3.compareTo(note2) > 0);
+		assertTrue(note3.compareTo(note2) < 0);
 		Note note4 = new Note(new Date(1, 1, 2001), "a note2");
 		assertTrue(note3.compareTo(note4) < 0);
 	}
