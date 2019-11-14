@@ -144,9 +144,7 @@ public class Date implements Comparable<Date> {
 			return false;
 		} else if(month == 12 && day > 31) {
 			return false;
-		} else if(month == 2 && year % 4 != 0 && day == 29) {
-			return false;
-		} else return true;
+		} else return !(month == 2 && year % 4 != 0 && day == 29);
 	}
 	
 	/**
