@@ -15,12 +15,19 @@ import org.junit.Test;
 	/**
 	 * This method tests the hashcode function for proper hashCode generation of this class/object
 	 */
+	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	public void testHashCodeEquals() {
 		Note note1 = new Note(new Date(1, 1, 2000), "a note");
 		Note note2 = new Note(new Date(1, 1, 2000), "a note");
 		assertTrue(note1.equals(note2));
 		assertTrue(note1.hashCode() == note2.hashCode());
+		assertFalse(note1.equals(null));
+		assertFalse(note1.equals(new Date(1, 1, 2000)));
+		assertFalse(note1.equals(1));
+		Note note3 = new Note(new Date(1, 1, 2000), "a note2");
+		assertFalse(note3.equals(note2));
+		assertFalse(note2.equals(note3));
 	}
 
 	/**
@@ -28,9 +35,18 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testNote() {
+		Note note2 = null;
 		Note note1 = new Note(new Date(1, 1, 2000), "a note");
 		assertEquals(note1.getMessage(), "a note");
 		assertEquals(note1.getDate().toString(), "1/1/2000");
+		
+		try {
+			note2 = new Note(null, null);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(e.getMessage(), "Invalid note");
+		}
+		assertEquals(note2, null);
 	}
 
 	/**
@@ -56,5 +72,4 @@ import org.junit.Test;
 		Note note1 = new Note(new Date(1, 1, 2001), "a note");
 		assertEquals(note1.toString(), "1/1/2001 a note");
 	}
-
 }
