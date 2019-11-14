@@ -9,6 +9,7 @@ package edu.ncsu.csc216.packdoption.util;
 public class ArrayListQueue<E> implements Queue<E> {
 	private E list[];
 	private int size;
+	private int capacity;
 	
 	/**
 	 * Constructs an ArrayListQueue list 
@@ -17,6 +18,7 @@ public class ArrayListQueue<E> implements Queue<E> {
 	public ArrayListQueue() {
 		this.list = (E[]) new Object[10];
 		this.size = 0;
+		this.capacity = 10;
 	}
 	/** 
 	 * Adds a generic element to the queue.
@@ -27,30 +29,58 @@ public class ArrayListQueue<E> implements Queue<E> {
 	 */
 	@Override
 	public boolean add(E element) {
-		// TODO Auto-generated method stub
-		return false;
+		if(element == null) {
+			throw new NullPointerException();
+		} else if(this.capacity == size) {
+			@SuppressWarnings("unchecked")
+			E tempArr[] = (E[]) new Object[capacity * 2];
+			for(int i = 0; i < size; i++) {
+				tempArr[i] = list[i];
+			}
+			capacity *= 2;
+			list = tempArr;
+			list[size] = element;
+			size++;
+			return true;
+		} else {
+			list[size] = element;
+			size++;
+			return true;
+		}
 	}
 
 	/** 
 	 * Removes the head element from the queue. 
 	 * 
 	 * @return The element which was removed.
+	 * @throws NoSuchListElementException if the queue is empty
 	 */
 	@Override
 	public E remove() {
-		// TODO Auto-generated method stub
-		return null;
+		if(size == 0) {
+			throw new NoSuchListElementException();
+		}
+		E temp = list[0];
+		for(int i = 0; i < size - 1; i++) {
+			list[i] = list[i+1];
+		}
+		list[size] = null;
+		size--;
+		return temp;
 	}
 
 	/** 
 	 * Gets the next element in the queue
 	 * 
 	 * @return The element at the head of the queue.
+	 * @throws NoSuchListElementException if the queue is empty
 	 */
 	@Override
 	public E element() {
-		// TODO Auto-generated method stub
-		return null;
+		if(size == 0) {
+			throw new NoSuchListElementException();
+		}
+		return list[0];
 	}
 	
 	/**
@@ -60,8 +90,8 @@ public class ArrayListQueue<E> implements Queue<E> {
 	 */
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return size;
 	}
 	
 	/**
@@ -71,8 +101,8 @@ public class ArrayListQueue<E> implements Queue<E> {
 	 */
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return (size == 0);
 	}
 
 }

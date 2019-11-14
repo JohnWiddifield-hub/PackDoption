@@ -17,7 +17,8 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testArrayListQueue() {
-		fail("Not yet implemented");
+		ArrayListQueue<String> q = new ArrayListQueue<String>();
+		assertEquals(q.size(), 0);
 	}
 
 	/**
@@ -25,7 +26,43 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testAdd() {
-		fail("Not yet implemented");
+		ArrayListQueue<String> q = new ArrayListQueue<String>();
+		q.add("One");
+		q.add("two");
+		q.add("Three");
+		q.add("Four");
+		q.add("Five");
+		q.add("Six");
+		q.add("Seven");
+		q.add("Eight");
+		q.add("Nine");
+		q.add("Ten");
+		q.add("Eleven");
+		q.add("Twelve");
+		assertEquals(q.element(), "One");
+		assertEquals(q.size(), 12);
+		assertEquals(q.remove(), "One");
+		assertEquals(q.remove(), "two");
+		assertEquals(q.remove(), "Three");
+		assertEquals(q.remove(), "Four");
+		assertEquals(q.size(), 8);
+		assertEquals(q.remove(), "Five");
+		assertEquals(q.remove(), "Six");
+		assertEquals(q.remove(), "Seven");
+		assertEquals(q.remove(), "Eight");
+		assertEquals(q.remove(), "Nine");
+		assertEquals(q.remove(), "Ten");
+		assertEquals(q.remove(), "Eleven");
+		assertEquals(q.remove(), "Twelve");
+		assertEquals(q.size(), 0);
+		
+		try {
+			q.add(null);
+			fail();
+		} catch (NullPointerException e) {
+			assertEquals(q.size(), 0);
+		}
+		
 	}
 
 	/**
@@ -33,7 +70,13 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testRemove() {
-		fail("Not yet implemented");
+		ArrayListQueue<String> q = new ArrayListQueue<String>();
+		try {
+			q.remove();
+			fail();
+		} catch (NoSuchListElementException e) {
+			assertEquals(q.size(), 0);
+		}
 	}
 
 	/**
@@ -41,23 +84,25 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testElement() {
-		fail("Not yet implemented");
+		ArrayListQueue<String> q = new ArrayListQueue<String>();
+		try {
+			q.element();
+			fail();
+		} catch (NoSuchListElementException e) {
+			assertEquals(q.size(), 0);
+		}
 	}
 
-	/**
-	 * Tests the size method for proper reporting of the queue's size
-	 */
-	@Test
-	public void testSize() {
-		fail("Not yet implemented");
-	}
 
 	/**
 	 * Tests the isEmpty method for proper reporting of empty and non empty queues
 	 */
 	@Test
 	public void testIsEmpty() {
-		fail("Not yet implemented");
+		ArrayListQueue<String> q = new ArrayListQueue<String>();
+		assertTrue(q.isEmpty());
+		q.add("One");
+		assertFalse(q.isEmpty());
 	}
 
 }
