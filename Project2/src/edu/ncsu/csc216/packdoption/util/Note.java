@@ -58,7 +58,9 @@ public class Note implements Comparable<Note> {
 			return 1;
 		} else if(this.message.length() < o.message.length()) {
 			return -1;
-		} else return 0;
+		} else if(this.message.contentEquals(o.getMessage())){
+			return 0;
+		} else return -1;
 	}
 	
 	/**
