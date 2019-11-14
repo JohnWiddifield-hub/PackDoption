@@ -23,7 +23,7 @@ public class Note implements Comparable<Note> {
 	//(b) message is null, (c) message is whitespace only, or (d) message contains \n or ,. 
 	//message should be trimmed of leading and/or trailing whitespace.
 	public Note(Date date, String note) {
-		if(date == null || note == null || note.isBlank() || note.contains("\n") || !note.trim().equals(note)) {
+		if(date == null || note == null || note.isBlank() || note.contains("\n") || note.strip().contentEquals(note)) {
 			throw new IllegalArgumentException("Invalid note");
 		} else {
 			this.date = date;
