@@ -16,7 +16,7 @@ import org.junit.Test;
 	 * Tests the RescueList constructor for proper creation of a RescueList
 	 */
 	@Test
-	void testRescueList() {
+	public void testRescueList() {
 		fail("Not yet implemented");
 	}
 
@@ -24,7 +24,7 @@ import org.junit.Test;
 	 * Tests the addRescue method for proper adding and reporting of a rescue to the rescue list
 	 */
 	@Test
-	void testAddRescueRescue() {
+	public void testAddRescueRescue() {
 		fail("Not yet implemented");
 	}
 
@@ -32,7 +32,7 @@ import org.junit.Test;
 	 * Tests the addRescue method for proper adding and reporting of a rescue to the rescue list when using only rescue name
 	 */
 	@Test
-	void testAddRescueString() {
+	public void testAddRescueString() {
 		fail("Not yet implemented");
 	}
 
@@ -40,7 +40,7 @@ import org.junit.Test;
 	 * Tests the getRescue method for proper retrieval of a Rescue from the list
 	 */
 	@Test
-	void testGetRescue() {
+	public void testGetRescue() {
 		fail("Not yet implemented");
 	}
 
@@ -48,7 +48,7 @@ import org.junit.Test;
 	 * Tests the size method for proper reporting of the RescueList's size
 	 */
 	@Test
-	void testSize() {
+	public void testSize() {
 		fail("Not yet implemented");
 	}
 

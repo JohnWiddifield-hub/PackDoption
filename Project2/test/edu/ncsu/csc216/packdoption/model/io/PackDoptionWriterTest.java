@@ -16,7 +16,7 @@ import org.junit.Test;
 	 * Tests the writeRescueListFile method for proper writing of Rescues to a save file
 	 */
 	@Test
-	void testWriteRescueFile() {
+	public void testWriteRescueFile() {
 		fail("Not yet implemented");
 	}
 

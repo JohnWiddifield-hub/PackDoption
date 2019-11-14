@@ -16,7 +16,7 @@ import org.junit.Test;
 	 * This method tests the hashcode function for proper hashCode generation of this class/object
 	 */
 	@Test
-	void testHashCode() {
+	public void testHashCode() {
 		fail("Not yet implemented");
 	}
 
@@ -24,7 +24,7 @@ import org.junit.Test;
 	 * This method tests the 
 	 */
 	@Test
-	void testNote() {
+	public void testNote() {
 		fail("Not yet implemented");
 	}
 
@@ -32,7 +32,7 @@ import org.junit.Test;
 	 * This tests the getDate method for proper retrieval of the Date
 	 */
 	@Test
-	void testGetDate() {
+	public void testGetDate() {
 		fail("Not yet implemented");
 	}
 
@@ -40,7 +40,7 @@ import org.junit.Test;
 	 * This method tests the getMessage method for proper retrieval of the message in the Note
 	 */
 	@Test
-	void testGetMessage() {
+	public void testGetMessage() {
 		fail("Not yet implemented");
 	}
 
@@ -48,7 +48,7 @@ import org.junit.Test;
 	 * This method tests the compareTo method for proper comparison of Notes
 	 */
 	@Test
-	void testCompareTo() {
+	public void testCompareTo() {
 		fail("Not yet implemented");
 	}
 
@@ -57,7 +57,7 @@ import org.junit.Test;
 	 * object.
 	 */
 	@Test
-	void testToString() {
+	public void testToString() {
 		fail("Not yet implemented");
 	}
 
@@ -65,7 +65,7 @@ import org.junit.Test;
 	 * This method tests the equals method for proper reporting of equivalent Notes and non equivalent Notes
 	 */
 	@Test
-	void testEqualsObject() {
+	public void testEqualsObject() {
 		fail("Not yet implemented");
 	}
 

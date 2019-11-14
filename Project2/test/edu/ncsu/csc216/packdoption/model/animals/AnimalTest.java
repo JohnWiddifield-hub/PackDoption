@@ -16,7 +16,7 @@ import org.junit.Test;
 	 * This method tests the hashcode function for proper hashCode generation of this class/object
 	 */
 	@Test
-	void testHashCode() {
+	public void testHashCode() {
 		fail("Not yet implemented");
 	}
 
@@ -24,7 +24,7 @@ import org.junit.Test;
 	 * This tests the long constructor of Animal for proper creation of Animals
 	 */
 	@Test
-	void testAnimalStringDateSizeBooleanBooleanSortedLinkedListOfNoteDateBooleanDateString() {
+	public void testAnimalStringDateSizeBooleanBooleanSortedLinkedListOfNoteDateBooleanDateString() {
 		fail("Not yet implemented");
 	}
 
@@ -32,7 +32,7 @@ import org.junit.Test;
 	 * This tests the short constructor of Animal for proper creation of Animals
 	 */
 	@Test
-	void testAnimalStringDateSizeBooleanBooleanSortedLinkedListOfNoteDate() {
+	public void testAnimalStringDateSizeBooleanBooleanSortedLinkedListOfNoteDate() {
 		fail("Not yet implemented");
 	}
 
@@ -40,7 +40,7 @@ import org.junit.Test;
 	 * This tests the setAdoptionInfo for proper setting of all adoption info
 	 */
 	@Test
-	void testSetAdoptionInfo() {
+	public void testSetAdoptionInfo() {
 		fail("Not yet implemented");
 	}
 
@@ -48,7 +48,7 @@ import org.junit.Test;
 	 * This tests the setSize for proper setting of the animal's size
 	 */
 	@Test
-	void testSetSize() {
+	public void testSetSize() {
 		fail("Not yet implemented");
 	}
 
@@ -56,7 +56,7 @@ import org.junit.Test;
 	 * This tests the addNote method for proper adding of notes to an Animal
 	 */
 	@Test
-	void testAddNote() {
+	public void testAddNote() {
 		fail("Not yet implemented");
 	}
 
@@ -64,7 +64,7 @@ import org.junit.Test;
 	 * This tests the Equals method for proper realization of equal animals
 	 */
 	@Test
-	void testEqualsObject() {
+	public void testEqualsObject() {
 		fail("Not yet implemented");
 	}
 
@@ -72,7 +72,7 @@ import org.junit.Test;
 	 * This method tests the compareTo method for proper comparison of Animals
 	 */
 	@Test
-	void testCompareTo() {
+	public void testCompareTo() {
 		fail("Not yet implemented");
 	}
 
@@ -81,7 +81,7 @@ import org.junit.Test;
 	 * object.
 	 */
 	@Test
-	void testToString() {
+	public void testToString() {
 		fail("Not yet implemented");
 	}
 
@@ -89,7 +89,7 @@ import org.junit.Test;
 	 * This method tests the getAge method for proper retrieval of the animal's age
 	 */
 	@Test
-	void testGetAge() {
+	public void testGetAge() {
 		fail("Not yet implemented");
 	}
 
@@ -97,7 +97,7 @@ import org.junit.Test;
 	 * Tests the getDaysAvailableForAdoption method for proper retrieval of days available for adoption
 	 */
 	@Test
-	void testGetDaysAvailableForAdoption() {
+	public void testGetDaysAvailableForAdoption() {
 		fail("Not yet implemented");
 	}
 
@@ -105,7 +105,7 @@ import org.junit.Test;
 	 * Tests the getName function for proper retrieval of the animals name
 	 */
 	@Test
-	void testGetName() {
+	public void testGetName() {
 		fail("Not yet implemented");
 	}
 
@@ -113,7 +113,7 @@ import org.junit.Test;
 	 * Tests the setName function for proper setting of the animal's name
 	 */
 	@Test
-	void testSetName() {
+	public void testSetName() {
 		fail("Not yet implemented");
 	}
 
@@ -121,7 +121,7 @@ import org.junit.Test;
 	 * Tests the isHouseTrained method for proper retrieval of the true/false value for isHouseTrained
 	 */
 	@Test
-	void testIsHouseTrained() {
+	public void testIsHouseTrained() {
 		fail("Not yet implemented");
 	}
 
@@ -129,7 +129,7 @@ import org.junit.Test;
 	 * Tests the setHouseTrained method for proper setting of the isHouseTrained variable
 	 */
 	@Test
-	void testSetHouseTrained() {
+	public void testSetHouseTrained() {
 		fail("Not yet implemented");
 	}
 
@@ -137,7 +137,7 @@ import org.junit.Test;
 	 * Tests the isGoodWithKids method for proper retrieval of if the animal is good with kids
 	 */
 	@Test
-	void testIsGoodWithKids() {
+	public void testIsGoodWithKids() {
 		fail("Not yet implemented");
 	}
 
@@ -145,7 +145,7 @@ import org.junit.Test;
 	 * Tests the setGoodWithKids method for proper setting of the goodWithKids field
 	 */
 	@Test
-	void testSetGoodWithKids() {
+	public void testSetGoodWithKids() {
 		fail("Not yet implemented");
 	}
 
@@ -153,7 +153,7 @@ import org.junit.Test;
 	 * Tests the adopted method for proper reporting of adopted animals
 	 */
 	@Test
-	void testAdopted() {
+	public void testAdopted() {
 		fail("Not yet implemented");
 	}
 
@@ -161,7 +161,7 @@ import org.junit.Test;
 	 * Tests the setAdopted method for proper setting of adopted animals
 	 */
 	@Test
-	void testSetAdopted() {
+	public void testSetAdopted() {
 		fail("Not yet implemented");
 	}
 
@@ -169,7 +169,7 @@ import org.junit.Test;
 	 * Tests the getOwner method for proper retrieval of the owners name
 	 */
 	@Test
-	void testGetOwner() {
+	public void testGetOwner() {
 		fail("Not yet implemented");
 	}
 
@@ -177,7 +177,7 @@ import org.junit.Test;
 	 * Tests the setOwner method for proper setting of the owner's name
 	 */
 	@Test
-	void testSetOwner() {
+	public void testSetOwner() {
 		fail("Not yet implemented");
 	}
 
@@ -185,7 +185,7 @@ import org.junit.Test;
 	 * Tests the getBirthday method for proper retrieval of the animals birthday
 	 */
 	@Test
-	void testGetBirthday() {
+	public void testGetBirthday() {
 		fail("Not yet implemented");
 	}
 
@@ -193,7 +193,7 @@ import org.junit.Test;
 	 * Tests the setBirthday method for proper setting of the animals birthday
 	 */
 	@Test
-	void testSetBirthday() {
+	public void testSetBirthday() {
 		fail("Not yet implemented");
 	}
 
@@ -201,7 +201,7 @@ import org.junit.Test;
 	 * Tests the getDateAdopted method for proper getting of the date the animal was adopted
 	 */
 	@Test
-	void testGetDateAdopted() {
+	public void testGetDateAdopted() {
 		fail("Not yet implemented");
 	}
 
@@ -209,7 +209,7 @@ import org.junit.Test;
 	 * Tests the setDateAdopted method for proper setting of the date the animal was adopted
 	 */
 	@Test
-	void testSetDateAdopted() {
+	public void testSetDateAdopted() {
 		fail("Not yet implemented");
 	}
 
@@ -217,7 +217,7 @@ import org.junit.Test;
 	 * Tests the getNotes method for proper retrieval of the animal's notes
 	 */
 	@Test
-	void testGetNotes() {
+	public void testGetNotes() {
 		fail("Not yet implemented");
 	}
 
@@ -225,7 +225,7 @@ import org.junit.Test;
 	 * Tests the getNotes method for proper setting of the animal's notes
 	 */
 	@Test
-	void testSetNotes() {
+	public void testSetNotes() {
 		fail("Not yet implemented");
 	}
 
@@ -233,7 +233,7 @@ import org.junit.Test;
 	 * Tests the getDateEnteredRescue method for proper retrieval of the animal's date they entered the rescue
 	 */
 	@Test
-	void testGetDateEnterRescue() {
+	public void testGetDateEnterRescue() {
 		fail("Not yet implemented");
 	}
 
@@ -241,7 +241,7 @@ import org.junit.Test;
 	 * Tests the setDateEnteredRescue method for proper setting of the animal's date they entered the rescue
 	 */
 	@Test
-	void testSetDateEnteredRescue() {
+	public void testSetDateEnteredRescue() {
 		fail("Not yet implemented");
 	}
 
@@ -249,7 +249,7 @@ import org.junit.Test;
 	 * Tests the getSize method for proper retrieval of the animal's size
 	 */
 	@Test
-	void testGetSize() {
+	public void testGetSize() {
 		fail("Not yet implemented");
 	}
 
@@ -257,7 +257,7 @@ import org.junit.Test;
 	 * Tests the getAgeCategory method for proper retrieval of the animal's Age Category
 	 */
 	@Test
-	void testGetAgeCategory() {
+	public void testGetAgeCategory() {
 		fail("Not yet implemented");
 	}
 
@@ -265,7 +265,7 @@ import org.junit.Test;
 	 * Tests the getAnimalAsArray method for proper retrieval of the animal's descriptive Array
 	 */
 	@Test
-	void testGetAnimalAsArray() {
+	public void testGetAnimalAsArray() {
 		fail("Not yet implemented");
 	}
 

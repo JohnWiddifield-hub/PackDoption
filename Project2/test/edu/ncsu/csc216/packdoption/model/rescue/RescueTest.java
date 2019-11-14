@@ -16,7 +16,7 @@ import org.junit.Test;
 	 * This method tests the hashcode function for proper hashCode generation of this class/object
 	 */
 	@Test
-	void testHashCode() {
+	public void testHashCode() {
 		fail("Not yet implemented");
 	}
 
@@ -24,7 +24,7 @@ import org.junit.Test;
 	 * This tests the constructor for proper creation of Rescue objects
 	 */
 	@Test
-	void testRescue() {
+	public void testRescue() {
 		fail("Not yet implemented");
 	}
 
@@ -32,7 +32,7 @@ import org.junit.Test;
 	 * This tests the getName method for proper retrieval of a Rescue's name
 	 */
 	@Test
-	void testGetName() {
+	public void testGetName() {
 		fail("Not yet implemented");
 	}
 
@@ -40,7 +40,7 @@ import org.junit.Test;
 	 * This tests the addAnimal method for proper addition of an animal to the specified Rescue
 	 */
 	@Test
-	void testAddAnimal() {
+	public void testAddAnimal() {
 		fail("Not yet implemented");
 	}
 
@@ -48,7 +48,7 @@ import org.junit.Test;
 	 * This tests the getAnimal method when using an Int for a parameter of index for proper retrieval of an animal from the rescue
 	 */
 	@Test
-	void testGetAnimalInt() {
+	public void testGetAnimalInt() {
 		fail("Not yet implemented");
 	}
 
@@ -56,7 +56,7 @@ import org.junit.Test;
 	 * This tests the getAnimal method when using a name and a birthday for proper retrieval of an animal from the rescue
 	 */
 	@Test
-	void testGetAnimalStringDate() {
+	public void testGetAnimalStringDate() {
 		fail("Not yet implemented");
 	}
 
@@ -64,7 +64,7 @@ import org.junit.Test;
 	 * This Tests the compareTo method for proper comparison of a Rescue to another
 	 */
 	@Test
-	void testCompareTo() {
+	public void testCompareTo() {
 		fail("Not yet implemented");
 	}
 
@@ -72,7 +72,7 @@ import org.junit.Test;
 	 * Tests the contains method for proper reporting if the Rescue contains the parameter
 	 */
 	@Test
-	void testContains() {
+	public void testContains() {
 		fail("Not yet implemented");
 	}
 
@@ -80,7 +80,7 @@ import org.junit.Test;
 	 * Tests the addNote method for proper adding of notes to Animals
 	 */
 	@Test
-	void testAddNote() {
+	public void testAddNote() {
 		fail("Not yet implemented");
 	}
 
@@ -88,7 +88,7 @@ import org.junit.Test;
 	 * This tests the setAdoptionInfo method for proper setting of a Animal's adoption info
 	 */
 	@Test
-	void testSetAdoptionInfo() {
+	public void testSetAdoptionInfo() {
 		fail("Not yet implemented");
 	}
 
@@ -96,7 +96,7 @@ import org.junit.Test;
 	 * This tests the numAnimals method for proper reporting of the number of animals in a rescue
 	 */
 	@Test
-	void testNumAnimals() {
+	public void testNumAnimals() {
 		fail("Not yet implemented");
 	}
 
@@ -104,7 +104,7 @@ import org.junit.Test;
 	 * This tests the numAnimalsAdopted method for proper reporting of the number of animals that are adopted
 	 */
 	@Test
-	void testNumAnimalsAdopted() {
+	public void testNumAnimalsAdopted() {
 		fail("Not yet implemented");
 	}
 
@@ -112,7 +112,7 @@ import org.junit.Test;
 	 * This tests the numAnimalsAvailable method for proper reporting of the number of animals that are not adopted
 	 */
 	@Test
-	void testNumAnimalsAvailable() {
+	public void testNumAnimalsAvailable() {
 		fail("Not yet implemented");
 	}
 
@@ -120,7 +120,7 @@ import org.junit.Test;
 	 * This tests the animalsAvailable method for proper reporting of animals that are not adopted
 	 */
 	@Test
-	void testAnimalsAvailable() {
+	public void testAnimalsAvailable() {
 		fail("Not yet implemented");
 	}
 
@@ -128,7 +128,7 @@ import org.junit.Test;
 	 * This tests the availableCats method for proper reporting of Cats that are not adopted
 	 */
 	@Test
-	void testAvailableCats() {
+	public void testAvailableCats() {
 		fail("Not yet implemented");
 	}
 
@@ -136,7 +136,7 @@ import org.junit.Test;
 	 * This tests the availableDogs method for proper reporting of Dogs that are not adopted
 	 */
 	@Test
-	void testAvailableDogs() {
+	public void testAvailableDogs() {
 		fail("Not yet implemented");
 	}
 
@@ -144,7 +144,7 @@ import org.junit.Test;
 	 * This tests the animalsAdopted method for proper reporting of all adopted animals in the rescue
 	 */
 	@Test
-	void testAnimalsAdopted() {
+	public void testAnimalsAdopted() {
 		fail("Not yet implemented");
 	}
 
@@ -152,7 +152,7 @@ import org.junit.Test;
 	 * This method tests the availableAnimalsDayRange method for proper reporting of  specified available animals between the ranges
 	 */
 	@Test
-	void testAvailableAnimalsDayRange() {
+	public void testAvailableAnimalsDayRange() {
 		fail("Not yet implemented");
 	}
 
@@ -160,7 +160,7 @@ import org.junit.Test;
 	 * This method tests the availableAnimalsDayRange method for proper reporting of  specified available animals between the ages
 	 */
 	@Test
-	void testAvailableAnimalsAge() {
+	public void testAvailableAnimalsAge() {
 		fail("Not yet implemented");
 	}
 
@@ -168,7 +168,7 @@ import org.junit.Test;
 	 * This method tests the equals method for proper reporting of equivalent and non equivalent Rescues
 	 */
 	@Test
-	void testEqualsObject() {
+	public void testEqualsObject() {
 		fail("Not yet implemented");
 	}
 
@@ -177,7 +177,7 @@ import org.junit.Test;
 	 * object.
 	 */
 	@Test
-	void testToString() {
+	public void testToString() {
 		fail("Not yet implemented");
 	}
 
@@ -185,7 +185,7 @@ import org.junit.Test;
 	 * This tests the getAnimalsAsArray method for proper retrieval of a Rescue's Animals as an array
 	 */
 	@Test
-	void testGetAnimalsAsArray() {
+	public void testGetAnimalsAsArray() {
 		fail("Not yet implemented");
 	}
 
@@ -193,7 +193,7 @@ import org.junit.Test;
 	 * This tests the getAppointmentsAsArray method for proper retrieval of a Rescue's Appointments as an array
 	 */
 	@Test
-	void testGetAppointmentsAsArray() {
+	public void testGetAppointmentsAsArray() {
 		fail("Not yet implemented");
 	}
 
@@ -201,7 +201,7 @@ import org.junit.Test;
 	 * Tests the addAppointment method for proper adding and reporting of appointments to a rescue
 	 */
 	@Test
-	void testAddAppointment() {
+	public void testAddAppointment() {
 		fail("Not yet implemented");
 	}
 	
@@ -209,7 +209,7 @@ import org.junit.Test;
 	 * This tests the getAppointments method for proper retrieval of a Rescue's Appointments
 	 */
 	@Test
-	void testGetAppointments() {
+	public void testGetAppointments() {
 		fail("Not yet implemented");
 	}
 

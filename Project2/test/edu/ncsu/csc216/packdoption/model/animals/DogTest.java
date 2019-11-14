@@ -16,7 +16,7 @@ import org.junit.Test;
 	 * Tests the getAgeCategory method for proper retrieval of the dog's age category
 	 */
 	@Test
-	void testGetAgeCategory() {
+	public void testGetAgeCategory() {
 		fail("Not yet implemented");
 	}
 
@@ -24,7 +24,7 @@ import org.junit.Test;
 	 * Tests the getAnimalAsArray method for proper retrieval of the Dogs descriptive array
 	 */
 	@Test
-	void testGetAnimalAsArray() {
+	public void testGetAnimalAsArray() {
 		fail("Not yet implemented");
 	}
 
@@ -32,7 +32,7 @@ import org.junit.Test;
 	 * Tests the long constructor for a proper construction of a Dog
 	 */
 	@Test
-	void testDogStringDateSizeBooleanBooleanSortedLinkedListOfNoteDateBooleanDateStringBreed() {
+	public void testDogStringDateSizeBooleanBooleanSortedLinkedListOfNoteDateBooleanDateStringBreed() {
 		fail("Not yet implemented");
 	}
 
@@ -41,7 +41,7 @@ import org.junit.Test;
 	 * Tests the short constructor for a proper construction of a Dog
 	 */
 	@Test
-	void testDogStringDateSizeBooleanBooleanSortedLinkedListOfNoteDateBreed() {
+	public void testDogStringDateSizeBooleanBooleanSortedLinkedListOfNoteDateBreed() {
 		fail("Not yet implemented");
 	}
 
@@ -49,7 +49,7 @@ import org.junit.Test;
 	 * Tests the getBreed function for proper retrieval of the Dogs Breed
 	 */
 	@Test
-	void testGetBreed() {
+	public void testGetBreed() {
 		fail("Not yet implemented");
 	}
 

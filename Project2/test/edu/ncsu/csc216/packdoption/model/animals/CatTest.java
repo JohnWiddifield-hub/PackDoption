@@ -16,7 +16,7 @@ import org.junit.Test;
 	 * Tests the getAgeCategory method for proper retrieval of the cat's age category
 	 */
 	@Test
-	void testGetAgeCategory() {
+	public void testGetAgeCategory() {
 		fail("Not yet implemented");
 	}
 
@@ -24,7 +24,7 @@ import org.junit.Test;
 	 * Tests the getAnimalAsArray method for proper retrieval of the Dogs descriptive array
 	 */
 	@Test
-	void testGetAnimalAsArray() {
+	public void testGetAnimalAsArray() {
 		fail("Not yet implemented");
 	}
 
@@ -32,7 +32,7 @@ import org.junit.Test;
 	 * Tests the long constructor for a proper construction of a Cat
 	 */
 	@Test
-	void testCatStringDateSizeBooleanBooleanSortedLinkedListOfNoteDateBooleanDateString() {
+	public void testCatStringDateSizeBooleanBooleanSortedLinkedListOfNoteDateBooleanDateString() {
 		fail("Not yet implemented");
 	}
 
@@ -40,7 +40,7 @@ import org.junit.Test;
 	 * Tests the short constructor for a proper construction of a Cat
 	 */
 	@Test
-	void testCatStringDateSizeBooleanBooleanSortedLinkedListOfNoteDate() {
+	public void testCatStringDateSizeBooleanBooleanSortedLinkedListOfNoteDate() {
 		fail("Not yet implemented");
 	}
 

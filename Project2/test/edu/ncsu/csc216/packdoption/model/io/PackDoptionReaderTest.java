@@ -16,7 +16,7 @@ import org.junit.Test;
 	 * Tests the readRescueListFile method for proper reading of Rescues from a save file
 	 */
 	@Test
-	void testReadRescueListFile() {
+	public void testReadRescueListFile() {
 		fail("Not yet implemented");
 	}
 

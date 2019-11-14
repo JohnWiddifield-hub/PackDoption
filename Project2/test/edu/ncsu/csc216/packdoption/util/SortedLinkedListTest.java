@@ -16,7 +16,7 @@ import org.junit.Test;
 	 * This class tests the hashcode function for proper hashCode generation of this class/object
 	 */
 	@Test
-	void testHashCode() {
+	public void testHashCode() {
 		fail("Not yet implemented");
 	}
 
@@ -24,7 +24,7 @@ import org.junit.Test;
 	 * This tests the SortedLinkedList constructor for proper creation of SortedLinkedLists
 	 */
 	@Test
-	void testSortedLinkedList() {
+	public void testSortedLinkedList() {
 		fail("Not yet implemented");
 	}
 
@@ -32,7 +32,7 @@ import org.junit.Test;
 	 * This method tests the size method for proper reporting of the lists size
 	 */
 	@Test
-	void testSize() {
+	public void testSize() {
 		fail("Not yet implemented");
 	}
 
@@ -40,7 +40,7 @@ import org.junit.Test;
 	 * This method tests the isEmpty method for proper reporting of emtpy and non empty lists
 	 */
 	@Test
-	void testIsEmpty() {
+	public void testIsEmpty() {
 		fail("Not yet implemented");
 	}
 
@@ -48,7 +48,7 @@ import org.junit.Test;
 	 * This method tests the contains method for proper reporting of if the element is contained in the list
 	 */
 	@Test
-	void testContains() {
+	public void testContains() {
 		fail("Not yet implemented");
 	}
 
@@ -56,7 +56,7 @@ import org.junit.Test;
 	 * Tests the add method for proper addition of the element to the list
 	 */
 	@Test
-	void testAdd() {
+	public void testAdd() {
 		fail("Not yet implemented");
 	}
 
@@ -64,7 +64,7 @@ import org.junit.Test;
 	 * Tests the get method for proper retrieval of an element from the list
 	 */
 	@Test
-	void testGet() {
+	public void testGet() {
 		fail("Not yet implemented");
 	}
 
@@ -72,7 +72,7 @@ import org.junit.Test;
 	 * Tests the remove method for proper removal of an element from the list as well as reporting
 	 */
 	@Test
-	void testRemove() {
+	public void testRemove() {
 		fail("Not yet implemented");
 	}
 
@@ -80,7 +80,7 @@ import org.junit.Test;
 	 * This method tests the indexOf method for proper reporting of the index of the specified element
 	 */
 	@Test
-	void testIndexOf() {
+	public void testIndexOf() {
 		fail("Not yet implemented");
 	}
 
@@ -88,7 +88,7 @@ import org.junit.Test;
 	 * Tests the equals method for proper reporting of equivalent lists and non equivalent lists
 	 */
 	@Test
-	void testEqualsObject() {
+	public void testEqualsObject() {
 		fail("Not yet implemented");
 	}
 
@@ -97,7 +97,7 @@ import org.junit.Test;
 	 * object.
 	 */
 	@Test
-	void testToString() {
+	public void testToString() {
 		fail("Not yet implemented");
 	}
 
@@ -105,7 +105,7 @@ import org.junit.Test;
 	 * This tests the iterator method for proper iteration of the LinkedList
 	 */
 	@Test
-	void testIterator() {
+	public void testIterator() {
 		fail("Not yet implemented");
 	}
 
