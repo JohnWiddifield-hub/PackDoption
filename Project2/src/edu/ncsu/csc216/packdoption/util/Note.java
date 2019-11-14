@@ -18,8 +18,17 @@ public class Note implements Comparable<Note> {
 	 * @param date date to be included in the note
 	 * @param note message to be included in the note
 	 */
+	//note(Date date, String message): The constructor should throw an 
+	//IllegalArgumentException with message “Invalid note” if (a) date is null, 
+	//(b) message is null, (c) message is whitespace only, or (d) message contains \n or ,. 
+	//message should be trimmed of leading and/or trailing whitespace.
 	public Note(Date date, String note) {
-		
+		if(date == null || note == null || note.isBlank() || note.contains("\n") || !note.trim().equals(note)) {
+			throw new IllegalArgumentException("Invalid note");
+		} else {
+			this.date = date;
+			this.message = note;
+		}
 	}
 	
 	/**
@@ -27,7 +36,7 @@ public class Note implements Comparable<Note> {
 	 * @return date of the note
 	 */
 	public Date getDate() {
-		return null;
+		return this.date;
 	}
 	
 	/**
@@ -35,7 +44,7 @@ public class Note implements Comparable<Note> {
 	 * @return String representing the message in the note
 	 */
 	public String getMessage() {
-		return null;
+		return this.message;
 	}
 
 	/**
@@ -46,8 +55,14 @@ public class Note implements Comparable<Note> {
 	 */
 	@Override
 	public int compareTo(Note o) {
-		// TODO Auto-generated method stub
-		return 0;
+		int val = this.date.compareTo(o.getDate());
+		if(val != 0) {
+			return val;
+		} else if(this.message.length() > o.message.length()){
+			return 1;
+		} else if(this.message.length() < o.message.length()) {
+			return -1;
+		} else return 0;
 	}
 	
 	/**
@@ -57,7 +72,7 @@ public class Note implements Comparable<Note> {
 	 */
 	@Override
 	public String toString() {
-		return null;
+		return date.toString() + " " + message;
 	}
 
 	/**
