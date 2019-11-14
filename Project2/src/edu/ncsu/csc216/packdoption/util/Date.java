@@ -1,5 +1,7 @@
 package edu.ncsu.csc216.packdoption.util;
 
+import java.util.Scanner;
+
 /**
  * Represents a date as a month, a day, and a year (M/D/YYYY). M/D means one or two digits for 
  * each the month and the date. A valid date must have a year between 2000 and 2050 (inclusive). 
@@ -24,7 +26,13 @@ public class Date implements Comparable<Date> {
 	 * @throws IllegalArgumentException if the month day and year do not form a valid date
 	 */
 	public Date(int month, int day, int year) {
-		return;
+		if(!isValidDate(month, day, year)) {
+			throw new IllegalArgumentException("Invalid date");
+		} else {
+			this.month = month;
+			this.day = day;
+			this.year = year;
+		}
 	}
 	
 	/**
@@ -36,7 +44,22 @@ public class Date implements Comparable<Date> {
 	 * the month day and year do not form a valid date
 	 */
 	public Date(String date) {
-		return;
+		if(!isValidDate(date)) {
+			throw new IllegalArgumentException("Invalid date");
+		} else if(date.isEmpty()) {
+			throw new IllegalArgumentException("Invalid date");
+		} else {
+			Scanner lineScan = new Scanner(date);
+			lineScan.useDelimiter("/");
+			int tempMonth = Integer.parseInt(lineScan.next());
+			int tempDay = Integer.parseInt(lineScan.next());
+			int tempYear = Integer.parseInt(lineScan.next());
+			lineScan.close();
+			
+			this.month = tempMonth;
+			this.day = tempDay;
+			this.year = tempYear;
+		}
 	}
 
 	/**
@@ -69,7 +92,20 @@ public class Date implements Comparable<Date> {
 	 * @return true if the string is a valid date, false if not
 	 */
 	public static boolean isValidDate(String date){
-		return false;
+		int tempMonth;
+		int tempDay;
+		int tempYear;
+		try {
+		Scanner lineScan = new Scanner(date);
+		lineScan.useDelimiter("/");
+		tempMonth = Integer.parseInt(lineScan.next());
+		tempDay = Integer.parseInt(lineScan.next());
+		tempYear = Integer.parseInt(lineScan.next());
+		lineScan.close();
+		} catch (Exception e) {
+			return false;
+		}
+		return isValidDate(tempMonth, tempDay, tempYear);
 	}
 	
 	/**
@@ -80,7 +116,37 @@ public class Date implements Comparable<Date> {
 	 * @return true if the string is a valid date, false if not
 	 */
 	public static boolean isValidDate(int month, int day, int year){
-		return false;
+		if(year < 2000 || year > 2050) {
+			return false;
+		} else if(month < 1 || day < 1) {
+			return false;
+		} else if(month == 1 && day > 31) {
+			return false;
+		} else if(month == 2 && day > 29) {
+			return false;
+		} else if(month == 3 && day > 31) {
+			return false;
+		} else if(month == 4 && day > 30) {
+			return false;
+		} else if(month == 5 && day > 31) {
+			return false;
+		} else if(month == 6 && day > 30) {
+			return false;
+		} else if(month == 7 && day > 31) {
+			return false;
+		} else if(month == 8 && day > 31) {
+			return false;
+		} else if(month == 9 && day > 30) {
+			return false;
+		} else if(month == 10 && day > 31) {
+			return false;
+		} else if(month == 11 && day > 30) {
+			return false;
+		} else if(month == 12 && day > 31) {
+			return false;
+		} else if(month == 2 && year % 4 != 0 && day == 29) {
+			return false;
+		} else return true;
 	}
 	
 	/**
@@ -92,8 +158,15 @@ public class Date implements Comparable<Date> {
 	 */
 	@Override
 	public int compareTo(Date d) {
-		
-		return 0;
+		if(this.year < d.getYear()) {
+			return -1;
+		} else if(this.month < d.getMonth()) {
+			return -1;
+		} else if(this.day < d.getDay()) {
+			return -1;
+		} else if(this.year == d.getYear() && this.month == d.getMonth() && this.day == d.getDay()) {
+			return 0;
+		} else return 1;
 	}
 	
 	/**
@@ -103,7 +176,7 @@ public class Date implements Comparable<Date> {
 	 */
 	@Override
 	public String toString() {
-		return null;
+		return month + "/" + day + "/" + year;
 	}
 
 	/**
@@ -114,7 +187,63 @@ public class Date implements Comparable<Date> {
 	 * date is before this.date
 	 */
 	public int daysTo(Date date) {
-		return 0;
+		
+		int thisTime = 0;
+		int dateTime = 0;
+		
+		thisTime += this.day * 86400000;
+		if(this.month == 2) {
+			thisTime += 31 * 86400000;
+		} else if(this.month == 3) {
+			thisTime += 59 * 86400000;
+		} else if(this.month == 4) {
+			thisTime += 90 * 86400000;
+		} else if(this.month == 5) {
+			thisTime += 120 * 86400000;
+		} else if(this.month == 6) {
+			thisTime += 151 * 86400000;
+		} else if(this.month == 7) {
+			thisTime += 181 * 86400000;
+		} else if(this.month == 8) {
+			thisTime += 212 * 86400000;
+		} else if(this.month == 9) {
+			thisTime += 243 * 86400000;
+		} else if(this.month == 10) {
+			thisTime += 273 * 86400000;
+		} else if(this.month == 11) {
+			thisTime += 304 * 86400000;
+		} else if(this.month == 12) {
+			thisTime += 334 * 86400000;
+		} 
+		thisTime += this.year * 365 * 86400000;
+		
+		dateTime += date.getDay() * 86400000;
+		if(date.getMonth() == 2) {
+			dateTime += 31 * 86400000;
+		} else if(date.getMonth() == 3) {
+			dateTime += 59 * 86400000;
+		} else if(date.getMonth() == 4) {
+			dateTime += 90 * 86400000;
+		} else if(date.getMonth() == 5) {
+			dateTime += 120 * 86400000;
+		} else if(date.getMonth() == 6) {
+			dateTime += 151 * 86400000;
+		} else if(date.getMonth() == 7) {
+			dateTime += 181 * 86400000;
+		} else if(date.getMonth() == 8) {
+			dateTime += 212 * 86400000;
+		} else if(date.getMonth() == 9) {
+			dateTime += 243 * 86400000;
+		} else if(date.getMonth() == 10) {
+			dateTime += 273 * 86400000;
+		} else if(date.getMonth() == 11) {
+			dateTime += 304 * 86400000;
+		} else if(date.getMonth() == 12) {
+			dateTime += 334 * 86400000;
+		} 
+		dateTime += date.getYear() * 365 * 86400000;
+		
+		return (dateTime - thisTime)/86400000;
 	}
 	
 	/**
@@ -162,7 +291,62 @@ public class Date implements Comparable<Date> {
 	 * date is before this.date
 	 */
 	public int yearsTo(Date date) {
-		return 0;
+		int thisTime = 0;
+		int dateTime = 0;
 		
+		thisTime += this.day * 86400000;
+		if(this.month == 2) {
+			thisTime += 31 * 86400000;
+		} else if(this.month == 3) {
+			thisTime += 59 * 86400000;
+		} else if(this.month == 4) {
+			thisTime += 90 * 86400000;
+		} else if(this.month == 5) {
+			thisTime += 120 * 86400000;
+		} else if(this.month == 6) {
+			thisTime += 151 * 86400000;
+		} else if(this.month == 7) {
+			thisTime += 181 * 86400000;
+		} else if(this.month == 8) {
+			thisTime += 212 * 86400000;
+		} else if(this.month == 9) {
+			thisTime += 243 * 86400000;
+		} else if(this.month == 10) {
+			thisTime += 273 * 86400000;
+		} else if(this.month == 11) {
+			thisTime += 304 * 86400000;
+		} else if(this.month == 12) {
+			thisTime += 334 * 86400000;
+		} 
+		thisTime += this.year * 365 * 86400000;
+		
+		dateTime += date.getDay() * 86400000;
+		if(date.getMonth() == 2) {
+			dateTime += 31 * 86400000;
+		} else if(date.getMonth() == 3) {
+			dateTime += 59 * 86400000;
+		} else if(date.getMonth() == 4) {
+			dateTime += 90 * 86400000;
+		} else if(date.getMonth() == 5) {
+			dateTime += 120 * 86400000;
+		} else if(date.getMonth() == 6) {
+			dateTime += 151 * 86400000;
+		} else if(date.getMonth() == 7) {
+			dateTime += 181 * 86400000;
+		} else if(date.getMonth() == 8) {
+			dateTime += 212 * 86400000;
+		} else if(date.getMonth() == 9) {
+			dateTime += 243 * 86400000;
+		} else if(date.getMonth() == 10) {
+			dateTime += 273 * 86400000;
+		} else if(date.getMonth() == 11) {
+			dateTime += 304 * 86400000;
+		} else if(date.getMonth() == 12) {
+			dateTime += 334 * 86400000;
+		} 
+		dateTime += date.getYear() * 365 * 86400000;
+		
+		int diffTime = (dateTime - thisTime)/86400000;
+		return diffTime % 365;
 	}
 }
