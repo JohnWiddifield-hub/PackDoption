@@ -19,7 +19,7 @@ public class Note implements Comparable<Note> {
 	 * @param note message to be included in the note
 	 */
 	public Note(Date date, String note) {
-		if(date == null || note == null || note.isBlank() || note.contains("\n")) {
+		if(date == null || note == null || note.isBlank() || note.contains("\n") || note.contains(",")) {
 			throw new IllegalArgumentException("Invalid note");
 		} else {
 			this.date = date;
