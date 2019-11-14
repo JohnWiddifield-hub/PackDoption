@@ -188,62 +188,62 @@ public class Date implements Comparable<Date> {
 	 */
 	public int daysTo(Date date) {
 		
-		int thisTime = 0;
-		int dateTime = 0;
+		long thisTime = 0;
+		long dateTime = 0;
 		
-		thisTime += this.day * 86400000;
+		thisTime += this.day;
 		if(this.month == 2) {
-			thisTime += 31 * 86400000;
+			thisTime += 31;
 		} else if(this.month == 3) {
-			thisTime += 59 * 86400000;
+			thisTime += 59;
 		} else if(this.month == 4) {
-			thisTime += 90 * 86400000;
+			thisTime += 90;
 		} else if(this.month == 5) {
-			thisTime += 120 * 86400000;
+			thisTime += 120;
 		} else if(this.month == 6) {
-			thisTime += 151 * 86400000;
+			thisTime += 151;
 		} else if(this.month == 7) {
-			thisTime += 181 * 86400000;
+			thisTime += 181;
 		} else if(this.month == 8) {
-			thisTime += 212 * 86400000;
+			thisTime += 212;
 		} else if(this.month == 9) {
-			thisTime += 243 * 86400000;
+			thisTime += 243;
 		} else if(this.month == 10) {
-			thisTime += 273 * 86400000;
+			thisTime += 273;
 		} else if(this.month == 11) {
-			thisTime += 304 * 86400000;
+			thisTime += 304;
 		} else if(this.month == 12) {
-			thisTime += 334 * 86400000;
+			thisTime += 334;
 		} 
-		thisTime += this.year * 365 * 86400000;
+		thisTime += this.year * 365;
 		
-		dateTime += date.getDay() * 86400000;
+		dateTime += date.getDay();
 		if(date.getMonth() == 2) {
-			dateTime += 31 * 86400000;
+			dateTime += 31;
 		} else if(date.getMonth() == 3) {
-			dateTime += 59 * 86400000;
+			dateTime += 59;
 		} else if(date.getMonth() == 4) {
-			dateTime += 90 * 86400000;
+			dateTime += 90;
 		} else if(date.getMonth() == 5) {
-			dateTime += 120 * 86400000;
+			dateTime += 120;
 		} else if(date.getMonth() == 6) {
-			dateTime += 151 * 86400000;
+			dateTime += 151;
 		} else if(date.getMonth() == 7) {
-			dateTime += 181 * 86400000;
+			dateTime += 181;
 		} else if(date.getMonth() == 8) {
-			dateTime += 212 * 86400000;
+			dateTime += 212;
 		} else if(date.getMonth() == 9) {
-			dateTime += 243 * 86400000;
+			dateTime += 243;
 		} else if(date.getMonth() == 10) {
-			dateTime += 273 * 86400000;
+			dateTime += 273;
 		} else if(date.getMonth() == 11) {
-			dateTime += 304 * 86400000;
+			dateTime += 304;
 		} else if(date.getMonth() == 12) {
-			dateTime += 334 * 86400000;
+			dateTime += 334;
 		} 
-		dateTime += date.getYear() * 365 * 86400000;
+		dateTime += date.getYear() * 365;
 		
-		return (dateTime - thisTime)/86400000;
+		return (int)(dateTime - thisTime);
 	}
 	
 	/**
@@ -294,59 +294,59 @@ public class Date implements Comparable<Date> {
 		int thisTime = 0;
 		int dateTime = 0;
 		
-		thisTime += this.day * 86400000;
+		thisTime += this.day;
 		if(this.month == 2) {
-			thisTime += 31 * 86400000;
+			thisTime += 31;
 		} else if(this.month == 3) {
-			thisTime += 59 * 86400000;
+			thisTime += 59;
 		} else if(this.month == 4) {
-			thisTime += 90 * 86400000;
+			thisTime += 90;
 		} else if(this.month == 5) {
-			thisTime += 120 * 86400000;
+			thisTime += 120;
 		} else if(this.month == 6) {
-			thisTime += 151 * 86400000;
+			thisTime += 151;
 		} else if(this.month == 7) {
-			thisTime += 181 * 86400000;
+			thisTime += 181;
 		} else if(this.month == 8) {
-			thisTime += 212 * 86400000;
+			thisTime += 212;
 		} else if(this.month == 9) {
-			thisTime += 243 * 86400000;
+			thisTime += 243;
 		} else if(this.month == 10) {
-			thisTime += 273 * 86400000;
+			thisTime += 273;
 		} else if(this.month == 11) {
-			thisTime += 304 * 86400000;
+			thisTime += 304;
 		} else if(this.month == 12) {
-			thisTime += 334 * 86400000;
+			thisTime += 334;
 		} 
-		thisTime += this.year * 365 * 86400000;
+		thisTime += this.year * 365;
 		
-		dateTime += date.getDay() * 86400000;
+		dateTime += date.getDay();
 		if(date.getMonth() == 2) {
-			dateTime += 31 * 86400000;
+			dateTime += 31;
 		} else if(date.getMonth() == 3) {
-			dateTime += 59 * 86400000;
+			dateTime += 59;
 		} else if(date.getMonth() == 4) {
-			dateTime += 90 * 86400000;
+			dateTime += 90;
 		} else if(date.getMonth() == 5) {
-			dateTime += 120 * 86400000;
+			dateTime += 120;
 		} else if(date.getMonth() == 6) {
-			dateTime += 151 * 86400000;
+			dateTime += 151;
 		} else if(date.getMonth() == 7) {
-			dateTime += 181 * 86400000;
+			dateTime += 181;
 		} else if(date.getMonth() == 8) {
-			dateTime += 212 * 86400000;
+			dateTime += 212;
 		} else if(date.getMonth() == 9) {
-			dateTime += 243 * 86400000;
+			dateTime += 243;
 		} else if(date.getMonth() == 10) {
-			dateTime += 273 * 86400000;
+			dateTime += 273;
 		} else if(date.getMonth() == 11) {
-			dateTime += 304 * 86400000;
+			dateTime += 304;
 		} else if(date.getMonth() == 12) {
-			dateTime += 334 * 86400000;
+			dateTime += 334;
 		} 
-		dateTime += date.getYear() * 365 * 86400000;
+		dateTime += date.getYear() * 365;
 		
-		int diffTime = (dateTime - thisTime)/86400000;
-		return diffTime % 365;
+		int diffTime = (dateTime - thisTime);
+		return diffTime / 365;
 	}
 }
