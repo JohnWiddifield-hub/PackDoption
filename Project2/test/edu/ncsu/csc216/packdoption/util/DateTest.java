@@ -17,9 +17,9 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testHashCode() {
-		Date date1 = new Date(1,1,2000);
-		Date date2 = new Date(1,1,2000);
-		Date date3 = new Date(2,2,2000);
+		Date date1 = new Date(1, 1, 2000);
+		Date date2 = new Date(1, 1, 2000);
+		Date date3 = new Date(2, 2, 2000);
 		assertEquals(date1.hashCode(), date2.hashCode());
 		assertFalse(date1.hashCode() == date3.hashCode());
 		assertTrue(date1.equals(date2));
@@ -32,8 +32,8 @@ import org.junit.Test;
 	public void testDateIntIntInt() {
 		Date date3;
 		try {
-			Date date1 = new Date(8,20,2018);
-			Date date2 = new Date(11,14,2019);
+			Date date1 = new Date(8, 20, 2018);
+			Date date2 = new Date(11, 14, 2019);
 			assertEquals(date1.getDay(), 20);
 			assertEquals(date1.getMonth(), 8);
 			assertEquals(date1.getYear(), 2018);
@@ -45,27 +45,27 @@ import org.junit.Test;
 		}
 		
 		try {
-			date3 = new Date(0,1,2019);
+			date3 = new Date(0, 1, 2019);
 			fail();
 		} catch(IllegalArgumentException e) {
 			assertEquals(e.getMessage(), "Invalid date");
 		}
 		
 		try {
-			date3 = new Date(12,32,2019);
+			date3 = new Date(12, 32, 2019);
 			fail();
 		} catch(IllegalArgumentException e) {
 			assertEquals(e.getMessage(), "Invalid date");
 		}
 		
 		try {
-			date3 = new Date(12,20,1999);
+			date3 = new Date(12, 20, 1999);
 			fail();
 		} catch(IllegalArgumentException e) {
 			assertEquals(e.getMessage(), "Invalid date");
 		}
 		
-		date3 = new Date(1,1,2000);
+		date3 = new Date(1, 1, 2000);
 		assertEquals(date3.getDay(), 1);
 	}
 
@@ -74,7 +74,7 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testDateString() {
-		Date date = new Date(1,1,2000);
+		Date date = new Date(1, 1, 2000);
 		Date date2 = new Date("1/1/2000");
 		assertEquals(date.toString(), "1/1/2000");
 		assertTrue(date.equals(date2));
@@ -85,33 +85,33 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testIsValidDateIntIntInt() {
-		assertFalse(Date.isValidDate(1,50,2000));
-		assertFalse(Date.isValidDate(2,50,2000));
-		assertFalse(Date.isValidDate(3,50,2000));
-		assertFalse(Date.isValidDate(4,50,2000));
-		assertFalse(Date.isValidDate(5,50,2000));
-		assertFalse(Date.isValidDate(6,50,2000));
-		assertFalse(Date.isValidDate(7,50,2000));
-		assertFalse(Date.isValidDate(8,50,2000));
-		assertFalse(Date.isValidDate(9,50,2000));
-		assertFalse(Date.isValidDate(10,50,2000));
-		assertFalse(Date.isValidDate(12,50,2000));
-		assertFalse(Date.isValidDate(11,50,2000));
-		assertTrue(Date.isValidDate(1,15,2000));
-		assertTrue(Date.isValidDate(2,15,2000));
-		assertTrue(Date.isValidDate(3,15,2000));
-		assertTrue(Date.isValidDate(4,15,2000));
-		assertTrue(Date.isValidDate(5,15,2000));
-		assertTrue(Date.isValidDate(6,15,2000));
-		assertTrue(Date.isValidDate(7,15,2000));
-		assertTrue(Date.isValidDate(8,15,2000));
-		assertTrue(Date.isValidDate(9,15,2000));
-		assertTrue(Date.isValidDate(10,15,2000));
-		assertTrue(Date.isValidDate(11,15,2000));
-		assertTrue(Date.isValidDate(12,15,2000));
-		assertTrue(Date.isValidDate(2,29,2020));
-		assertFalse(Date.isValidDate(2,29,2021));
-		assertFalse(Date.isValidDate(2,30,2021));
+		assertFalse(Date.isValidDate(1, 50, 2000));
+		assertFalse(Date.isValidDate(2, 50, 2000));
+		assertFalse(Date.isValidDate(3, 50, 2000));
+		assertFalse(Date.isValidDate(4, 50, 2000));
+		assertFalse(Date.isValidDate(5, 50, 2000));
+		assertFalse(Date.isValidDate(6, 50, 2000));
+		assertFalse(Date.isValidDate(7, 50, 2000));
+		assertFalse(Date.isValidDate(8, 50, 2000));
+		assertFalse(Date.isValidDate(9, 50, 2000));
+		assertFalse(Date.isValidDate(10 ,50, 2000));
+		assertFalse(Date.isValidDate(12 ,50, 2000));
+		assertFalse(Date.isValidDate(11 ,50, 2000));
+		assertTrue(Date.isValidDate(1, 15, 2000));
+		assertTrue(Date.isValidDate(2, 15, 2000));
+		assertTrue(Date.isValidDate(3, 15, 2000));
+		assertTrue(Date.isValidDate(4, 15, 2000));
+		assertTrue(Date.isValidDate(5, 15, 2000));
+		assertTrue(Date.isValidDate(6, 15, 2000));
+		assertTrue(Date.isValidDate(7, 15, 2000));
+		assertTrue(Date.isValidDate(8, 15, 2000));
+		assertTrue(Date.isValidDate(9, 15, 2000));
+		assertTrue(Date.isValidDate(10 ,15, 2000));
+		assertTrue(Date.isValidDate(11 ,15, 2000));
+		assertTrue(Date.isValidDate(12 ,15, 2000));
+		assertTrue(Date.isValidDate(2, 29, 2020));
+		assertFalse(Date.isValidDate(2, 29, 2021));
+		assertFalse(Date.isValidDate(2, 30, 2021));
 		
 	}
 
@@ -120,8 +120,8 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testCompareTo() {
-		Date date1 = new Date(1,1,2000);
-		Date date2 = new Date(1,2,2000);
+		Date date1 = new Date(1, 1, 2000);
+		Date date2 = new Date(1, 2, 2000);
 		assertTrue(date1.compareTo(date2) < 0);
 		assertTrue(date2.compareTo(date1) > 0);
 		assertTrue(date1.compareTo(date1) == 0);
@@ -132,19 +132,19 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testDaysTo() {
-		Date date1 = new Date(1,1,2000);
-		Date date2 = new Date(1,2,2000);
-		Date date3 = new Date(2,2,2000);
-		Date date4 = new Date(3,2,2000);
-		Date date5 = new Date(4,2,2000);
-		Date date6 = new Date(5,2,2000);
-		Date date7 = new Date(6,2,2000);
-		Date date8 = new Date(7,2,2000);
-		Date date9 = new Date(8,2,2000);
-		Date date10 = new Date(9,2,2000);
-		Date date11 = new Date(10,2,2000);
-		Date date12 = new Date(11,2,2000);
-		Date date13 = new Date(12,2,2000);
+		Date date1 = new Date(1, 1, 2000);
+		Date date2 = new Date(1, 2, 2000);
+		Date date3 = new Date(2, 2, 2000);
+		Date date4 = new Date(3, 2, 2000);
+		Date date5 = new Date(4, 2, 2000);
+		Date date6 = new Date(5, 2, 2000);
+		Date date7 = new Date(6, 2, 2000);
+		Date date8 = new Date(7, 2, 2000);
+		Date date9 = new Date(8, 2, 2000);
+		Date date10 = new Date(9, 2, 2000);
+		Date date11 = new Date(10, 2, 2000);
+		Date date12 = new Date(11, 2, 2000);
+		Date date13 = new Date(12, 2, 2000);
 		
 		assertEquals(date1.daysTo(date2), 1);
 		assertEquals(date3.daysTo(date4), 28);
@@ -159,7 +159,7 @@ import org.junit.Test;
 		assertEquals(date12.daysTo(date13), 30);
 		assertEquals(date13.daysTo(date13), 0);
 		
-		Date date14 = new Date(1,2,2001);
+		Date date14 = new Date(1, 2, 2001);
 		assertEquals(date1.daysTo(date14), 366);
 		
 	}
@@ -169,19 +169,19 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testYearsTo() {
-		Date date1 = new Date(1,1,2000);
-		Date date2 = new Date(1,2,2000);
-		Date date3 = new Date(2,2,2000);
-		Date date4 = new Date(3,2,2000);
-		Date date5 = new Date(3,2,2001);
-		Date date6 = new Date(3,1,2002);
-		Date date7 = new Date(6,2,2000);
-		Date date8 = new Date(7,2,2000);
-		Date date9 = new Date(8,2,2000);
-		Date date10 = new Date(9,2,2000);
-		Date date11 = new Date(10,2,2000);
-		Date date12 = new Date(11,2,2000);
-		Date date13 = new Date(12,2,2000);
+		Date date1 = new Date(1 ,1, 2000);
+		Date date2 = new Date(1 ,2, 2000);
+		Date date3 = new Date(2 ,2, 2000);
+		Date date4 = new Date(3 ,2, 2000);
+		Date date5 = new Date(3 ,2, 2001);
+		Date date6 = new Date(3 ,1, 2002);
+		Date date7 = new Date(6 ,2, 2000);
+		Date date8 = new Date(7 ,2, 2000);
+		Date date9 = new Date(8 ,2, 2000);
+		Date date10 = new Date(9 ,2, 2000);
+		Date date11 = new Date(10 ,2, 2000);
+		Date date12 = new Date(11 ,2, 2000);
+		Date date13 = new Date(12 ,2, 2000);
 		
 		assertEquals(date1.yearsTo(date2), 0);
 		assertEquals(date3.yearsTo(date4), 0);
@@ -196,7 +196,7 @@ import org.junit.Test;
 		assertEquals(date12.yearsTo(date13), 0);
 		assertEquals(date13.yearsTo(date13), 0);
 		
-		Date date14 = new Date(1,2,2005);
+		Date date14 = new Date(1, 2, 2005);
 		assertEquals(date1.yearsTo(date14), 5);
 	}
 
