@@ -18,16 +18,12 @@ public class Note implements Comparable<Note> {
 	 * @param date date to be included in the note
 	 * @param note message to be included in the note
 	 */
-	//note(Date date, String message): The constructor should throw an 
-	//IllegalArgumentException with message “Invalid note” if (a) date is null, 
-	//(b) message is null, (c) message is whitespace only, or (d) message contains \n or ,. 
-	//message should be trimmed of leading and/or trailing whitespace.
 	public Note(Date date, String note) {
 		if(date == null || note == null || note.isBlank() || note.contains("\n")) {
 			throw new IllegalArgumentException("Invalid note");
 		} else {
 			this.date = date;
-			this.message = note;
+			this.message = note.trim();
 		}
 	}
 	
