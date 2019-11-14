@@ -53,7 +53,7 @@ public class Note implements Comparable<Note> {
 	public int compareTo(Note o) {
 		int val = this.date.compareTo(o.getDate());
 		if(val != 0) {
-			return -1;
+			return val;
 		} else if(this.message.length() > o.message.length()){
 			return -1;
 		} else if(this.message.length() < o.message.length()) {
