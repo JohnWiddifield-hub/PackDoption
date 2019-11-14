@@ -116,7 +116,7 @@ public class Date implements Comparable<Date> {
 	 * @return true if the string is a valid date, false if not
 	 */
 	public static boolean isValidDate(int month, int day, int year){
-		if(year < 2000 || year > 2050) {
+		if(year < 2000 || year > 2050  || month > 12) {
 			return false;
 		} else if(month < 1 || day < 1) {
 			return false;
