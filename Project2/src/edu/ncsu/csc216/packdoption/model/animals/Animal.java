@@ -70,7 +70,7 @@ public abstract class Animal implements Comparable<Animal> {
 	Animal(String name, Date birthday, Size size, boolean houseTrained, boolean goodWithKids, SortedLinkedList<Note> notes, Date dateEnterRescue, 
 	       boolean adopted, Date dateAdopted, String owner){
 		
-		setName(name.trim());
+		setName(name);
 		setBirthday(birthday);
 		setSize(size);
 		setHouseTrained(houseTrained);
@@ -101,7 +101,7 @@ public abstract class Animal implements Comparable<Animal> {
 				dateEnterRescue is before birthday
 	 */
 	Animal(String name, Date birthday, Size size, boolean houseTrained, boolean goodWithKids, SortedLinkedList<Note> notes, Date dateEnterRescue){
-		setName(name.trim());
+		setName(name);
 		setBirthday(birthday);
 		setSize(size);
 		setHouseTrained(houseTrained);
@@ -277,8 +277,9 @@ public abstract class Animal implements Comparable<Animal> {
 	public void setName(String name) {
 		if(name == null || name.isBlank() || name.contains("\n") || name.contains(",")) {
 			throw new IllegalArgumentException();
+			
 		} else {
-			this.name = name;
+			this.name = name.trim();
 		}
 	}
 
