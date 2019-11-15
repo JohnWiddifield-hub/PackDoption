@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import edu.ncsu.csc216.packdoption.model.animals.Animal.AgeCategory;
 import edu.ncsu.csc216.packdoption.model.animals.Animal.Size;
 import edu.ncsu.csc216.packdoption.util.Date;
 import edu.ncsu.csc216.packdoption.util.Note;
@@ -17,6 +18,27 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
  */
 	public class AnimalTest {
 
+	/**
+	 * Tests the long constructor for animal
+	 */
+	@Test
+	public void testConstructor() {
+		SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
+		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
+		Cat cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2000), true, new Date(1, 10, 2000), "Billy");
+		assertEquals(cat.getName(), "Boots");
+		assertEquals(cat.getBirthday().toString(), "1/1/2000");
+		assertEquals(cat.getSize(), Size.SMALL);
+		assertEquals(cat.isGoodWithKids(), true);
+		assertEquals(cat.isHouseTrained(), true);
+		assertEquals(cat.getNotes(), notes);
+		assertEquals(cat.getDateEnterRescue().toString(), "1/5/2000");
+		assertEquals(cat.adopted(), true);
+		assertEquals(cat.getDateAdopted().toString(), "1/10/2000");
+		assertEquals(cat.getOwner(), "Billy");
+		assertEquals(cat.getAgeCategory(new Date(1, 11, 2000)), AgeCategory.YOUNG);
+	}
 
 	/**
 	 * This tests the addNote method for proper adding of notes to an Animal
@@ -57,7 +79,6 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		assertFalse(cat.equals(cat4));
 		assertEquals(cat.hashCode(), cat2.hashCode());
 		assertTrue(cat.hashCode() != cat3.hashCode());
-		//test
 	}
 
 	/**
