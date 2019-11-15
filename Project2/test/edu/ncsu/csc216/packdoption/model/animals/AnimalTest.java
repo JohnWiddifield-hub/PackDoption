@@ -38,7 +38,8 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		assertEquals(cat.getDateAdopted().toString(), "1/10/2000");
 		assertEquals(cat.getOwner(), "Billy");
 		assertEquals(cat.getAgeCategory(new Date(1, 11, 2000)), AgeCategory.YOUNG);
-		//assertEquals(cat.getAge(new Date(1, 2, 2001)), 1);
+		Date date = new Date(2, 2, 2001);
+		assertEquals(cat.getAge(date), 1);
 		
 		try {
 			cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,

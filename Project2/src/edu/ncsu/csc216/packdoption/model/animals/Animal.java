@@ -236,7 +236,7 @@ public abstract class Animal implements Comparable<Animal> {
 	 * @return The age of the animal in years as integers
 	 */
 	public int getAge(Date today) {
-		if(today == null || today.daysTo(dateEnterRescue) < 0) {
+		if(today == null || today.daysTo(dateEnterRescue) > 0) {
 			throw new IllegalArgumentException();
 		}
 		return birthday.yearsTo(today);
