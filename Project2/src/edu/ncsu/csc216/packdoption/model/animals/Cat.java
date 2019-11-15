@@ -1,5 +1,6 @@
 package edu.ncsu.csc216.packdoption.model.animals;
 
+import edu.ncsu.csc216.packdoption.model.animals.Animal.AgeCategory;
 import edu.ncsu.csc216.packdoption.util.Date;
 import edu.ncsu.csc216.packdoption.util.Note;
 import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
@@ -11,8 +12,6 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
  *
  */
 public class Cat extends Animal {
-
-	
 
 	/**
 	 * This constructs a cat with adoption data
@@ -44,7 +43,6 @@ public class Cat extends Animal {
 	public Cat(String name, Date birthday, Size size, boolean houseTrained, boolean goodWithKids, SortedLinkedList<Note> notes,
 			Date dateEnterRescue, boolean adopted, Date dateAdopted, String owner) {
 		super(name, birthday, size, houseTrained, goodWithKids, notes, dateEnterRescue, adopted, dateAdopted, owner);
-		// TODO Auto-generated constructor stub
 	}
 	
 	/**
@@ -69,7 +67,6 @@ public class Cat extends Animal {
 	public Cat(String name, Date birthday, Size size, boolean houseTrained, boolean goodWithKids, SortedLinkedList<Note> notes,
 			Date dateEnterRescue) {
 		super(name, birthday, size, houseTrained, goodWithKids, notes, dateEnterRescue);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -81,8 +78,13 @@ public class Cat extends Animal {
 	 */
 	@Override
 	public AgeCategory getAgeCategory(Date today) {
-		// TODO Auto-generated method stub
-		return null;
+		if(today == null || super.getBirthday().daysTo(today) < 0) {
+			throw new IllegalArgumentException();
+		} else if(getBirthday().yearsTo(today) < 4) {
+			return AgeCategory.YOUNG;
+		} else if(getBirthday().yearsTo(today) < 9) {
+			return AgeCategory.ADULT;
+		} else return AgeCategory.SENIOR;
 	}
 
 	/**
@@ -95,8 +97,30 @@ public class Cat extends Animal {
 	 */
 	@Override
 	public String[] getAnimalAsArray(Date today) {
-		// TODO Auto-generated method stub
-		return null;
+		String[] arr = new String[7];
+		if(today == null || super.getBirthday().daysTo(today) < 0) {
+			throw new IllegalArgumentException();
+		} else {
+			arr[0] = getName();
+			arr[1] = "Cat";
+			arr[2] = getBirthday().toString();
+			String age = String.valueOf(this.getAge(today));
+			arr[3] = age;
+			if(getAgeCategory(today) == AgeCategory.YOUNG) {
+				arr[4] = "YOUNG";
+			} else if(getAgeCategory(today) == AgeCategory.ADULT) {
+				arr[4] = "ADULT";
+			} else {
+				arr[4] = "SENIOR";
+			}
+			if(adopted()) {
+				arr[5] = "Yes";
+			} else {
+				arr[5] = "No";
+			}
+			arr[6] = Integer.toString(super.getDateEnterRescue().daysTo(today));
+		}
+		return arr;
 	}
 
 }

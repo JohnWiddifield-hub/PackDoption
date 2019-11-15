@@ -70,6 +70,14 @@ public abstract class Animal implements Comparable<Animal> {
 	Animal(String name, Date birthday, Size size, boolean houseTrained, boolean goodWithKids, SortedLinkedList<Note> notes, Date dateEnterRescue, 
 	       boolean adopted, Date dateAdopted, String owner){
 		
+		setName(name.trim());
+		setBirthday(birthday);
+		setSize(size);
+		setHouseTrained(houseTrained);
+		setGoodWithKids(goodWithKids);
+		setNotes(notes);
+		setDateEnteredRescue(dateEnterRescue);
+		setAdoptionInfo(adopted, dateAdopted, owner);
 	}
 	       
 	/**
@@ -93,7 +101,14 @@ public abstract class Animal implements Comparable<Animal> {
 				dateEnterRescue is before birthday
 	 */
 	Animal(String name, Date birthday, Size size, boolean houseTrained, boolean goodWithKids, SortedLinkedList<Note> notes, Date dateEnterRescue){
-		
+		setName(name.trim());
+		setBirthday(birthday);
+		setSize(size);
+		setHouseTrained(houseTrained);
+		setGoodWithKids(goodWithKids);
+		setNotes(notes);
+		setDateEnteredRescue(dateEnterRescue);
+		setAdoptionInfo(false, null, null);
 	}
 	
 	/**
@@ -111,7 +126,18 @@ public abstract class Animal implements Comparable<Animal> {
 				owner contains \n or ,
 	 */
 	public void setAdoptionInfo(boolean adopted, Date dateAdopted, String owner) {
-		
+		if(adopted) {
+			if(owner == null || dateAdopted == null) {
+				throw new IllegalArgumentException();
+			}
+		} else {
+			if(owner != null || dateAdopted != null) {
+				throw new IllegalArgumentException();
+			}
+		}
+		this.setAdopted(adopted);
+		this.setDateAdopted(dateAdopted);
+		this.setOwner(owner);
 	}
 	
 	/**
@@ -120,7 +146,11 @@ public abstract class Animal implements Comparable<Animal> {
 	 * @throws IllegalArgumentException if size is null
 	 */
 	public void setSize(Size size) {
-		
+		if(size == null) {
+			throw new IllegalArgumentException(); 
+		} else {
+			this.size = size;
+		}
 	}
 	
 	/**
@@ -128,9 +158,18 @@ public abstract class Animal implements Comparable<Animal> {
 	 * 
 	 * @param note note you would like to add for the animal
 	 * @return false if the note was not added properly true if the note was added properly
+	 * @throws IllegalArgumentException if notes is null or the note is already included in the list
 	 */
 	public boolean addNote(Note note) {
-		return false;
+		if(note == null || notes.contains(note)) {
+			throw new IllegalArgumentException();
+		} 
+		try {
+			notes.add(note);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	/**
@@ -184,7 +223,11 @@ public abstract class Animal implements Comparable<Animal> {
 	 */
 	@Override
 	public int compareTo(Animal other) {
-		return 0;
+		if(this.birthday.compareTo(other.birthday)!= 0) {
+			return birthday.compareTo(other.birthday);
+		} else {
+			return this.getName().compareTo(other.getName());
+		}
 	}
 	
 	/** 
@@ -193,7 +236,7 @@ public abstract class Animal implements Comparable<Animal> {
 	 */
 	@Override
 	public String toString() {
-		return null;
+		return this.name + " (" + birthday.toString() + ")" + "\n" + notes.toString();
 	}
 	
 	/**
@@ -203,7 +246,10 @@ public abstract class Animal implements Comparable<Animal> {
 	 * @return The age of the animal in years as integers
 	 */
 	public int getAge(Date today) {
-		return 0;
+		if(today == null || today.daysTo(dateEnterRescue) > 0) {
+			throw new IllegalArgumentException();
+		}
+		return birthday.yearsTo(today);
 	}
 	
 	/**
@@ -212,7 +258,13 @@ public abstract class Animal implements Comparable<Animal> {
 	 * @return number of days that the Animal has been available for adoption in integers
 	 */
 	public int getDaysAvailableForAdoption(Date today) {
-		return -1;
+		if(adopted) {
+			return -1;
+		} else if(today == null || dateEnterRescue.daysTo(today) < 0) {
+			throw new IllegalArgumentException();
+		} else {
+			return this.getDateEnterRescue().daysTo(today);
+		}
 	}
 	
 	
@@ -229,9 +281,15 @@ public abstract class Animal implements Comparable<Animal> {
 	 * Sets the name of the animal
 	 * 
 	 * @param name name of the animal
+	 * @throws IllegalArgumentException if name is null, name is whitespace only, 
+	 * name contains \n or ,
 	 */
 	public void setName(String name) {
-		this.name = name;
+		if(name == null || name.isBlank() || name.contains("\n") || name.contains(",")) {
+			throw new IllegalArgumentException();
+		} else {
+			this.name = name;
+		}
 	}
 
 	/**
@@ -300,8 +358,16 @@ public abstract class Animal implements Comparable<Animal> {
 	/**
 	 * Sets the owner's name.
 	 * @param owner name you would like to assign to the owner
+	 * @throws IllegalArgumentException if owner is whitespace only owner contains \n or ,
 	 */
 	public void setOwner(String owner) {
+		if(owner == null) {
+			this.owner = owner;
+			return;
+		}
+		if(owner.isBlank() || owner.contains("\n") || owner.contains(",")) {
+			throw new IllegalArgumentException();
+		}
 		this.owner = owner;
 	}
 
@@ -336,8 +402,16 @@ public abstract class Animal implements Comparable<Animal> {
 	 * Sets the Date that the animal was adopted.
 	 * 
 	 * @param dateAdopted Date you would like to assign to the adoption Date
+	 * @throws IllegalArgumentException if date adopted is before dateEnterRescue
 	 */
 	public void setDateAdopted(Date dateAdopted) {
+		if(dateAdopted == null) {
+			this.dateAdopted = dateAdopted;
+			return;
+		}
+		if(dateAdopted.daysTo(dateEnterRescue) > 0) {
+			throw new IllegalArgumentException();
+		}
 		this.dateAdopted = dateAdopted;
 	}
 
@@ -372,6 +446,9 @@ public abstract class Animal implements Comparable<Animal> {
 	 * @param dateEnteredRescue	the Date that the animal entered the rescue
 	 */
 	public void setDateEnteredRescue(Date dateEnteredRescue) {
+		if(dateEnteredRescue.daysTo(birthday) > 0 || dateEnteredRescue == null) {
+			throw new IllegalArgumentException();
+		}
 		this.dateEnterRescue = dateEnteredRescue;
 	}
 

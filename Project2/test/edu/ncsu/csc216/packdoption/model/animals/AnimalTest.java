@@ -4,6 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import edu.ncsu.csc216.packdoption.model.animals.Animal.Size;
+import edu.ncsu.csc216.packdoption.util.Date;
+import edu.ncsu.csc216.packdoption.util.Note;
+import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
+
 /**
  * This tests the animal class for proper implementation
  * 
@@ -12,60 +17,46 @@ import org.junit.Test;
  */
 	public class AnimalTest {
 
-	/**
-	 * This method tests the hashcode function for proper hashCode generation of this class/object
-	 */
-	@Test
-	public void testHashCode() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * This tests the long constructor of Animal for proper creation of Animals
-	 */
-	@Test
-	public void testAnimalStringDateSizeBooleanBooleanSortedLinkedListOfNoteDateBooleanDateString() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * This tests the short constructor of Animal for proper creation of Animals
-	 */
-	@Test
-	public void testAnimalStringDateSizeBooleanBooleanSortedLinkedListOfNoteDate() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * This tests the setAdoptionInfo for proper setting of all adoption info
-	 */
-	@Test
-	public void testSetAdoptionInfo() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * This tests the setSize for proper setting of the animal's size
-	 */
-	@Test
-	public void testSetSize() {
-		fail("Not yet implemented");
-	}
 
 	/**
 	 * This tests the addNote method for proper adding of notes to an Animal
 	 */
 	@Test
 	public void testAddNote() {
-		fail("Not yet implemented");
+		SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
+		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
+		Cat cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2000));
+	
+		SortedLinkedList<Note> notes2 = new SortedLinkedList<Note>();
+		notes2.add(new Note(new Date(1, 2, 2000), "First day!"));
+		notes2.add(new Note(new Date(1, 10, 2000), "new note"));
+		cat.addNote(new Note(new Date(1, 10, 2000), "new note"));
+		assertEquals(cat.getNotes(), notes2);
 	}
 
 	/**
 	 * This tests the Equals method for proper realization of equal animals
 	 */
 	@Test
-	public void testEqualsObject() {
-		fail("Not yet implemented");
+	public void testEqualsAndHash() {
+		SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
+		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
+		Cat cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2000));
+		Cat cat2 = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2000));
+		Cat cat3 = new Cat("Boots2", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2000));
+		Cat cat4 = new Cat("Boots", new Date(1, 1, 2001), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2001));
+		
+		assertTrue(cat.equals(cat));
+		assertFalse(cat.equals(cat3));
+		assertTrue(cat.equals(cat2));
+		assertFalse(cat.equals(cat4));
+		assertEquals(cat.hashCode(), cat2.hashCode());
+		assertTrue(cat.hashCode() != cat3.hashCode());
 	}
 
 	/**
@@ -73,7 +64,18 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testCompareTo() {
-		fail("Not yet implemented");
+		SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
+		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
+		Cat cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2000));
+		Cat cat2 = new Cat("Boots", new Date(1, 1, 2001), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2001));
+		Cat cat3 = new Cat("Boots2", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2000));
+		
+		assertTrue(cat.compareTo(cat2) != 0);
+		assertTrue(cat.compareTo(cat3) != 0);
+		assertTrue(cat.compareTo(cat) == 0);
 	}
 
 	/**
@@ -82,7 +84,11 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testToString() {
-		fail("Not yet implemented");
+		SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
+		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
+		Cat cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2000));
+		assertEquals(cat.toString(), "Boots (1/1/2000)" + "\n" + "-1/2/2000 First day!");
 	}
 
 	/**
@@ -90,7 +96,16 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testGetAge() {
-		fail("Not yet implemented");
+		SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
+		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
+		Cat cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2000));
+		try {
+			cat.getAge(null);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(cat.getName(), "Boots");
+		}
 	}
 
 	/**
@@ -98,175 +113,18 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testGetDaysAvailableForAdoption() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the getName function for proper retrieval of the animals name
-	 */
-	@Test
-	public void testGetName() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the setName function for proper setting of the animal's name
-	 */
-	@Test
-	public void testSetName() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the isHouseTrained method for proper retrieval of the true/false value for isHouseTrained
-	 */
-	@Test
-	public void testIsHouseTrained() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the setHouseTrained method for proper setting of the isHouseTrained variable
-	 */
-	@Test
-	public void testSetHouseTrained() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the isGoodWithKids method for proper retrieval of if the animal is good with kids
-	 */
-	@Test
-	public void testIsGoodWithKids() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the setGoodWithKids method for proper setting of the goodWithKids field
-	 */
-	@Test
-	public void testSetGoodWithKids() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the adopted method for proper reporting of adopted animals
-	 */
-	@Test
-	public void testAdopted() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the setAdopted method for proper setting of adopted animals
-	 */
-	@Test
-	public void testSetAdopted() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the getOwner method for proper retrieval of the owners name
-	 */
-	@Test
-	public void testGetOwner() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the setOwner method for proper setting of the owner's name
-	 */
-	@Test
-	public void testSetOwner() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the getBirthday method for proper retrieval of the animals birthday
-	 */
-	@Test
-	public void testGetBirthday() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the setBirthday method for proper setting of the animals birthday
-	 */
-	@Test
-	public void testSetBirthday() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the getDateAdopted method for proper getting of the date the animal was adopted
-	 */
-	@Test
-	public void testGetDateAdopted() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the setDateAdopted method for proper setting of the date the animal was adopted
-	 */
-	@Test
-	public void testSetDateAdopted() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the getNotes method for proper retrieval of the animal's notes
-	 */
-	@Test
-	public void testGetNotes() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the getNotes method for proper setting of the animal's notes
-	 */
-	@Test
-	public void testSetNotes() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the getDateEnteredRescue method for proper retrieval of the animal's date they entered the rescue
-	 */
-	@Test
-	public void testGetDateEnterRescue() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the setDateEnteredRescue method for proper setting of the animal's date they entered the rescue
-	 */
-	@Test
-	public void testSetDateEnteredRescue() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the getSize method for proper retrieval of the animal's size
-	 */
-	@Test
-	public void testGetSize() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the getAgeCategory method for proper retrieval of the animal's Age Category
-	 */
-	@Test
-	public void testGetAgeCategory() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the getAnimalAsArray method for proper retrieval of the animal's descriptive Array
-	 */
-	@Test
-	public void testGetAnimalAsArray() {
-		fail("Not yet implemented");
+		SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
+		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
+		Cat cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2000));
+		assertEquals(cat.getDaysAvailableForAdoption(new Date(1, 10, 2000)), 5);
+		
+		try {
+			cat.getDaysAvailableForAdoption(null);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(cat.getName(), "Boots");
+		}
 	}
 
 }

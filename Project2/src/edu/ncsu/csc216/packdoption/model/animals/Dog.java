@@ -1,5 +1,6 @@
 package edu.ncsu.csc216.packdoption.model.animals;
 
+import edu.ncsu.csc216.packdoption.model.animals.Animal.AgeCategory;
 import edu.ncsu.csc216.packdoption.util.Date;
 import edu.ncsu.csc216.packdoption.util.Note;
 import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
@@ -49,7 +50,7 @@ public class Dog extends Animal {
 	public Dog(String name, Date birthday, Size size, boolean houseTrained, boolean goodWithKids, SortedLinkedList<Note> notes,
 			Date dateEnterRescue, boolean adopted, Date dateAdopted, String owner, Breed breed) {
 		super(name, birthday, size, houseTrained, goodWithKids, notes, dateEnterRescue, adopted, dateAdopted, owner);
-		// TODO Auto-generated constructor stub
+		this.breed = breed;
 	}
 	
 	/**
@@ -75,7 +76,7 @@ public class Dog extends Animal {
 	public Dog(String name, Date birthday, Size size, boolean houseTrained, boolean goodWithKids, SortedLinkedList<Note> notes,
 			Date dateEnterRescue, Breed breed) {
 		super(name, birthday, size, houseTrained, goodWithKids, notes, dateEnterRescue);
-		// TODO Auto-generated constructor stub
+		this.breed = breed;
 	}
 
 	/**
@@ -87,7 +88,31 @@ public class Dog extends Animal {
 	 */
 	@Override
 	public AgeCategory getAgeCategory(Date today) {
-		// TODO Auto-generated method stub
+		if(today == null || super.getBirthday().daysTo(today) < 0) {
+			throw new IllegalArgumentException();
+		} else if(getSize() == Size.SMALL && getBirthday().yearsTo(today) < 4) {
+			return AgeCategory.YOUNG;
+		} else if(getSize() == Size.SMALL && getBirthday().yearsTo(today) < 9) {
+			return AgeCategory.ADULT;
+		} else if(getSize() == Size.SMALL && getBirthday().yearsTo(today) >= 9) {
+			return AgeCategory.SENIOR;
+		} else if(getSize() == Size.MEDIUM) {
+			if(getBirthday().yearsTo(today) < 3) {
+				return AgeCategory.YOUNG;
+			} else if(getBirthday().yearsTo(today) < 9) {
+				return AgeCategory.ADULT;
+			} else {
+				return AgeCategory.SENIOR;
+			}
+		} else if(getSize() == Size.LARGE) {
+			if(getBirthday().yearsTo(today) < 3) {
+				return AgeCategory.YOUNG;
+			} else if(getBirthday().yearsTo(today) < 6) {
+				return AgeCategory.ADULT;
+			} else {
+				return AgeCategory.SENIOR;
+			}
+		}
 		return null;
 	}
 
@@ -101,8 +126,29 @@ public class Dog extends Animal {
 	 */
 	@Override
 	public String[] getAnimalAsArray(Date today) {
-		// TODO Auto-generated method stub
-		return null;
+		String[] arr = new String[7];
+		if(today == null || super.getBirthday().daysTo(today) < 0) {
+			throw new IllegalArgumentException();
+		} else {
+			arr[0] = getName();
+			arr[1] = "Dog";
+			arr[2] = getBirthday().toString();
+			arr[3] = Integer.toString(getAge(today));
+			if(getAgeCategory(today) == AgeCategory.YOUNG) {
+				arr[4] = "YOUNG";
+			} else if(getAgeCategory(today) == AgeCategory.ADULT) {
+				arr[4] = "ADULT";
+			} else {
+				arr[4] = "SENIOR";
+			}
+			if(adopted()) {
+				arr[5] = "Yes";
+			} else {
+				arr[5] = "No";
+			}
+			arr[6] = Integer.toString(super.getDateEnterRescue().daysTo(today));
+		}
+		return arr;
 	}
 	
 	/**
@@ -111,7 +157,7 @@ public class Dog extends Animal {
 	 * @return The breed of the Dog
 	 */
 	public Breed getBreed() {
-		return null;
+		return breed;
 	}
 	
 }
