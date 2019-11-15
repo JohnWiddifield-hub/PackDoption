@@ -221,10 +221,10 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 		Cursor iter = new Cursor();
 		output = "-" + iter.next().toString();
 		while(iter.hasNext()) {
-			output = output + "\n" + "-" + iter.current.value.toString();
 			iter.next();
+			output = output + "\n" + "-" + iter.current.value.toString();
+			
 		}
-		output = output + "\n" + "-" + iter.current.value.toString();
 		return output;
 	}
 	
@@ -312,12 +312,13 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	private class Cursor implements SimpleListIterator<E> {
 		/** The current Node */
 		public Node<E> current;
-		
+		private boolean isFirstCall;
 		/**
 		 * Creates a cursor for iterating
 		 */
 		public Cursor() {
 			current = head;
+			isFirstCall = true;
 		}
 
 		/**
@@ -341,6 +342,10 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 		 */
 		@Override
 		public E next() {
+			if(isFirstCall) {
+				isFirstCall = false;
+				return head.value;
+			}
 			if(!hasNext()) {
 				throw new NoSuchListElementException("No element available with call to next.");
 			} else {
