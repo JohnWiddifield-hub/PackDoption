@@ -169,6 +169,9 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	public int indexOf(E e) {
 		Cursor curse = new Cursor();
 		int cntr = 0;
+		if(e == null) {
+			return -1;
+		}
 		do {
 			if(curse.next().equals(e)) {
 				return cntr;
@@ -189,8 +192,14 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	public boolean equals(Object o) {
 		if(o == null) {
 			return false;
+		} else if(o instanceof SortedLinkedList) {
+			if(o.toString().contentEquals(this.toString())){
+				return true;
+			} else {
+				return false;
+			}
 		}
-		return (o.equals(head));
+		return false;
 	}
 	
 	/**
