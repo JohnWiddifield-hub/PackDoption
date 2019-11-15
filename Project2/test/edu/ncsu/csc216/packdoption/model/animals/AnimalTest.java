@@ -38,6 +38,38 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		assertEquals(cat.getDateAdopted().toString(), "1/10/2000");
 		assertEquals(cat.getOwner(), "Billy");
 		assertEquals(cat.getAgeCategory(new Date(1, 11, 2000)), AgeCategory.YOUNG);
+		
+		try {
+			cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+					new Date(1, 5, 2000), true, null, "Billy");
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(cat.getName(), "Boots");
+		}
+		
+		try {
+			cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+					new Date(1, 5, 2000), true, new Date(1, 10, 2000), null);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(cat.getName(), "Boots");
+		}
+		
+		try {
+			cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+					new Date(1, 5, 2000), true, new Date(1, 10, 2000), null);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(cat.getName(), "Boots");
+			assertEquals(cat.getAge(new Date(1, 2, 2001)), 1);
+		}
+		cat.setDateEnteredRescue(new Date(1, 3, 2000));
+		cat.setSize(Size.MEDIUM);
+		cat.setName("Boots2");
+		assertEquals(cat.getDateEnterRescue(), new Date(1, 3, 2000));
+		assertEquals(cat.getSize(), Size.MEDIUM);
+		assertEquals(cat.getName(), "Boots2");
+		
 	}
 
 	/**
@@ -55,11 +87,51 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		notes2.add(new Note(new Date(1, 10, 2000), "new note"));
 		cat.addNote(new Note(new Date(1, 10, 2000), "new note"));
 		assertEquals(cat.getNotes(), notes2);
+		try {
+		cat.addNote(new Note(new Date(1, 10, 2000), "new note"));
+		fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(cat.getName(), "Boots");
+		}
+		
+		try {
+		cat.addNote(null);
+		fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(cat.getName(), "Boots");
+		}
+		try {
+		cat.setDateEnteredRescue(null);
+		fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(cat.getName(), "Boots");
+		}
+		
+		try {
+		cat.setName(null);
+		fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(cat.getName(), "Boots");
+		}
+		
+		try {
+		cat.setDateEnteredRescue(null);
+		fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(cat.getName(), "Boots");
+		}
+		try {
+		cat.setSize(null);
+		fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(cat.getName(), "Boots");
+		}
 	}
 
 	/**
 	 * This tests the Equals method for proper realization of equal animals
 	 */
+	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	public void testEqualsAndHash() {
 		SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
@@ -79,6 +151,8 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		assertFalse(cat.equals(cat4));
 		assertEquals(cat.hashCode(), cat2.hashCode());
 		assertTrue(cat.hashCode() != cat3.hashCode());
+		assertFalse(cat.equals(null));
+		assertFalse(cat.equals(4));
 	}
 
 	/**

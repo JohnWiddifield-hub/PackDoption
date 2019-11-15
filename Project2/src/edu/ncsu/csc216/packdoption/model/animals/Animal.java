@@ -164,12 +164,8 @@ public abstract class Animal implements Comparable<Animal> {
 		if(note == null || notes.contains(note)) {
 			throw new IllegalArgumentException();
 		} 
-		try {
 			notes.add(note);
 			return true;
-		} catch (Exception e) {
-			return false;
-		}
 	}
 
 	/**
@@ -200,14 +196,8 @@ public abstract class Animal implements Comparable<Animal> {
 		if (getClass() != obj.getClass())
 			return false;
 		Animal other = (Animal) obj;
-		if (birthday == null) {
-			if (other.birthday != null)
-				return false;
-		} else if (!birthday.equals(other.birthday))
+		if (!birthday.equals(other.birthday)) {
 			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
@@ -446,7 +436,7 @@ public abstract class Animal implements Comparable<Animal> {
 	 * @param dateEnteredRescue	the Date that the animal entered the rescue
 	 */
 	public void setDateEnteredRescue(Date dateEnteredRescue) {
-		if(dateEnteredRescue.daysTo(birthday) > 0 || dateEnteredRescue == null) {
+		if(dateEnteredRescue == null || dateEnteredRescue.daysTo(birthday) > 0) {
 			throw new IllegalArgumentException();
 		}
 		this.dateEnterRescue = dateEnteredRescue;
