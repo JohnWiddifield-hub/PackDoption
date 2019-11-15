@@ -17,7 +17,7 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	 * Constructs a new SortedLinkedList 
 	 */
 	public SortedLinkedList() {
-		head = null;
+		head = new Node<E>(null, null);
 		size = 0;
 	}
 	/**
@@ -311,7 +311,7 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	 */
 	private class Cursor implements SimpleListIterator<E> {
 		/** The current Node */
-		public Node<E> current;
+		public Node<E> current = null;
 		private boolean isFirstCall;
 		/**
 		 * Creates a cursor for iterating
