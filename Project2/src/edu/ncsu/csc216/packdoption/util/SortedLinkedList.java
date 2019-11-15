@@ -187,6 +187,9 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	 */
 	@Override
 	public boolean equals(Object o) {
+		if(o == null) {
+			return false;
+		}
 		return (o.equals(head));
 	}
 	
