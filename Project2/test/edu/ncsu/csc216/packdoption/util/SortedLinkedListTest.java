@@ -2,8 +2,6 @@ package edu.ncsu.csc216.packdoption.util;
 
 import static org.junit.Assert.*;
 
-import java.util.ListIterator;
-
 import org.junit.Test;
 
 /**
@@ -117,6 +115,15 @@ import org.junit.Test;
 		} catch (IndexOutOfBoundsException e) {
 			assertEquals(list.size(), 1);
 		}
+		
+		SortedLinkedList<String> list2 = new SortedLinkedList<String>();
+		list2.add("Apple");
+		list2.add("Orange");
+		list2.add("Banana");
+		list2.remove(1);
+		assertEquals(list2.indexOf("Orange"), 1);
+		assertEquals(list2.indexOf("Apple"), 0);
+		
 		
 	}
 

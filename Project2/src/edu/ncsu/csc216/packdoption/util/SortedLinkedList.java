@@ -136,7 +136,7 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 		E temp = this.get(index);
 		if(index < 0 || index >= size()) {
 			throw new IndexOutOfBoundsException();
-		} else if(index > 0 && index < this.size() - 2){
+		} else if(index > 0 && index <= this.size() - 2){
 			Node<E> current = head;
 			for(int i = 0; i < index - 1; i++) {
 				current = current.next;

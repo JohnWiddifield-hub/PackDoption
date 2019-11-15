@@ -62,7 +62,7 @@ public class ArrayListQueue<E> implements Queue<E> {
 		}
 		E temp = list[0];
 		for(int i = 0; i < size - 1; i++) {
-			list[i] = list[i+1];
+			list[i] = list[i + 1];
 		}
 		list[size] = null;
 		size--;
