@@ -11,12 +11,14 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 
 	/** Head Node of the linkedList */
 	public Node<E> head;
+	private int size;
 	
 	/** 
 	 * Constructs a new SortedLinkedList 
 	 */
 	public SortedLinkedList() {
-		
+		head = null;
+		size = 0;
 	}
 	/**
 	 * Returns the number of elements in this list. If this list contains more than
@@ -26,8 +28,7 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	 */
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return size;
 	}
 
 	/**
@@ -37,7 +38,9 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	 */
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
+		if(size == 0) {
+			return true;
+		}
 		return false;
 	}
 
@@ -51,7 +54,14 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	 */
 	@Override
 	public boolean contains(E e) {
-		// TODO Auto-generated method stub
+		Node<E> current;
+		current = head;
+		for(int i = 0; i < size; i++) {
+			if(current.value.equals(e)) {
+				return true;
+			}
+			current = current.next;
+		}
 		return false;
 	}
 
@@ -65,7 +75,28 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	 */
 	@Override
 	public boolean add(E e) {
-		// TODO Auto-generated method stub
+		if(e == null) {
+			throw new NullPointerException();
+		} else if(this.contains(e)) {
+			throw new IllegalArgumentException();
+		} else if(this.size() == 0) {
+			head = new Node<E>(e, null);
+			size++;
+			return true;
+		} else if(e.compareTo(head.value) < 0){
+			head = new Node<E>(e, head);
+			size++;
+			return true;
+		} else if(this.size() > 0){
+			Node<E> current = head;
+			while (current.next != null && e.compareTo(current.next.value) > 0) {
+				current = current.next;
+			}
+			Node<E> newNode = new Node<E>(e, current.next);
+			current.next = newNode;
+			size++;
+			return true;
+		}
 		return false;
 	}
 
@@ -79,8 +110,15 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	 */
 	@Override
 	public E get(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		if(index < 0 || index >= size()) {
+			throw new IndexOutOfBoundsException();
+		} else {
+			Node<E> current = head;
+			for(int i = 0; i < index; i++) {
+				current = current.next;
+			}
+			return current.value;
+		}
 	}
 
 	/**
@@ -95,8 +133,26 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	 */
 	@Override
 	public E remove(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		E temp = this.get(index);
+		if(index < 0 || index >= size()) {
+			throw new IndexOutOfBoundsException();
+		} else if(index > 0 && index < this.size() - 2){
+			Node<E> current = head;
+			for(int i = 0; i < index - 1; i++) {
+				current = current.next;
+			}
+			current.next = current.next.next;
+		} else if(index == 0) {
+			head = head.next;
+		} else if(index == this.size() - 1) {
+			Node<E> current = head;
+			for(int i = 0; i < index - 1; i++) {
+				current = current.next;
+			}
+			current.next = null;
+		}
+		size--;
+		return temp;
 	}
 
 	/**
@@ -124,10 +180,7 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	 */
 	@Override
 	public boolean equals(Object o) {
-		if (this.size() % 2 == 0) {
-			return true;
-		} 
-			return false;
+		return (o.equals(head));
 	}
 	
 	/**
@@ -137,8 +190,10 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	 */
 	@Override
 	public int hashCode() {
-		//TODO
-		return 0;
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((head == null) ? 0 : head.hashCode());
+		return result;
 	}
 	
 	/**
@@ -148,7 +203,22 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	 */
 	@Override
 	public String toString() {
-		return null;
+		if(this.size() == 0) {
+			return "";
+		} else if(this.size() == 1) {
+			return "-" + head.value.toString();
+		} else if(this.size() == 2) {
+			return "-" + head.value.toString() + "\n-" + head.next.value.toString();
+		}
+		String output = "";
+		Cursor iter = new Cursor();
+		output = "-" + iter.next().toString();
+		while(iter.hasNext()) {
+			output = output + "\n" + "-" + iter.current.value.toString();
+			iter.next();
+		}
+		output = output + "\n" + "-" + iter.current.value.toString();
+		return output;
 	}
 	
 	/**
@@ -157,7 +227,7 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	 * @return a Cursor object as an iterator for the list
 	 */
 	public SimpleListIterator<E> iterator() {
-		return null;
+		return new Cursor();
 	}
 	/**
 	 * Node to be used as a chainlink/LinkNode in the LinkedList structure 
@@ -170,7 +240,7 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 		/** Value for the node */
 		E value = null;
 		/** pointer to the next node in the list */
-		Node next = null;
+		Node<E> next = null;
 		
 		/**
 		 * Creates a note using the given value and the reference to the next node in the list.
@@ -178,8 +248,9 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 		 * @param val Value you would like the node to contain
 		 * @param next Reference to the next node in the list
 		 */
-		public Node(E val, Node next) {
-			
+		public Node(E val, Node<E> next) {
+			this.value = val;
+			this.next = next;
 		}
 
 		/**
@@ -210,7 +281,8 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 				return false;
 			if (getClass() != obj.getClass())
 				return false;
-			Node other = (Node) obj;
+			@SuppressWarnings("unchecked")
+			Node<E> other = (Node<E>) obj;
 			if (value == null) {
 				if (other.value != null)
 					return false;
@@ -238,7 +310,7 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 		 * Creates a cursor for iterating
 		 */
 		public Cursor() {
-			
+			current = head;
 		}
 
 		/**
@@ -248,8 +320,11 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 		 */
 		@Override
 		public boolean hasNext() {
-		
-			return false;
+			if(current.next == null) {
+				return false;
+			} else {
+				return true;
+			}
 		}
 
 		/**
@@ -263,8 +338,13 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 		 */
 		@Override
 		public E next() {
-			
-			return null;
+			if(current.next == null) {
+				throw new NoSuchListElementException();
+			} else {
+				E temp = current.value;
+				current = current.next;
+				return temp;
+			}
 		}
 
 	}
