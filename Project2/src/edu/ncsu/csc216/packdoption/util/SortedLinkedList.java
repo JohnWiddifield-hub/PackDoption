@@ -349,7 +349,7 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 			if(!hasNext()) {
 				throw new NoSuchListElementException("No element available with call to next.");
 			} else {
-				E temp = current.value;
+				E temp = current.next.value;
 				current = current.next;
 				return temp;
 			}

@@ -2,6 +2,8 @@ package edu.ncsu.csc216.packdoption.util;
 
 import static org.junit.Assert.*;
 
+import java.util.ListIterator;
+
 import org.junit.Test;
 
 /**
@@ -129,7 +131,7 @@ import org.junit.Test;
 		list.add("Banana");
 		assertEquals(list.indexOf("Apple"), 0);
 		assertEquals(list.indexOf("Orange"), 2);
-		assertEquals(list.indexOf("Apple"), 1);
+		assertEquals(list.indexOf("Banana"), 1);
 	}
 
 	/**
@@ -175,8 +177,17 @@ import org.junit.Test;
 		list.add("Apple");
 		list.add("Banana");
 		list.add("Orange");
-		assertEquals(list.iterator().hasNext(), true);
+		SimpleListIterator<String> cur = list.iterator();
+		assertEquals(cur.next(), "Apple");
+		assertEquals(cur.next(), "Banana");
+		assertEquals(cur.next(), "Orange");
 		
+		try {
+			cur.next();
+			fail();
+		} catch (NoSuchListElementException e) {
+			assertTrue(!cur.hasNext());
+		}
 		
 	}
 
