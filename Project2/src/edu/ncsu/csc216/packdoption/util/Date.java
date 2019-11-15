@@ -156,15 +156,7 @@ public class Date implements Comparable<Date> {
 	 */
 	@Override
 	public int compareTo(Date d) {
-		if(this.year < d.getYear()) {
-			return -1;
-		} else if(this.month < d.getMonth()) {
-			return -1;
-		} else if(this.day < d.getDay()) {
-			return -1;
-		} else if(this.year == d.getYear() && this.month == d.getMonth() && this.day == d.getDay()) {
-			return 0;
-		} else return 1;
+		return this.daysTo(d);
 	}
 	
 	/**

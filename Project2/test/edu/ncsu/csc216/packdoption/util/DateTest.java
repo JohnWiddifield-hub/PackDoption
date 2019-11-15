@@ -122,8 +122,8 @@ import org.junit.Test;
 	public void testCompareTo() {
 		Date date1 = new Date(1, 1, 2000);
 		Date date2 = new Date(1, 2, 2000);
-		assertTrue(date1.compareTo(date2) < 0);
-		assertTrue(date2.compareTo(date1) > 0);
+		assertTrue(date1.compareTo(date2) > 0);
+		assertTrue(date2.compareTo(date1) < 0);
 		assertTrue(date1.compareTo(date1) == 0);
 	}
 
