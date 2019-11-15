@@ -132,6 +132,9 @@ import org.junit.Test;
 		assertEquals(list.indexOf("Apple"), 0);
 		assertEquals(list.indexOf("Orange"), 2);
 		assertEquals(list.indexOf("Banana"), 1);
+		assertEquals(list.indexOf(null), -1);
+		SortedLinkedList<String> list2 = new SortedLinkedList<String>();
+		assertEquals(list2.indexOf("Apple"), -1);
 	}
 
 	/**

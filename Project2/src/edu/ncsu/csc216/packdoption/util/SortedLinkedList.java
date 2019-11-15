@@ -172,6 +172,9 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 		if(e == null) {
 			return -1;
 		}
+		if(this.size() == 0) {
+			return -1;
+		}
 		do {
 			if(curse.next().equals(e)) {
 				return cntr;
@@ -193,11 +196,7 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 		if(o == null) {
 			return false;
 		} else if(o instanceof SortedLinkedList) {
-			if(o.toString().contentEquals(this.toString())){
-				return true;
-			} else {
-				return false;
-			}
+			return (o.toString().contentEquals(this.toString()));
 		}
 		return false;
 	}
