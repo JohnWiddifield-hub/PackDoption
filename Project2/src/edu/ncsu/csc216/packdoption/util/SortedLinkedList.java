@@ -167,8 +167,15 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	 */
 	@Override
 	public int indexOf(E e) {
-		// TODO Auto-generated method stub
-		return 0;
+		Cursor curse = new Cursor();
+		int cntr = 0;
+		do {
+			if(curse.next().equals(e)) {
+				return cntr;
+			}
+			cntr++;
+		} while(curse.hasNext());
+		return -1;
 	}
 
 	/**
@@ -320,11 +327,7 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 		 */
 		@Override
 		public boolean hasNext() {
-			if(current.next == null) {
-				return false;
-			} else {
-				return true;
-			}
+			return !(current.next == null);
 		}
 
 		/**
@@ -338,8 +341,8 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 		 */
 		@Override
 		public E next() {
-			if(current.next == null) {
-				throw new NoSuchListElementException();
+			if(!hasNext()) {
+				throw new NoSuchListElementException("No element available with call to next.");
 			} else {
 				E temp = current.value;
 				current = current.next;
