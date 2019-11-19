@@ -126,6 +126,15 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		assertEquals(cat.getDateAdopted(), null);
 		assertEquals(cat.getOwner(), null);
 		assertEquals(cat.getBreed(), Breed.BEAGLE);
+		
+		Dog cat2 = null;
+		try {
+			cat2 = new Dog("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+					new Date(1, 5, 2000), null);
+			fail();
+		} catch(IllegalArgumentException e) {
+			assertEquals(cat2, null);
+		}
 	}
 
 

@@ -72,6 +72,7 @@ public class Dog extends Animal {
 				notes is null
 				dateEnterRescue is null
 				dateEnterRescue is before birthday
+				breed is null
 	 */
 	public Dog(String name, Date birthday, Size size, boolean houseTrained, boolean goodWithKids, SortedLinkedList<Note> notes,
 			Date dateEnterRescue, Breed breed) {
