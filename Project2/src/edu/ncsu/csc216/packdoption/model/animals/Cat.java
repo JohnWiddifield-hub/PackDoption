@@ -118,7 +118,11 @@ public class Cat extends Animal {
 			} else {
 				arr[5] = "No";
 			}
-			arr[6] = Integer.toString(super.getDateEnterRescue().daysTo(today));
+			if(this.adopted()) {
+				arr[6] = "";
+			} else {
+				arr[6] = Integer.toString(super.getDateEnterRescue().daysTo(today));
+			}
 		}
 		return arr;
 	}

@@ -41,6 +41,7 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		Date date = new Date(2, 2, 2001);
 		assertEquals(cat.getAge(date), 1);
 		
+		
 		try {
 			cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
 					new Date(1, 5, 2000), true, null, "Billy");

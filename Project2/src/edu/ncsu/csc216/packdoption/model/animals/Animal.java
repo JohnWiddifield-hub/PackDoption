@@ -423,6 +423,9 @@ public abstract class Animal implements Comparable<Animal> {
 	 * @param notes SortedLinkedList of Note you would like to assign to the animal
 	 */
 	public void setNotes(SortedLinkedList<Note> notes) {
+		if(notes == null) {
+			throw new IllegalArgumentException();
+		}
 		this.notes = notes;
 	}
 
