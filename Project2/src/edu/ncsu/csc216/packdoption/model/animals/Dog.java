@@ -76,7 +76,11 @@ public class Dog extends Animal {
 	public Dog(String name, Date birthday, Size size, boolean houseTrained, boolean goodWithKids, SortedLinkedList<Note> notes,
 			Date dateEnterRescue, Breed breed) {
 		super(name, birthday, size, houseTrained, goodWithKids, notes, dateEnterRescue);
-		this.breed = breed;
+		if(breed == null) {
+			throw new IllegalArgumentException();
+		} else {
+			this.breed = breed;
+		}
 	}
 
 	/**
