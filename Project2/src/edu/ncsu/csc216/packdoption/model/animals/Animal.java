@@ -236,7 +236,7 @@ public abstract class Animal implements Comparable<Animal> {
 	 * @return The age of the animal in years as integers
 	 */
 	public int getAge(Date today) {
-		if(today == null || today.daysTo(dateEnterRescue) > 0) {
+		if(today == null || today.daysTo(dateEnterRescue) < 0) {
 			throw new IllegalArgumentException();
 		}
 		return birthday.yearsTo(today);
@@ -359,7 +359,7 @@ public abstract class Animal implements Comparable<Animal> {
 		if(owner.isBlank() || owner.contains("\n") || owner.contains(",")) {
 			throw new IllegalArgumentException();
 		}
-		this.owner = owner;
+		this.owner = owner.trim();
 	}
 
 	/**
@@ -377,6 +377,9 @@ public abstract class Animal implements Comparable<Animal> {
 	 * @param birthday Date you would like to assign the animals birthday to
 	 */
 	public void setBirthday(Date birthday) {
+		if(birthday == null) {
+			throw new IllegalArgumentException();
+		}
 		this.birthday = birthday;
 	}
 
