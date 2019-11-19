@@ -129,6 +129,15 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		} catch (IllegalArgumentException e) {
 			assertEquals(cat.getName(), "Boots");
 		}
+		
+		SortedLinkedList<Note> notes3 = new SortedLinkedList<Note>();
+		notes3.add(new Note(new Date(9, 8, 2012), "Birthday!!!"));
+		notes3.add(new Note(new Date(2, 10, 2013), "ADOPTED!!!!!"));
+		Cat cat2 = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes3,
+				new Date(1, 5, 2000));
+		assertEquals(cat2.getNotes().get(0).toString(), "9/8/2012 Birthday!!!");
+		assertEquals(cat2.getNotes().get(1).toString(), "2/10/2013 ADOPTED!!!!!");
+		
 	}
 
 	/**
