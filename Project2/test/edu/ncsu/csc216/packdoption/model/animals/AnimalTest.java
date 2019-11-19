@@ -163,7 +163,7 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		assertFalse(cat.equals(cat4));
 		assertEquals(cat.hashCode(), cat2.hashCode());
 		assertTrue(cat.hashCode() != cat3.hashCode());
-		assertFalse(cat.equals(null));
+		assertFalse(cat == null);
 		assertFalse(cat.equals(4));
 	}
 

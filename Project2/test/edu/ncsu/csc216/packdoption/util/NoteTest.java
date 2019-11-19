@@ -22,7 +22,7 @@ import org.junit.Test;
 		Note note2 = new Note(new Date(1, 1, 2000), "a note");
 		assertTrue(note1.equals(note2));
 		assertTrue(note1.hashCode() == note2.hashCode());
-		assertFalse(note1.equals(null));
+		assertFalse(note1 == null);
 		assertFalse(note1.equals(new Date(1, 1, 2000)));
 		assertFalse(note1.equals(1));
 		Note note3 = new Note(new Date(1, 1, 2000), "a note2");

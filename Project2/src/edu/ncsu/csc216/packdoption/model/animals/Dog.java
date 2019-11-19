@@ -50,7 +50,7 @@ public class Dog extends Animal {
 	public Dog(String name, Date birthday, Size size, boolean houseTrained, boolean goodWithKids, SortedLinkedList<Note> notes,
 			Date dateEnterRescue, boolean adopted, Date dateAdopted, String owner, Breed breed) {
 		super(name, birthday, size, houseTrained, goodWithKids, notes, dateEnterRescue, adopted, dateAdopted, owner);
-		this.breed = breed;
+		setBreed(breed);
 	}
 	
 	/**
@@ -77,11 +77,7 @@ public class Dog extends Animal {
 	public Dog(String name, Date birthday, Size size, boolean houseTrained, boolean goodWithKids, SortedLinkedList<Note> notes,
 			Date dateEnterRescue, Breed breed) {
 		super(name, birthday, size, houseTrained, goodWithKids, notes, dateEnterRescue);
-		if(breed == null) {
-			throw new IllegalArgumentException();
-		} else {
-			this.breed = breed;
-		}
+		setBreed(breed);
 	}
 
 	/**
@@ -167,6 +163,18 @@ public class Dog extends Animal {
 	 */
 	public Breed getBreed() {
 		return breed;
+	}
+	
+	/**
+	 * Sets the breed of the dog
+	 * @param breed Breed you would like to set the dog to
+	 */
+	public void setBreed(Breed breed) {
+		if(breed == null) {
+			throw new IllegalArgumentException();
+		} else {
+			this.breed = breed;
+		}
 	}
 	
 }

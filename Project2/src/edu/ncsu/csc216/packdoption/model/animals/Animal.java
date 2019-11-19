@@ -213,7 +213,7 @@ public abstract class Animal implements Comparable<Animal> {
 	 */
 	@Override
 	public int compareTo(Animal other) {
-		if(this.birthday.compareTo(other.birthday)!= 0) {
+		if(this.birthday.compareTo(other.birthday) != 0) {
 			return birthday.compareTo(other.birthday);
 		} else {
 			return this.getName().compareTo(other.getName());
