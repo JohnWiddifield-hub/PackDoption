@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import edu.ncsu.csc216.packdoption.model.animals.Cat;
+import edu.ncsu.csc216.packdoption.model.animals.Animal;
 import edu.ncsu.csc216.packdoption.model.animals.Animal.Size;
 import edu.ncsu.csc216.packdoption.util.Date;
 import edu.ncsu.csc216.packdoption.util.Note;
@@ -145,6 +146,14 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		assertEquals(rescu.getAnimal(0).getOwner(), "Chandler Saunders");
 		assertEquals(rescu.getAnimal(0).getDateAdopted(), new Date(1, 6, 2000));
 		assertEquals(rescu.getAnimal(0).adopted(), true);
+		
+		try {
+			Animal anim = null;
+			rescu.setAdoptionInfo(anim, false, new Date(1, 6, 2000), "Chandler");
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertTrue(rescu.numAnimals() == 1);
+		}
 		
 	}
 

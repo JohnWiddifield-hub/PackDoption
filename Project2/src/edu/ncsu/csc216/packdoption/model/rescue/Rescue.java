@@ -155,10 +155,10 @@ public class Rescue implements Comparable<Rescue> {
 	 * @Throws IllegalArgumentException if animal is null. See Animal.setAdoptionInfo() for other cases when IllegalArgumentException is thrown.
 	 */
 	public void setAdoptionInfo(Animal animal, boolean isAdopted, Date dateAdopted, String owner) {
-		if(!animals.contains(animal)) {
-			return;
-		} else if(animal == null){
+		if(animal == null){
 			throw new IllegalArgumentException();
+		} else if(!animals.contains(animal)) {
+			return;
 		} else {
 			animals.get(animals.indexOf(animal)).setAdoptionInfo(isAdopted, dateAdopted, owner);
 		}
@@ -233,7 +233,7 @@ public class Rescue implements Comparable<Rescue> {
 	public SortedLinkedList<Animal> availableDogs(){
 		SortedLinkedList<Animal> available = new SortedLinkedList<Animal>();
 		for(int i = 0; i < animals.size(); i++) {
-			if(animals.get(i) instanceof Dog) {
+			if(animals.get(i) instanceof Dog && !animals.get(i).adopted()) {
 				available.add(animals.get(i));
 			}
 		}
@@ -267,6 +267,14 @@ public class Rescue implements Comparable<Rescue> {
 	 * animal’s dateEnterRescue, (3) max is less than min, or (4) min is less than zero
 	 */
 	public SortedLinkedList<Animal> availableAnimalsDayRange(Date today, int min, int max){
+		for(int i = 0; i < animals.size(); i++) {
+			if(animals.get(i).getDateEnterRescue().compareTo(today) > 0) {
+				throw new IllegalArgumentException();
+			}
+		}
+		if(today == null || max < min || min < 0) {
+			throw new IllegalArgumentException();
+		}
 		SortedLinkedList<Animal> available = new SortedLinkedList<Animal>();
 		for(int i = 0; i < animals.size(); i++) {
 			if(!animals.get(i).adopted()) {
