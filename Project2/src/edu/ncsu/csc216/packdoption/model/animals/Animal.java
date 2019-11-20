@@ -1,5 +1,7 @@
 package edu.ncsu.csc216.packdoption.model.animals;
 
+import java.util.Objects;
+
 import edu.ncsu.csc216.packdoption.util.Date;
 import edu.ncsu.csc216.packdoption.util.Note;
 import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
@@ -175,11 +177,7 @@ public abstract class Animal implements Comparable<Animal> {
 	 */
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((birthday == null) ? 0 : birthday.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
+		return Objects.hash(birthday, name);
 	}
 
 	/**
@@ -191,16 +189,10 @@ public abstract class Animal implements Comparable<Animal> {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
+		if (!(obj instanceof Animal))
 			return false;
 		Animal other = (Animal) obj;
-		if (!birthday.equals(other.birthday)) {
-			return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
+		return Objects.equals(birthday, other.birthday) && Objects.equals(name, other.name);
 	}
 
 	/**
@@ -219,7 +211,7 @@ public abstract class Animal implements Comparable<Animal> {
 			return this.getName().compareTo(other.getName());
 		}
 	}
-	
+
 	/** 
 	 * Converts the animal into a string representation of itself
 	 * @return String representation of the Animal.
