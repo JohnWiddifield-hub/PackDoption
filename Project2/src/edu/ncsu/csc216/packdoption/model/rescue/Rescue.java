@@ -300,6 +300,14 @@ public class Rescue implements Comparable<Rescue> {
 	 * of the animal’s birthday, (3) max is less than min, or (4) min is less than zero.
 	 */
 	public SortedLinkedList<Animal> availableAnimalsAge(Date today, int min, int max){
+		if(today == null || max < min || min < 0) {
+			throw new IllegalArgumentException();
+		}
+		for(int i = 0; i < animals.size(); i++) {
+			if(animals.get(i).getDateEnterRescue().compareTo(today) > 0) {
+				throw new IllegalArgumentException();
+			}
+		}
 		SortedLinkedList<Animal> available = new SortedLinkedList<Animal>();
 		for(int i = 0; i < animals.size(); i++) {
 			if(!animals.get(i).adopted()) {
