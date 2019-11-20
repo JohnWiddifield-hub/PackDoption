@@ -17,7 +17,9 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testRescueList() {
-		fail("Not yet implemented");
+		RescueList list = new RescueList();
+		list.addRescue("Rescue");
+		assertTrue(list.size() == 1);
 	}
 
 	/**
@@ -25,15 +27,37 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testAddRescueRescue() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the addRescue method for proper adding and reporting of a rescue to the rescue list when using only rescue name
-	 */
-	@Test
-	public void testAddRescueString() {
-		fail("Not yet implemented");
+		RescueList list = new RescueList();
+		try {
+			list.addRescue("");
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertTrue(list.size() == 0);
+		}
+		
+		try {
+			list.addRescue("Rescue");
+			list.addRescue("Rescue");
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertTrue(list.size() == 1);
+		}
+		
+		try {
+			list.addRescue(new Rescue("name"));
+			list.addRescue(new Rescue("name"));
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertTrue(list.size() == 2);
+		}
+		
+		try {
+			list.addRescue(new Rescue(null));
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertTrue(list.size() == 2);
+		}
+		
 	}
 
 	/**
@@ -41,15 +65,24 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testGetRescue() {
-		fail("Not yet implemented");
+		RescueList list = new RescueList();
+		list.addRescue("Rescue");
+		try {
+			list.getRescue(-1);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(list.size(), 1);
+		}
+		
+		try {
+			list.getRescue(2);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(list.size(), 1);
+		}
+		
+		assertEquals(list.getRescue(0), new Rescue("Rescue"));
 	}
 
-	/**
-	 * Tests the size method for proper reporting of the RescueList's size
-	 */
-	@Test
-	public void testSize() {
-		fail("Not yet implemented");
-	}
 
 }

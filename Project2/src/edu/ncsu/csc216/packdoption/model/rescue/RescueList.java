@@ -17,7 +17,7 @@ public class RescueList {
 	 * Constructs a new RescueList with an empty SortedLinkedList of Rescues
 	 */
 	public RescueList() {
-		
+		rescues = new SortedLinkedList<Rescue>();
 	}
 	
 	/**
@@ -27,7 +27,11 @@ public class RescueList {
 	 * rescue is already in the list
 	 */
 	public void addRescue(Rescue rescue) {
-		
+		if(rescue == null || rescues.contains(rescue)) {
+			throw new IllegalArgumentException();
+		} else {
+			rescues.add(rescue);
+		}
 	}
 	
 	
@@ -40,7 +44,13 @@ public class RescueList {
 	 * \n or if the name is already taken by another Rescue in the list
 	 */
 	public void addRescue(String name) {
-		
+		if(name == null || name.isBlank() || name.contains("\n")
+				|| rescues.contains(new Rescue(name))) {
+			throw new IllegalArgumentException();
+		} else {
+			addRescue(new Rescue(name));
+		}
+			
 	}
 	
 	/**
@@ -50,7 +60,11 @@ public class RescueList {
 	 * @throws IndexOutOfBoundsException if idx is negative or greater than size - 1
 	 */
 	public Rescue getRescue(int idx) {
-		return null;
+		if(idx < 0 || idx > rescues.size() - 1) {
+			throw new IllegalArgumentException();
+		} else {
+			return rescues.get(idx);
+		}
 	}
 	
 	/**
@@ -59,6 +73,6 @@ public class RescueList {
 	 * @return number of rescues in the list as integers
 	 */
 	public int size() {
-		return 0;
+		return rescues.size();
 	}
 }
