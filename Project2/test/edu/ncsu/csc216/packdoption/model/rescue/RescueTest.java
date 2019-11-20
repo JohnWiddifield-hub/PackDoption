@@ -59,6 +59,8 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
 		rescu.addAnimal(cat);
 		assertEquals(rescu.getAnimal(0), cat);
+		
+		assertFalse(rescu.addAnimal(cat));
 	}
 
 	/**
@@ -120,9 +122,16 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
 		rescu.addAnimal(cat);
 		assertTrue(rescu.addNote(cat, new Note(new Date(1, 1, 2000), "Birthday!!!!")));
-		assertFalse(rescu.addNote(cat, new Note(new Date(1, 1, 2000), "Birthday!!!!")));
+		
 		try {
 			rescu.addNote(null, null);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(rescu.getAnimal(0).getNotes().size(), 2);
+		}
+		
+		try {
+			rescu.addNote(cat, new Note(new Date(1, 1, 2000), "Birthday!!!!"));
 			fail();
 		} catch (IllegalArgumentException e) {
 			assertEquals(rescu.getAnimal(0).getNotes().size(), 2);
@@ -311,6 +320,10 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		} catch (NullPointerException e) {
 			assertEquals(rescue.getAppointments().size(), 0);
 		}
+		rescue.addAnimal(cat);
+		rescue.addAnimal(cat2);
+		rescue.addAppointment(cat);
+		assertFalse(rescue.addAppointment(cat));
 	}
 
 }

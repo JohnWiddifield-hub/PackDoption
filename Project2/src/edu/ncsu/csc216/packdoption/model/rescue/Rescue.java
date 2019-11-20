@@ -485,8 +485,10 @@ public class Rescue implements Comparable<Rescue> {
 			throw new NullPointerException();
 		}
 		if(animals.contains(animal)) {
-			vetAppointments.add(animal);
-			return true;
+			ArrayListQueue<Animal> temp = new ArrayListQueue<Animal>();
+			//TODO need to make sure that a duplicate cannot be added, will need a loop sort of like the loop in the method above
+				vetAppointments.add(animal);
+				return true;
 		} else {
 			return false;
 		}
