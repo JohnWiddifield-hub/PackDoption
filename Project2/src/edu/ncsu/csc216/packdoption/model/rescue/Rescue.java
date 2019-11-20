@@ -93,14 +93,14 @@ public class Rescue implements Comparable<Rescue> {
 		if(name == null || birthday == null) {
 			throw new IllegalArgumentException();
 		} else {
-			SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
-			notes.add(new Note(birthday, "Birthday"));
-			Cat faux = new Cat(name, birthday, Size.SMALL, true, true, notes, birthday);
-			if(animals.contains(faux)) {
-				return animals.get(animals.indexOf(faux));
-			} else {
-				return null;
-			}
+			for(int i = 0; i < animals.size(); i++) {
+				if(animals.get(i).getName().contentEquals(name) 
+						&& animals.get(i).getBirthday().equals(birthday)) {
+					return animals.get(i);
+				} 
+			} 
+		return null;
+
 		}
 	}
 	

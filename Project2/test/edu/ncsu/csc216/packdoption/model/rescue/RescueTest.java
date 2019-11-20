@@ -74,9 +74,13 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
 		Cat cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
 				new Date(1, 5, 2000));
+		Cat cat2 = new Cat("Peyton", new Date(9, 8, 2012), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2013));
 		rescu.addAnimal(cat);
+		rescu.addAnimal(cat2);
 		
 		assertEquals(rescu.getAnimal("Boots", new Date(1, 1, 2000)), cat);
+		assertEquals(rescu.getAnimal("Peyton", new Date(9, 8, 2012)), cat2);
 	}
 
 	/**
