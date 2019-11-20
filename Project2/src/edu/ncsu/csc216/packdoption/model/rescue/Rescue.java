@@ -426,17 +426,18 @@ public class Rescue implements Comparable<Rescue> {
 		} 
 		
 		String[][] arr = new String[vetAppointments.size()][7];
+		int size = vetAppointments.size();
 		ArrayListQueue<Animal> temp = new ArrayListQueue<Animal>();
 		ArrayListQueue<Animal> temp2 = new ArrayListQueue<Animal>();
 		ArrayListQueue<Animal> temp3 = new ArrayListQueue<Animal>();
-		for(int i = 0; i < vetAppointments.size(); i++) {
+		for(int i = 0; i < size; i++) {
 			temp.add(vetAppointments.element());
 			temp3.add(vetAppointments.element());
 			temp2.add(vetAppointments.remove());
 			
 		}
-		
-		for(int i = 0; i < temp.size(); i++) {
+
+		for(int i = 0; i < size; i++) {
 			Animal ani = temp.remove();
 			arr[i][0] = ani.getName();
 			if(ani instanceof Dog) {

@@ -23,6 +23,8 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
 		Cat cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
 				new Date(1, 5, 2000));
+		Cat cat2 = new Cat("Tigger", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2000));
 		Date today = new Date(1, 6, 2000);
 	/**
 	 * This method tests the hashcode function for proper hashCode generation of this class/object
@@ -284,7 +286,9 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 	@Test
 	public void testGetAppointmentsAsArray() {
 		rescue.addAnimal(cat);
+		rescue.addAnimal(cat2);
 		rescue.addAppointment(cat);
+		rescue.addAppointment(cat2);
 		assertEquals(rescue.getAppointmentsAsArray(today)[0][0], "Boots");
 		assertEquals(rescue.getAppointmentsAsArray(today)[0][1], "Cat");
 		assertEquals(rescue.getAppointmentsAsArray(today)[0][2], "1/1/2000");
@@ -292,6 +296,13 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		assertEquals(rescue.getAppointmentsAsArray(today)[0][4], "YOUNG");
 		assertEquals(rescue.getAppointmentsAsArray(today)[0][5], "No");
 		assertEquals(rescue.getAppointmentsAsArray(today)[0][6], "1");
+		assertEquals(rescue.getAppointmentsAsArray(today)[1][0], "Tigger");
+		assertEquals(rescue.getAppointmentsAsArray(today)[1][1], "Cat");
+		assertEquals(rescue.getAppointmentsAsArray(today)[1][2], "1/1/2000");
+		assertEquals(rescue.getAppointmentsAsArray(today)[1][3], "0");
+		assertEquals(rescue.getAppointmentsAsArray(today)[1][4], "YOUNG");
+		assertEquals(rescue.getAppointmentsAsArray(today)[1][5], "No");
+		assertEquals(rescue.getAppointmentsAsArray(today)[1][6], "1");
 	}
 
 	/**
