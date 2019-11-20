@@ -139,8 +139,6 @@ public class Rescue implements Comparable<Rescue> {
 			return false;
 		} else if(animals.get(animals.indexOf(animal)).getNotes().contains(note)) {
 			throw new IllegalArgumentException();
-		} else if(animal.getNotes().contains(note)) {
-			return false;
 		}
 		animals.get(animals.indexOf(animal)).addNote(note);
 		return true;

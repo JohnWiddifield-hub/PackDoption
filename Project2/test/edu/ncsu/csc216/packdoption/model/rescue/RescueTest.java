@@ -120,6 +120,7 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
 		rescu.addAnimal(cat);
 		assertTrue(rescu.addNote(cat, new Note(new Date(1, 1, 2000), "Birthday!!!!")));
+		assertFalse(rescu.addNote(cat, new Note(new Date(1, 1, 2000), "Birthday!!!!")));
 		try {
 			rescu.addNote(null, null);
 			fail();
