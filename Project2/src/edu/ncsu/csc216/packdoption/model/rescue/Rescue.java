@@ -218,7 +218,7 @@ public class Rescue implements Comparable<Rescue> {
 	public SortedLinkedList<Animal> availableCats(){
 		SortedLinkedList<Animal> available = new SortedLinkedList<Animal>();
 		for(int i = 0; i < animals.size(); i++) {
-			if(animals.get(i) instanceof Cat) {
+			if(animals.get(i) instanceof Cat && !animals.get(i).adopted()) {
 				available.add(animals.get(i));
 			}
 		}
@@ -267,13 +267,13 @@ public class Rescue implements Comparable<Rescue> {
 	 * animal’s dateEnterRescue, (3) max is less than min, or (4) min is less than zero
 	 */
 	public SortedLinkedList<Animal> availableAnimalsDayRange(Date today, int min, int max){
+		if(today == null || max < min || min < 0) {
+			throw new IllegalArgumentException();
+		}
 		for(int i = 0; i < animals.size(); i++) {
 			if(animals.get(i).getDateEnterRescue().compareTo(today) > 0) {
 				throw new IllegalArgumentException();
 			}
-		}
-		if(today == null || max < min || min < 0) {
-			throw new IllegalArgumentException();
 		}
 		SortedLinkedList<Animal> available = new SortedLinkedList<Animal>();
 		for(int i = 0; i < animals.size(); i++) {
