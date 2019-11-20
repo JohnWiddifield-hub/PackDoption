@@ -56,10 +56,7 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 	@Test
 	public void testAddAnimal() {
 		Rescue rescu = new Rescue("Rescue");
-		SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
 		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
-		Cat cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
-				new Date(1, 5, 2000));
 		rescu.addAnimal(cat);
 		assertEquals(rescu.getAnimal(0), cat);
 	}
@@ -70,17 +67,16 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 	@Test
 	public void testGetAnimalStringDate() {
 		Rescue rescu = new Rescue("Rescue");
-		SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
+		
 		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
-		Cat cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
-				new Date(1, 5, 2000));
-		Cat cat2 = new Cat("Peyton", new Date(9, 8, 2012), Size.SMALL, true, true, notes,
+		
+		Cat cat7 = new Cat("Peyton", new Date(9, 8, 2012), Size.SMALL, true, true, notes,
 				new Date(1, 5, 2013));
 		rescu.addAnimal(cat);
-		rescu.addAnimal(cat2);
+		rescu.addAnimal(cat7);
 		
 		assertEquals(rescu.getAnimal("Boots", new Date(1, 1, 2000)), cat);
-		assertEquals(rescu.getAnimal("Peyton", new Date(9, 8, 2012)), cat2);
+		assertEquals(rescu.getAnimal("Peyton", new Date(9, 8, 2012)), cat7);
 	}
 
 	/**
@@ -101,11 +97,9 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 	@Test
 	public void testContains() {
 		Rescue rescu = new Rescue("Rescue");
-		SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
+		
 		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
-		Cat cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
-				new Date(1, 5, 2000));
-		Cat cat2 = new Cat("Gypsy", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+		Cat cat4 = new Cat("Gypsy", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
 				new Date(1, 5, 2000));
 		Cat cat3 = new Cat("Boots", new Date(1, 1, 2001), Size.SMALL, true, true, notes,
 				new Date(1, 5, 2001));
@@ -114,7 +108,7 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		
 		assertTrue(rescu.contains(cat));
 		assertFalse(rescu.contains(cat3));
-		assertFalse(rescu.contains(cat2));
+		assertFalse(rescu.contains(cat4));
 	}
 
 	/**
@@ -123,10 +117,7 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 	@Test
 	public void testAddNote() {
 		Rescue rescu = new Rescue("Rescue");
-		SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
 		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
-		Cat cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
-				new Date(1, 5, 2000));
 		rescu.addAnimal(cat);
 		assertTrue(rescu.addNote(cat, new Note(new Date(1, 1, 2000), "Birthday!!!!")));
 		try {
@@ -143,10 +134,9 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 	@Test
 	public void testSetAdoptionInfo() {
 		Rescue rescu = new Rescue("Rescue");
-		SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
+	
 		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
-		Cat cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
-				new Date(1, 5, 2000));
+		
 		rescu.addAnimal(cat);
 		rescu.setAdoptionInfo(cat, true, new Date(1, 6, 2000), "Chandler Saunders");
 		assertEquals(rescu.getAnimal(0).getOwner(), "Chandler Saunders");
