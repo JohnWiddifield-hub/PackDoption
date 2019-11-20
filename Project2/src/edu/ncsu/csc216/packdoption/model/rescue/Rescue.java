@@ -1,6 +1,10 @@
 package edu.ncsu.csc216.packdoption.model.rescue;
 
 import edu.ncsu.csc216.packdoption.model.animals.Animal;
+import edu.ncsu.csc216.packdoption.model.animals.Animal.AgeCategory;
+import edu.ncsu.csc216.packdoption.model.animals.Animal.Size;
+import edu.ncsu.csc216.packdoption.model.animals.Cat;
+import edu.ncsu.csc216.packdoption.model.animals.Dog;
 import edu.ncsu.csc216.packdoption.util.ArrayListQueue;
 import edu.ncsu.csc216.packdoption.util.Date;
 import edu.ncsu.csc216.packdoption.util.Note;
@@ -29,7 +33,12 @@ public class Rescue implements Comparable<Rescue> {
 	 * (3) name contains \n. name should be trimmed of leading and/or trailing whitespace.
 	 */
 	public Rescue(String name) {
-		
+		if(name == null || name.isBlank() || name.contains("\n")) {
+			throw new IllegalArgumentException();
+		}
+		this.name = name.trim();
+		animals = new SortedLinkedList<Animal>();
+		vetAppointments = new ArrayListQueue<Animal>();
 	}
 	
 	/**
@@ -37,7 +46,7 @@ public class Rescue implements Comparable<Rescue> {
 	 * @return name of the rescue as a string
 	 */
 	public String getName() {
-		return null;
+		return this.name;
 	}
 	
 	/**
@@ -48,7 +57,14 @@ public class Rescue implements Comparable<Rescue> {
 	 * @throws IllegalArgumentException if animal is null
 	 */
 	public boolean addAnimal(Animal animal) {
-		return false;
+		if(animal == null) {
+			throw new IllegalArgumentException();
+		} else if(animals.contains(animal)) {
+			return false;
+		} else {
+			animals.add(animal);
+			return true;
+		}
 	}
 	
 	/**
@@ -58,7 +74,11 @@ public class Rescue implements Comparable<Rescue> {
 	 * @throws IndexOutOfBoundsException if idx is negative or greater than size - 1.
 	 */
 	public Animal getAnimal(int idx) {
-		return null;
+		if(idx < 0 || idx > animals.size() - 1) {
+			throw new IndexOutOfBoundsException();
+		} else {
+			return animals.get(idx);
+		}
 	}
 
 	/**
@@ -70,7 +90,18 @@ public class Rescue implements Comparable<Rescue> {
 	 * @throws IllegalArgumentException if (1) name is null or (2) birthday is null.
 	 */
 	public Animal getAnimal(String name, Date birthday) {
-		return null;
+		if(name == null || birthday == null) {
+			throw new IllegalArgumentException();
+		} else {
+			SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
+			notes.add(new Note(birthday, "Birthday"));
+			Cat faux = new Cat(name, birthday, Size.SMALL, true, true, notes, birthday);
+			if(animals.contains(faux)) {
+				return animals.get(animals.indexOf(faux));
+			} else {
+				return null;
+			}
+		}
 	}
 	
 	/**
@@ -80,8 +111,7 @@ public class Rescue implements Comparable<Rescue> {
 	 */
 	@Override
 	public int compareTo(Rescue o) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.getName().compareTo(o.getName());
 	}
 	
 	/**
@@ -90,7 +120,7 @@ public class Rescue implements Comparable<Rescue> {
 	 * @return true if the rescue contains the animal, false if not
 	 */
 	public boolean contains(Animal animal) {
-		return false;
+		return animals.contains(animal);
 	}
 	
 	/**
@@ -103,7 +133,15 @@ public class Rescue implements Comparable<Rescue> {
 	 * the animal’s notes already contains note.
 	 */
 	public boolean addNote(Animal animal, Note note) {
-		return false;
+		if(animal == null || note == null) {
+			throw new IllegalArgumentException();
+		} else if(!animals.contains(animal)) {
+			return false;
+		} else if(animals.get(animals.indexOf(animal)).getNotes().contains(note)) {
+			throw new IllegalArgumentException();
+		}
+		animals.get(animals.indexOf(animal)).addNote(note);
+		return true;
 	}
 	
 	/**
@@ -117,7 +155,13 @@ public class Rescue implements Comparable<Rescue> {
 	 * @Throws IllegalArgumentException if animal is null. See Animal.setAdoptionInfo() for other cases when IllegalArgumentException is thrown.
 	 */
 	public void setAdoptionInfo(Animal animal, boolean isAdopted, Date dateAdopted, String owner) {
-	
+		if(!animals.contains(animal)) {
+			return;
+		} else if(animal == null){
+			throw new IllegalArgumentException();
+		} else {
+			animals.get(animals.indexOf(animal)).setAdoptionInfo(isAdopted, dateAdopted, owner);
+		}
 	}
 	
 	/**
@@ -126,7 +170,7 @@ public class Rescue implements Comparable<Rescue> {
 	 * @return number of animals in the rescue
 	 */
 	public int numAnimals() {
-		return 0;
+		return animals.size();
 	}
 	
 	/**
@@ -134,7 +178,13 @@ public class Rescue implements Comparable<Rescue> {
 	 * @return number of adopted animals
 	 */
 	public int numAnimalsAdopted() {
-		return 0;
+		int adoptedcntr = 0;
+		for(int i = 0; i < animals.size(); i++) {
+			if(animals.get(i).adopted()) {
+				adoptedcntr++;
+			}
+		}
+		return adoptedcntr;
 	}
 	
 	/**
@@ -142,7 +192,7 @@ public class Rescue implements Comparable<Rescue> {
 	 * @return number of available animals
 	 */
 	public int numAnimalsAvailable() {
-		return 0;
+		return animals.size() - this.numAnimalsAdopted();
 	}
 	
 	/**
@@ -151,7 +201,13 @@ public class Rescue implements Comparable<Rescue> {
 	 * @return SortedLinkedList of Animals that are available for adoption
 	 */
 	public SortedLinkedList<Animal> animalsAvailable(){
-		return null;
+		SortedLinkedList<Animal> available = new SortedLinkedList<Animal>();
+		for(int i = 0; i < animals.size(); i++) {
+			if(!animals.get(i).adopted()) {
+				available.add(animals.get(i));
+			}
+		}
+		return available;
 	}
 	
 	/**
@@ -160,7 +216,13 @@ public class Rescue implements Comparable<Rescue> {
 	 * @return SortedLinkedList of cats that are available for adoption
 	 */
 	public SortedLinkedList<Animal> availableCats(){
-		return null;
+		SortedLinkedList<Animal> available = new SortedLinkedList<Animal>();
+		for(int i = 0; i < animals.size(); i++) {
+			if(animals.get(i) instanceof Cat) {
+				available.add(animals.get(i));
+			}
+		}
+		return available;
 	}
 	
 	/**
@@ -169,7 +231,13 @@ public class Rescue implements Comparable<Rescue> {
 	 * @return SortedLinkedList of dogs that are available for adoption
 	 */
 	public SortedLinkedList<Animal> availableDogs(){
-		return null;
+		SortedLinkedList<Animal> available = new SortedLinkedList<Animal>();
+		for(int i = 0; i < animals.size(); i++) {
+			if(animals.get(i) instanceof Dog) {
+				available.add(animals.get(i));
+			}
+		}
+		return available;
 	}
 	
 	/**
@@ -178,7 +246,13 @@ public class Rescue implements Comparable<Rescue> {
 	 * @return SortedLinkedList of animals that are adopted
 	 */
 	public SortedLinkedList<Animal> animalsAdopted(){
-		return null;
+		SortedLinkedList<Animal> available = new SortedLinkedList<Animal>();
+		for(int i = 0; i < animals.size(); i++) {
+			if(animals.get(i).adopted()) {
+				available.add(animals.get(i));
+			}
+		}
+		return available;
 	}
 	
 	/**
@@ -193,7 +267,16 @@ public class Rescue implements Comparable<Rescue> {
 	 * animal’s dateEnterRescue, (3) max is less than min, or (4) min is less than zero
 	 */
 	public SortedLinkedList<Animal> availableAnimalsDayRange(Date today, int min, int max){
-		return null;
+		SortedLinkedList<Animal> available = new SortedLinkedList<Animal>();
+		for(int i = 0; i < animals.size(); i++) {
+			if(!animals.get(i).adopted()) {
+				if(animals.get(i).getDaysAvailableForAdoption(today) >= min && 
+						animals.get(i).getDaysAvailableForAdoption(today) <= max) {
+					available.add(animals.get(i));
+				}
+			}
+		}
+		return available;
 	}
 	
 	/**
@@ -209,7 +292,16 @@ public class Rescue implements Comparable<Rescue> {
 	 * of the animal’s birthday, (3) max is less than min, or (4) min is less than zero.
 	 */
 	public SortedLinkedList<Animal> availableAnimalsAge(Date today, int min, int max){
-		return null;
+		SortedLinkedList<Animal> available = new SortedLinkedList<Animal>();
+		for(int i = 0; i < animals.size(); i++) {
+			if(!animals.get(i).adopted()) {
+				if(animals.get(i).getAge(today) >= min && 
+						animals.get(i).getAge(today) <= max) {
+					available.add(animals.get(i));
+				}
+			}
+		}
+		return available;
 	}
 
 	/**
@@ -254,7 +346,7 @@ public class Rescue implements Comparable<Rescue> {
 	 */
 	@Override
 	public String toString() {
-		return null;
+		return this.getName();
 	}
 	
 	/**
@@ -267,7 +359,40 @@ public class Rescue implements Comparable<Rescue> {
 	 * then empty string). If the list is empty, an empty 2D array is returned.
 	 */
 	public String[][] getAnimalsAsArray(Date today) {
-		return null;
+		if(animals.isEmpty()) {
+			return new String[0][0];
+		} 
+		
+		String[][] arr = new String[animals.size()][7];
+		for(int i = 0; i < animals.size(); i++) {
+			
+			arr[i][0] = animals.get(i).getName();
+			if(animals.get(i) instanceof Dog) {
+				arr[i][1] = "Dog";
+			} else {
+				arr[i][1] = "Cat";
+			}
+			arr[i][2] = animals.get(i).getBirthday().toString();
+			arr[i][3] = Integer.toString(animals.get(i).getAge(today));
+			if(animals.get(i).getAgeCategory(today) == AgeCategory.YOUNG) {
+				arr[i][4] = "YOUNG";
+			} else if(animals.get(i).getAgeCategory(today) == AgeCategory.ADULT) {
+				arr[i][4] = "ADULT";
+			} else {
+				arr[i][4] = "SENIOR";
+			}
+			if(animals.get(i).adopted()) {
+				arr[i][5] = "Yes";
+			} else {
+				arr[i][5] = "No";
+			}
+			if(animals.get(i).adopted()) {
+				arr[i][6] = "";
+			} else {
+				arr[i][6] = Integer.toString(animals.get(i).getDateEnterRescue().daysTo(today));
+			}
+		}
+		return arr;
 	}
 	
 	/**
@@ -280,9 +405,57 @@ public class Rescue implements Comparable<Rescue> {
 	 * string). If the list is empty, an empty 2D array is returned.
 	 */
 	public String[][] getAppointmentsAsArray(Date today) {
-		return null;
+		if(vetAppointments.isEmpty()) {
+			return new String[0][0];
+		} 
+		
+		String[][] arr = new String[vetAppointments.size()][7];
+		ArrayListQueue<Animal> temp = new ArrayListQueue<Animal>();
+		ArrayListQueue<Animal> temp2 = new ArrayListQueue<Animal>();
+		ArrayListQueue<Animal> temp3 = new ArrayListQueue<Animal>();
+		for(int i = 0; i < vetAppointments.size(); i++) {
+			temp.add(vetAppointments.element());
+			temp3.add(vetAppointments.element());
+			temp2.add(vetAppointments.remove());
+			
+		}
+		
+		for(int i = 0; i < temp.size(); i++) {
+			Animal ani = temp.remove();
+			arr[i][0] = ani.getName();
+			if(ani instanceof Dog) {
+				arr[i][1] = "Dog";
+			} else {
+				arr[i][1] = "Cat";
+			}
+			arr[i][2] = ani.getBirthday().toString();
+			arr[i][3] = Integer.toString(ani.getAge(today));
+			if(ani.getAgeCategory(today) == AgeCategory.YOUNG) {
+				arr[i][4] = "YOUNG";
+			} else if(ani.getAgeCategory(today) == AgeCategory.ADULT) {
+				arr[i][4] = "ADULT";
+			} else {
+				arr[i][4] = "SENIOR";
+			}
+			if(ani.adopted()) {
+				arr[i][5] = "Yes";
+			} else {
+				arr[i][5] = "No";
+			}
+			if(ani.adopted()) {
+				arr[i][6] = "";
+			} else {
+				arr[i][6] = Integer.toString(ani.getDateEnterRescue().daysTo(today));
+			}
+		}
+		
+		for(int i = 0; i < temp3.size(); i++) {
+			vetAppointments.add(temp2.remove());
+		}
+		
+		return arr;
 	}
-	
+
 	/**
 	 * Adds an appointment to the Rescue
 	 * @param animal animal you would like to add a new appointment for
@@ -290,7 +463,15 @@ public class Rescue implements Comparable<Rescue> {
 	 * @throws NullPointerException if animal is null.
 	 */
 	public boolean addAppointment(Animal animal) {
-		return false;
+		if(animal == null) {
+			throw new NullPointerException();
+		}
+		if(animals.contains(animal)) {
+			vetAppointments.add(animal);
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	/**
@@ -298,7 +479,7 @@ public class Rescue implements Comparable<Rescue> {
 	 * @return ArrayListQueue of all appointments in the rescue
 	 */
 	public ArrayListQueue<Animal> getAppointments() {
-		return null;
+		return vetAppointments;
 	}
 
 

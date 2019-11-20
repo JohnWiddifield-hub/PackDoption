@@ -4,6 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import edu.ncsu.csc216.packdoption.model.animals.Cat;
+import edu.ncsu.csc216.packdoption.model.animals.Animal.Size;
+import edu.ncsu.csc216.packdoption.util.Date;
+import edu.ncsu.csc216.packdoption.util.Note;
+import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
+
 /**
  * This tests the Rescue class for proper implementation
  * 
@@ -12,12 +18,21 @@ import org.junit.Test;
  */
 	public class RescueTest {
 
+		Rescue rescue = new Rescue("Rescue");
+		SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
+		Cat cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2000));
+		Date today = new Date(1, 6, 2000);
 	/**
 	 * This method tests the hashcode function for proper hashCode generation of this class/object
 	 */
 	@Test
 	public void testHashCode() {
-		fail("Not yet implemented");
+		Rescue rescu = new Rescue("Rescue");
+		Rescue rescu2 = new Rescue("Rescue");
+		Rescue rescu3 = new Rescue("bebop");
+		assertEquals(rescu.hashCode(), rescu2.hashCode());
+		assertTrue(rescu2.hashCode() != rescu3.hashCode());
 	}
 
 	/**
@@ -25,31 +40,25 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testRescue() {
-		fail("Not yet implemented");
+		Rescue rescu = new Rescue("Rescue");
+		assertEquals(rescu.getName(), "Rescue");
+		
+		
 	}
 
-	/**
-	 * This tests the getName method for proper retrieval of a Rescue's name
-	 */
-	@Test
-	public void testGetName() {
-		fail("Not yet implemented");
-	}
 
 	/**
 	 * This tests the addAnimal method for proper addition of an animal to the specified Rescue
 	 */
 	@Test
 	public void testAddAnimal() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * This tests the getAnimal method when using an Int for a parameter of index for proper retrieval of an animal from the rescue
-	 */
-	@Test
-	public void testGetAnimalInt() {
-		fail("Not yet implemented");
+		Rescue rescu = new Rescue("Rescue");
+		SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
+		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
+		Cat cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2000));
+		rescu.addAnimal(cat);
+		assertEquals(rescu.getAnimal(0), cat);
 	}
 
 	/**
@@ -57,7 +66,14 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testGetAnimalStringDate() {
-		fail("Not yet implemented");
+		Rescue rescu = new Rescue("Rescue");
+		SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
+		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
+		Cat cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2000));
+		rescu.addAnimal(cat);
+		
+		assertEquals(rescu.getAnimal("Boots", new Date(1, 1, 2000)), cat);
 	}
 
 	/**
@@ -65,7 +81,11 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testCompareTo() {
-		fail("Not yet implemented");
+		Rescue rescu = new Rescue("Rescue");
+		Rescue rescu2 = new Rescue("Rescue");
+		Rescue rescu3 = new Rescue("bebop");
+		assertEquals(rescu.compareTo(rescu2), 0);
+		assertTrue(rescu.compareTo(rescu3) != 0);
 	}
 
 	/**
@@ -73,7 +93,21 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testContains() {
-		fail("Not yet implemented");
+		Rescue rescu = new Rescue("Rescue");
+		SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
+		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
+		Cat cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2000));
+		Cat cat2 = new Cat("Gypsy", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2000));
+		Cat cat3 = new Cat("Boots", new Date(1, 1, 2001), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2001));
+		rescu.addAnimal(cat);
+
+		
+		assertTrue(rescu.contains(cat));
+		assertFalse(rescu.contains(cat3));
+		assertFalse(rescu.contains(cat2));
 	}
 
 	/**
@@ -81,7 +115,19 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testAddNote() {
-		fail("Not yet implemented");
+		Rescue rescu = new Rescue("Rescue");
+		SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
+		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
+		Cat cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2000));
+		rescu.addAnimal(cat);
+		assertTrue(rescu.addNote(cat, new Note(new Date(1, 1, 2000), "Birthday!!!!")));
+		try {
+			rescu.addNote(null, null);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(rescu.getAnimal(0).getNotes().size(), 2);
+		}
 	}
 
 	/**
@@ -89,7 +135,17 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testSetAdoptionInfo() {
-		fail("Not yet implemented");
+		Rescue rescu = new Rescue("Rescue");
+		SortedLinkedList<Note> notes = new SortedLinkedList<Note>();
+		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
+		Cat cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2000));
+		rescu.addAnimal(cat);
+		rescu.setAdoptionInfo(cat, true, new Date(1, 6, 2000), "Chandler Saunders");
+		assertEquals(rescu.getAnimal(0).getOwner(), "Chandler Saunders");
+		assertEquals(rescu.getAnimal(0).getDateAdopted(), new Date(1, 6, 2000));
+		assertEquals(rescu.getAnimal(0).adopted(), true);
+		
 	}
 
 	/**
@@ -97,7 +153,10 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testNumAnimals() {
-		fail("Not yet implemented");
+		notes.add(new Note(new Date(1, 2, 2000), "First day!"));
+		rescue.addAnimal(cat);
+		
+		assertEquals(rescue.numAnimals(), 1);
 	}
 
 	/**
@@ -105,7 +164,8 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testNumAnimalsAdopted() {
-		fail("Not yet implemented");
+		rescue.addAnimal(cat);
+		assertEquals(rescue.numAnimalsAdopted(), 0);
 	}
 
 	/**
@@ -113,7 +173,8 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testNumAnimalsAvailable() {
-		fail("Not yet implemented");
+		rescue.addAnimal(cat);
+		assertEquals(rescue.numAnimalsAvailable(), 1);
 	}
 
 	/**
@@ -121,7 +182,8 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testAnimalsAvailable() {
-		fail("Not yet implemented");
+		rescue.addAnimal(cat);
+		assertEquals(rescue.animalsAvailable().get(0), cat);
 	}
 
 	/**
@@ -129,7 +191,8 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testAvailableCats() {
-		fail("Not yet implemented");
+		rescue.addAnimal(cat);
+		assertEquals(rescue.availableCats().get(0), cat);
 	}
 
 	/**
@@ -137,7 +200,8 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testAvailableDogs() {
-		fail("Not yet implemented");
+		rescue.addAnimal(cat);
+		assertEquals(rescue.availableDogs().size(), 0);
 	}
 
 	/**
@@ -145,7 +209,8 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testAnimalsAdopted() {
-		fail("Not yet implemented");
+		rescue.addAnimal(cat);
+		assertEquals(rescue.animalsAdopted().size(), 0);
 	}
 
 	/**
@@ -153,7 +218,8 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testAvailableAnimalsDayRange() {
-		fail("Not yet implemented");
+		rescue.addAnimal(cat);
+		assertEquals(rescue.availableAnimalsDayRange(today, 0, 2).size(), 1);
 	}
 
 	/**
@@ -161,15 +227,20 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testAvailableAnimalsAge() {
-		fail("Not yet implemented");
+		rescue.addAnimal(cat);
+		assertEquals(rescue.availableAnimalsAge(today, 0, 2).size(), 1);
 	}
 
 	/**
 	 * This method tests the equals method for proper reporting of equivalent and non equivalent Rescues
 	 */
+	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	public void testEqualsObject() {
-		fail("Not yet implemented");
+		assertFalse(rescue.equals(null));
+		assertFalse(rescue.equals(""));
+		assertTrue(rescue.equals(rescue));
+		assertFalse(rescue.equals(new Rescue("Rescue2")));
 	}
 
 	/**
@@ -178,7 +249,8 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testToString() {
-		fail("Not yet implemented");
+		assertEquals(rescue.toString(), "Rescue");
+		assertFalse(rescue.toString().contentEquals("Rescue2"));
 	}
 
 	/**
@@ -186,7 +258,15 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testGetAnimalsAsArray() {
-		fail("Not yet implemented");
+		rescue.addAnimal(cat);
+		assertEquals(rescue.getAnimalsAsArray(today)[0][0], "Boots");
+		assertEquals(rescue.getAnimalsAsArray(today)[0][1], "Cat");
+		assertEquals(rescue.getAnimalsAsArray(today)[0][2], "1/1/2000");
+		assertEquals(rescue.getAnimalsAsArray(today)[0][3], "0");
+		assertEquals(rescue.getAnimalsAsArray(today)[0][4], "YOUNG");
+		assertEquals(rescue.getAnimalsAsArray(today)[0][5], "No");
+		assertEquals(rescue.getAnimalsAsArray(today)[0][6], "1");
+		
 	}
 
 	/**
@@ -194,7 +274,15 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testGetAppointmentsAsArray() {
-		fail("Not yet implemented");
+		rescue.addAnimal(cat);
+		rescue.addAppointment(cat);
+		assertEquals(rescue.getAppointmentsAsArray(today)[0][0], "Boots");
+		assertEquals(rescue.getAppointmentsAsArray(today)[0][1], "Cat");
+		assertEquals(rescue.getAppointmentsAsArray(today)[0][2], "1/1/2000");
+		assertEquals(rescue.getAppointmentsAsArray(today)[0][3], "0");
+		assertEquals(rescue.getAppointmentsAsArray(today)[0][4], "YOUNG");
+		assertEquals(rescue.getAppointmentsAsArray(today)[0][5], "No");
+		assertEquals(rescue.getAppointmentsAsArray(today)[0][6], "1");
 	}
 
 	/**
@@ -202,15 +290,12 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testAddAppointment() {
-		fail("Not yet implemented");
-	}
-	
-	/**
-	 * This tests the getAppointments method for proper retrieval of a Rescue's Appointments
-	 */
-	@Test
-	public void testGetAppointments() {
-		fail("Not yet implemented");
+		try {
+			rescue.addAppointment(null);
+			fail();
+		} catch (NullPointerException e) {
+			assertEquals(rescue.getAppointments().size(), 0);
+		}
 	}
 
 }
