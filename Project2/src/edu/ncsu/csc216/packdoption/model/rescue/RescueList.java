@@ -61,7 +61,7 @@ public class RescueList {
 	 */
 	public Rescue getRescue(int idx) {
 		if(idx < 0 || idx > rescues.size() - 1) {
-			throw new IllegalArgumentException();
+			throw new IndexOutOfBoundsException();
 		} else {
 			return rescues.get(idx);
 		}

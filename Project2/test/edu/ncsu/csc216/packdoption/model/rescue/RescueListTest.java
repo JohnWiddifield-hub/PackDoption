@@ -70,14 +70,14 @@ import org.junit.Test;
 		try {
 			list.getRescue(-1);
 			fail();
-		} catch (IllegalArgumentException e) {
+		} catch (IndexOutOfBoundsException e) {
 			assertEquals(list.size(), 1);
 		}
 		
 		try {
 			list.getRescue(2);
 			fail();
-		} catch (IllegalArgumentException e) {
+		} catch (IndexOutOfBoundsException e) {
 			assertEquals(list.size(), 1);
 		}
 		
