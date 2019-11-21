@@ -2,7 +2,6 @@ package edu.ncsu.csc216.packdoption.model.rescue;
 
 import edu.ncsu.csc216.packdoption.model.animals.Animal;
 import edu.ncsu.csc216.packdoption.model.animals.Animal.AgeCategory;
-import edu.ncsu.csc216.packdoption.model.animals.Animal.Size;
 import edu.ncsu.csc216.packdoption.model.animals.Cat;
 import edu.ncsu.csc216.packdoption.model.animals.Dog;
 import edu.ncsu.csc216.packdoption.util.ArrayListQueue;
@@ -526,13 +525,16 @@ public class Rescue implements Comparable<Rescue> {
 		ArrayListQueue<Animal> temp = new ArrayListQueue<Animal>();
 		ArrayListQueue<Animal> temp2 = new ArrayListQueue<Animal>();
 		
-		for(int i = 0; i < size; i++) {
+		for(int i = 0; i < size - 1; i++) {
 			temp.add(vetAppointments.element());
 			temp2.add(vetAppointments.remove());
 			a = temp.remove();
-			rtrn = rtrn + "- " + a.getName() + "," + a.getBirthday().toString() + "\n"; {	
-			}
+			rtrn = rtrn + "- " + a.getName() + "," + a.getBirthday().toString() + "\n"; 
 		}
+		temp.add(vetAppointments.element());
+		temp2.add(vetAppointments.remove());
+		a = temp.remove();
+		rtrn = rtrn + "- " + a.getName() + "," + a.getBirthday().toString();
 		for(int i = 0; i < size; i++) {
 			vetAppointments.add(temp2.remove());
 		}

@@ -26,6 +26,9 @@ public class PackDoptionWriter {
 			 
 			 for (int i = 0; i < list.size(); i++) {
 		        	Rescue r = list.getRescue(i);
+		        	if(i > 0) {
+		        		fileWriter.println("");
+		        	}
 		            fileWriter.println("# " + r.toString());
 		            
 		            for(int j = 0; j < r.numAnimals(); j++) {
