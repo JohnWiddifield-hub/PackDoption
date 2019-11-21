@@ -200,8 +200,7 @@ public abstract class Animal implements Comparable<Animal> {
 	 * number if the animal is less, and positive if the animal is greater than
 	 * 
 	 * @param other Animal you would like to compare the current instance to
-	 * @returns 0 if they are the same, a negative
-	 * number if the animal is less, and positive if the animal is greater than
+	 * @return 0 if they are the same, a negative number if the animal is less, and positive if the animal is greater than
 	 */
 	@Override
 	public int compareTo(Animal other) {

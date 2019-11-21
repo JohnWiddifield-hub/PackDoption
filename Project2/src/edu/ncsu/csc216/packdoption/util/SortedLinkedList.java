@@ -5,7 +5,7 @@ package edu.ncsu.csc216.packdoption.util;
  * 
  * @author John Widdifield
  *
- * @param <E>
+ * @param <E> Generic data type
  */
 public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> {
 
@@ -69,7 +69,7 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	 * Adds the specified element to list in sorted order
 	 *
 	 * @param e element to be appended to this list
-	 * @return true (as specified by {@link Collection#add})
+	 * @return true if added successfully, false if not
 	 * @throws NullPointerException     if e is null
 	 * @throws IllegalArgumentException if list already contains e
 	 */
@@ -105,8 +105,7 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	 *
 	 * @param index index of the element to return
 	 * @return the element at the specified position in this list
-	 * @throws IndexOutOfBoundsException if the index is out of range (index < 0 ||
-	 *                                   index >= size())
+	 * @throws IndexOutOfBoundsException if the index is out of range
 	 */
 	@Override
 	public E get(int index) {
@@ -128,8 +127,7 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 	 *
 	 * @param index the index of the element to be removed
 	 * @return the element previously at the specified position
-	 * @throws IndexOutOfBoundsException if the index is out of range (index < 0 ||
-	 *                                   index >= size())
+	 * @throws IndexOutOfBoundsException if the index is out of range
 	 */
 	@Override
 	public E remove(int index) {

@@ -128,8 +128,7 @@ public class Rescue implements Comparable<Rescue> {
 	 * @param animal animal you would like to add a note to
 	 * @param note	Note you would like to add to the animal
 	 * @return true if the note was added successfully, false if not
-	 * @Throws IllegalArgumentException if animal is null, note is null, 
-	 * the animal’s notes already contains note.
+	 * @throws IllegalArgumentException if animal is null, note is null, or the animal’s notes already contains note.
 	 */
 	public boolean addNote(Animal animal, Note note) {
 		if(animal == null || note == null) {
@@ -151,7 +150,7 @@ public class Rescue implements Comparable<Rescue> {
 	 * @param isAdopted	isAdopted boolean value to set for the animal, true if adopted false if not
 	 * @param dateAdopted	Date the animal was adopted
 	 * @param owner	Owners name as a string
-	 * @Throws IllegalArgumentException if animal is null. See Animal.setAdoptionInfo() for other cases when IllegalArgumentException is thrown.
+	 * @throws IllegalArgumentException if animal is null. See Animal.setAdoptionInfo() for other cases when IllegalArgumentException is thrown.
 	 */
 	public void setAdoptionInfo(Animal animal, boolean isAdopted, Date dateAdopted, String owner) {
 		if(animal == null){
@@ -262,8 +261,7 @@ public class Rescue implements Comparable<Rescue> {
 	 * @param max maximum days the animal has been available to search for
 	 * @return SortedLinkedList of all animals in the rescue that are available for adoption 
 	 * and have been available between the min and max days
-	 * @Throws IllegalArgumentException if (1) today is null, (2) today is before one of the 
-	 * animal’s dateEnterRescue, (3) max is less than min, or (4) min is less than zero
+	 * @throws IllegalArgumentException if (1) today is null, (2) today is before one of the animal’s dateEnterRescue, (3) max is less than min, or (4) min is less than zero
 	 */
 	public SortedLinkedList<Animal> availableAnimalsDayRange(Date today, int min, int max){
 		if(today == null || max < min || min < 0) {

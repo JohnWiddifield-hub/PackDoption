@@ -18,17 +18,6 @@ package edu.ncsu.csc216.packdoption.util;
  *
  * @author Josh Bloch
  * @author Neal Gafter
- * @see Collection
- * @see Set
- * @see ArrayList
- * @see LinkedList
- * @see Vector
- * @see Arrays#asList(Object[])
- * @see Collections#nCopies(int, Object)
- * @see Collections#EMPTY_LIST
- * @see AbstractList
- * @see AbstractSequentialList
- * @since 1.2
  * 
  * @param <E> List element type
  */
@@ -67,7 +56,7 @@ public interface SortedList<E extends Comparable<E>> {
 	 * Adds the specified element to list in sorted order
 	 *
 	 * @param e element to be appended to this list
-	 * @return true (as specified by {@link Collection#add})
+	 * @return true if the add was successful, false if not
 	 * @throws NullPointerException     if e is null
 	 * @throws IllegalArgumentException if list already contains e
 	 */
@@ -80,8 +69,7 @@ public interface SortedList<E extends Comparable<E>> {
 	 *
 	 * @param index index of the element to return
 	 * @return the element at the specified position in this list
-	 * @throws IndexOutOfBoundsException if the index is out of range (index < 0 ||
-	 *                                   index >= size())
+	 * @throws IndexOutOfBoundsException if the index is out of range
 	 */
 	E get(int index);
 
@@ -92,8 +80,7 @@ public interface SortedList<E extends Comparable<E>> {
 	 *
 	 * @param index the index of the element to be removed
 	 * @return the element previously at the specified position
-	 * @throws IndexOutOfBoundsException if the index is out of range (index < 0 ||
-	 *                                   index >= size())
+	 * @throws IndexOutOfBoundsException if the index is out of range 
 	 */
 	E remove(int index);
 
@@ -101,9 +88,7 @@ public interface SortedList<E extends Comparable<E>> {
 
 	/**
 	 * Returns the index of the first occurrence of the specified element in this
-	 * list, or -1 if this list does not contain the element. More formally, returns
-	 * the lowest index i such that (o==null ? get(i)==null : o.equals(get(i))), or
-	 * -1 if there is no such index.
+	 * list, or -1 if this list does not contain the element. 
 	 *
 	 * @param e element to search for
 	 * @return the index of the first occurrence of the specified element in this

@@ -4,7 +4,7 @@ package edu.ncsu.csc216.packdoption.util;
  * This class creates a queue implementation of an arrayList
  * @author John Widdifield
  *
- * @param <E>
+ * @param <E> Generic data type
  */
 public class ArrayListQueue<E> implements Queue<E> {
 	private E list[];
