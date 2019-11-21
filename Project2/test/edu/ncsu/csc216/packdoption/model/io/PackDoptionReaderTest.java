@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import edu.ncsu.csc216.packdoption.model.rescue.RescueList;
+
 /**
  * This tests the PackDoptionReader class for proper implementation
  * 
@@ -17,7 +19,8 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testReadRescueListFile() {
-		fail("Not yet implemented");
+		RescueList list = PackDoptionReader.readRescueListFile("test-files/Rescues.txt");
+		assertEquals(list.size(), 2);
 	}
 
 }
