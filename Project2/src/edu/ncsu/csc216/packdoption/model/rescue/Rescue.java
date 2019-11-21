@@ -276,11 +276,9 @@ public class Rescue implements Comparable<Rescue> {
 		}
 		SortedLinkedList<Animal> available = new SortedLinkedList<Animal>();
 		for(int i = 0; i < animals.size(); i++) {
-			if(!animals.get(i).adopted()) {
-				if(animals.get(i).getDaysAvailableForAdoption(today) >= min && 
+			if(!animals.get(i).adopted() && animals.get(i).getDaysAvailableForAdoption(today) >= min && 
 						animals.get(i).getDaysAvailableForAdoption(today) <= max) {
 					available.add(animals.get(i));
-				}
 			}
 		}
 		return available;
@@ -309,11 +307,9 @@ public class Rescue implements Comparable<Rescue> {
 		}
 		SortedLinkedList<Animal> available = new SortedLinkedList<Animal>();
 		for(int i = 0; i < animals.size(); i++) {
-			if(!animals.get(i).adopted()) {
-				if(animals.get(i).getAge(today) >= min && 
+			if(!animals.get(i).adopted() && animals.get(i).getAge(today) >= min && 
 						animals.get(i).getAge(today) <= max) {
 					available.add(animals.get(i));
-				}
 			}
 		}
 		return available;

@@ -252,7 +252,7 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	public void testEqualsObject() {
-		assertFalse(rescue.equals(null));
+		assertFalse(rescue == null);
 		assertFalse(rescue.equals(""));
 		assertTrue(rescue.equals(rescue));
 		assertFalse(rescue.equals(new Rescue("Rescue2")));
