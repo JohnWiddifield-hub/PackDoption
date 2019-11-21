@@ -88,9 +88,6 @@ import edu.ncsu.csc216.packdoption.view.ui.PackDoptionGUI;
 		} catch (IllegalArgumentException e) {
 			assertFalse(PackDoptionManager.getInstance().isChanged());
 		}
-		
-		PackDoptionGUI gui = new PackDoptionGUI();
-		assertNotNull(gui);
 	}
 
 
