@@ -80,7 +80,7 @@ public class PackDoptionReader {
 							}
 							rescue.addAnimal(new Cat(name, birthday, size, isHouseTrained, isGoodWithKids, notes, dateEntered));
 						} else {
-							adopted = true;
+							adopted = Boolean.valueOf(next);
 							adoptedDate = new Date(lineReader.next());
 							owner = lineReader.next();
 							@SuppressWarnings("unused")
@@ -97,7 +97,7 @@ public class PackDoptionReader {
 					} else if(type.contentEquals("Dog")) {
 						String next = lineReader.next();
 						if(next.contentEquals("true")) {
-							adopted = true;
+							adopted = Boolean.valueOf(next);
 							adoptedDate = new Date(lineReader.next());
 							owner = lineReader.next();
 							breed = Breed.valueOf(lineReader.next());
@@ -113,10 +113,6 @@ public class PackDoptionReader {
 							rescue.addAnimal(new Dog(name, birthday, size, isHouseTrained, isGoodWithKids, notes, dateEntered, adopted, adoptedDate, owner, breed));
 							
 						} else {
-							if(next.contentEquals("false")) {
-								lineReader.close();
-								throw new IllegalArgumentException();
-							}
 							breed = Breed.valueOf(next);
 							@SuppressWarnings("unused")
 							String notesToken = lineReader.next();
