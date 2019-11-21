@@ -65,8 +65,24 @@ public class PackDoptionReader {
 					name = lineReader.next();
 					birthday = new Date(lineReader.next());
 					size = Size.valueOf(lineReader.next());
-					isHouseTrained = Boolean.valueOf(lineReader.next());
-					isGoodWithKids = Boolean.valueOf(lineReader.next());
+					String bool = lineReader.next();
+					if(bool.contentEquals("true")) {
+						isHouseTrained = true;
+					} else if(bool.contentEquals("false")) {
+						isHouseTrained = false;
+					} else {
+						lineReader.close();
+						throw new Exception();
+					}
+					bool = lineReader.next();
+					if(bool.contentEquals("true")) {
+						isGoodWithKids = true;
+					} else if(bool.contentEquals("false")) {
+						isGoodWithKids = false;
+					} else {
+						lineReader.close();
+						throw new Exception();
+					}
 					dateEntered = new Date(lineReader.next());
 					if(type.contentEquals("Cat")) {
 						String next = lineReader.next();
@@ -80,7 +96,14 @@ public class PackDoptionReader {
 							}
 							rescue.addAnimal(new Cat(name, birthday, size, isHouseTrained, isGoodWithKids, notes, dateEntered));
 						} else {
-							adopted = Boolean.valueOf(next);
+							if(next.contentEquals("true")) {
+								adopted = true;
+							} else if(next.contentEquals("false")) {
+								adopted = false;
+							} else {
+								lineReader.close();
+								throw new Exception();
+							}
 							adoptedDate = new Date(lineReader.next());
 							owner = lineReader.next();
 							@SuppressWarnings("unused")
@@ -97,7 +120,14 @@ public class PackDoptionReader {
 					} else if(type.contentEquals("Dog")) {
 						String next = lineReader.next();
 						if(next.contentEquals("true")) {
-							adopted = Boolean.valueOf(next);
+							if(next.contentEquals("true")) {
+								adopted = true;
+							} else if(next.contentEquals("false")) {
+								adopted = false;
+							} else {
+								lineReader.close();
+								throw new Exception();
+							}
 							adoptedDate = new Date(lineReader.next());
 							owner = lineReader.next();
 							breed = Breed.valueOf(lineReader.next());
