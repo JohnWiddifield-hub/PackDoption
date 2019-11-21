@@ -126,6 +126,8 @@ public class PackDoptionReader {
 							rescue.addAnimal(new Dog(name, birthday, size, isHouseTrained, isGoodWithKids, notes, dateEntered, breed));
 						}
 						
+					} else {
+						throw new Exception();
 					}
 					lineReader.close();
 				} else if(line.startsWith("-")) {
