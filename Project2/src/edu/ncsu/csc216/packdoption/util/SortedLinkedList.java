@@ -284,30 +284,6 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 			return result;
 		}
 
-		/**
-		 * Tests two nodes for equality
-		 * 
-		 * @param Node to test for equality
-		 * 
-		 * @return true if the nodes are equal, false if they are not
-		 */
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			@SuppressWarnings("unchecked")
-			Node<E> other = (Node<E>) obj;
-			if (value == null) {
-				if (other.value != null)
-					return false;
-			} else if (!value.equals(other.value))
-				return false;
-			return true;
-		}
 		
 		
 		

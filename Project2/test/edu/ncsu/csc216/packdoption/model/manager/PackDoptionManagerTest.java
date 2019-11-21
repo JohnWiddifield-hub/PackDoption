@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import edu.ncsu.csc216.packdoption.view.ui.PackDoptionGUI;
+
 /**
  * This tests the PackDoptionManager class for proper implementation
  * 
@@ -86,6 +88,9 @@ import org.junit.Test;
 		} catch (IllegalArgumentException e) {
 			assertFalse(PackDoptionManager.getInstance().isChanged());
 		}
+		
+		PackDoptionGUI gui = new PackDoptionGUI();
+		assertNotNull(gui);
 	}
 
 
