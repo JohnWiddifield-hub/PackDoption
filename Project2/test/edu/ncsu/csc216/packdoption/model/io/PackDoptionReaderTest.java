@@ -19,6 +19,9 @@ import edu.ncsu.csc216.packdoption.model.rescue.RescueList;
 	 */
 	@Test
 	public void testReadRescueListFile() {
+		PackDoptionReader reader = new PackDoptionReader();
+		assertNotNull(reader);
+		
 		RescueList list = PackDoptionReader.readRescueListFile("test-files/Rescues.txt");
 		assertEquals(list.size(), 2);
 	}

@@ -31,6 +31,8 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 	 */
 	@Test
 	public void testWriteRescueFile() {
+		PackDoptionWriter writer = new PackDoptionWriter();
+		assertNotNull(writer);
 		RescueList list = new RescueList();
 		list.addRescue("Ms. Wuf's Rescue");
 		list.addRescue("NCSU Rescue");
