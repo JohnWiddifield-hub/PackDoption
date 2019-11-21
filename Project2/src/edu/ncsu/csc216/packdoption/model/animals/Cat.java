@@ -126,5 +126,27 @@ public class Cat extends Animal {
 		}
 		return arr;
 	}
+	
+	/**
+	 * Gets a string for file writing
+	 * @return returns the string to be used by the PackDoptionWriter
+	 */
+	public String getIOString() {
+		String rtrn = "";
+		if(!this.adopted()) {
+			rtrn = "* " + "Cat," + this.getName() + "," + this.getBirthday().toString() + "," + 
+					this.getSize().toString() + "," + this.isHouseTrained() + "," + this.isGoodWithKids() + ","
+					+ this.getDateEnterRescue().toString() + "," + "NOTES";
+		} else {
+			rtrn = "* " + "Cat," + this.getName() + "," + this.getBirthday().toString() + "," + 
+					this.getSize().toString() + "," + this.isHouseTrained() + "," + this.isGoodWithKids() + ","
+					+ this.getDateEnterRescue().toString() + "," + "true" + "," + this.getDateAdopted().toString() 
+					+ "," + this.getOwner() + "," + "NOTES";
+		}
+		for(int i = 0; i < this.getNotes().size(); i++) {
+			rtrn = rtrn + "," + this.getNotes().get(i).toString();
+		}
+		return rtrn;
+	}
 
 }

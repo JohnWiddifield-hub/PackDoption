@@ -177,4 +177,25 @@ public class Dog extends Animal {
 		}
 	}
 	
+	/**
+	 * Gets a string for file writing
+	 * @return returns the string to be used by the PackDoptionWriter
+	 */
+	public String getIOString() {
+		String rtrn = "";
+		if(!this.adopted()) {
+			rtrn = "* " + "Dog," + this.getName() + "," + this.getBirthday().toString() + "," + 
+					this.getSize().toString() + "," + this.isHouseTrained() + "," + this.isGoodWithKids() + ","
+					+ this.getDateEnterRescue().toString() + "," + this.getBreed().toString() + "," + "NOTES";
+		} else {
+			rtrn = "* " + "Dog," + this.getName() + "," + this.getBirthday().toString() + "," + 
+					this.getSize().toString() + "," + this.isHouseTrained() + "," + this.isGoodWithKids() + ","
+					+ this.getDateEnterRescue().toString() + "," + "true" + "," + this.getDateAdopted().toString() 
+					+ "," + this.getOwner() + "," + this.getBreed().toString() + "," + "NOTES";
+		}
+		for(int i = 0; i < this.getNotes().size(); i++) {
+			rtrn = rtrn + "," + this.getNotes().get(i).toString();
+		}
+		return rtrn;
+	}
 }

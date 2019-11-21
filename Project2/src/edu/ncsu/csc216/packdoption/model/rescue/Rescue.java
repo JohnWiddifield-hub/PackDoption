@@ -514,6 +514,30 @@ public class Rescue implements Comparable<Rescue> {
 	public ArrayListQueue<Animal> getAppointments() {
 		return vetAppointments;
 	}
+	
+	/**
+	 * Gets the appointments that are set within the rescue as a string for file writing
+	 * @return String representation of appointments for use with saving files
+	 */
+	public String getAppointmentsIOString() {
+		int size = vetAppointments.size();
+		String rtrn = "";
+		Animal a;
+		ArrayListQueue<Animal> temp = new ArrayListQueue<Animal>();
+		ArrayListQueue<Animal> temp2 = new ArrayListQueue<Animal>();
+		
+		for(int i = 0; i < size; i++) {
+			temp.add(vetAppointments.element());
+			temp2.add(vetAppointments.remove());
+			a = temp.remove();
+			rtrn = rtrn + "- " + a.getName() + "," + a.getBirthday().toString() + "\n"; {	
+			}
+		}
+		for(int i = 0; i < size; i++) {
+			vetAppointments.add(temp2.remove());
+		}
+		return rtrn;
+	}
 
 
 }

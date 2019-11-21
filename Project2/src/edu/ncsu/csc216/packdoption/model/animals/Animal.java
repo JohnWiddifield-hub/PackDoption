@@ -469,4 +469,10 @@ public abstract class Animal implements Comparable<Animal> {
 	 */
 	public abstract String[] getAnimalAsArray(Date today);
 	
+	/**
+	 * Gets a string for file writing
+	 * @return returns the string to be used by the PackDoptionWriter
+	 */
+	public abstract String getIOString();
+	
 }
