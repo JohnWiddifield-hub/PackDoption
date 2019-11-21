@@ -76,6 +76,7 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 			PackDoptionWriter.writeRescueFile(null, list);
 			fail();
 		} catch(IllegalArgumentException e) {
+			//make sure nothing changed
 			checkFiles("test-files/created_file.txt", "test-files/Rescues.txt");
 		}
 	}
