@@ -315,7 +315,11 @@ public class SortedLinkedList<E extends Comparable<E>> implements SortedList<E> 
 		 */
 		@Override
 		public boolean hasNext() {
-			return !(current.next == null);
+			if(isFirstCall && current.value != null) {
+				return true;
+			} else {
+				return !(current.next == null);
+			}
 		}
 
 		/**

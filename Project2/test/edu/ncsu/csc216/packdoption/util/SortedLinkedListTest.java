@@ -160,7 +160,7 @@ import org.junit.Test;
 		//assertFalse(list.equals(null));
 		assertFalse(list.equals(new SortedLinkedList<String>()));
 	}
-
+	
 	/**
 	 * This method tests the toString method for proper generation of a String representation of this
 	 * object. -A\n-B\
@@ -188,9 +188,13 @@ import org.junit.Test;
 		list.add("Banana");
 		list.add("Orange");
 		SimpleListIterator<String> cur = list.iterator();
+		assertTrue(cur.hasNext());
 		assertEquals(cur.next(), "Apple");
+		assertTrue(cur.hasNext());
 		assertEquals(cur.next(), "Banana");
+		assertTrue(cur.hasNext());
 		assertEquals(cur.next(), "Orange");
+		assertEquals(cur.hasNext(), false);
 		
 		try {
 			cur.next();

@@ -71,15 +71,15 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		list.getRescue(1).addAppointment(george);
 		list.getRescue(1).addAppointment(duke);
 		
-		PackDoptionWriter.writeRescueFile("test-files/created_file.txt", list);
-		checkFiles("test-files/created_file.txt", "test-files/Rescues.txt");
+		PackDoptionWriter.writeRescueFile("test-files/created_file.md", list);
+		checkFiles("test-files/created_file.md", "test-files/Rescues.txt");
 		
 		try {
 			PackDoptionWriter.writeRescueFile(null, list);
 			fail();
 		} catch(IllegalArgumentException e) {
 			//make sure nothing changed
-			checkFiles("test-files/created_file.txt", "test-files/Rescues.txt");
+			checkFiles("test-files/created_file.md", "test-files/Valid_Test_File.md");
 		}
 	}
 	
