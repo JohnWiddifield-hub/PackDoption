@@ -100,7 +100,7 @@ public class PackDoptionManager {
 			changed = false;
 			this.setFilename(filename);
 		} catch (Exception e) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Unable to load file.");
 		}
 	}
 	
@@ -114,7 +114,7 @@ public class PackDoptionManager {
 			PackDoptionWriter.writeRescueFile(filename, list);
 			changed = false;
 		} catch (Exception e) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Unable to save file.");
 		}
 	}
 	
