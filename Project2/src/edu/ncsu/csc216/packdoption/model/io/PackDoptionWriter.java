@@ -40,6 +40,8 @@ public class PackDoptionWriter {
 		            	fileWriter.print(r.getAppointmentsIOString());
 		            }
 		        }
+			 fileWriter.println("");
+			 fileWriter.println("");
 		        fileWriter.close();
 			} catch (Exception e) {
 				throw new IllegalArgumentException("Unable to save file.");
