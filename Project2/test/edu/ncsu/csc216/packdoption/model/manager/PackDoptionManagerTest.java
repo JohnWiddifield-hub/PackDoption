@@ -17,7 +17,7 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testGetInstance() {
-		fail("Not yet implemented");
+		assertFalse(PackDoptionManager.getInstance().isChanged());
 	}
 
 	/**
@@ -25,31 +25,27 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testNewList() {
-		fail("Not yet implemented");
+		PackDoptionManager.getInstance().loadFile("test-files/Rescues.txt");
+		assertEquals(PackDoptionManager.getInstance().getRescueList().size(), 2);
+		PackDoptionManager.getInstance().newList();
+		assertEquals(PackDoptionManager.getInstance().getRescueList().size(), 0);
 	}
 
-	/**
-	 * Tests the isChanged method for proper reporting of a changed field not recorded in a save file
-	 */
-	@Test
-	public void testIsChanged() {
-		fail("Not yet implemented");
-	}
 
 	/**
 	 * Tests the getFilename method for proper retrieval of the PackDoptionManager's filename
 	 */
 	@Test
-	public void testGetFilename() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Tests the setFilename method for proper setting of the PackDoptionManager's filename
-	 */
-	@Test
-	public void testSetFilename() {
-		fail("Not yet implemented");
+	public void testGetSetFilename() {
+		PackDoptionManager.getInstance().setFilename("test-files/Rescues.txt");
+		assertEquals(PackDoptionManager.getInstance().getFilename(), "test-files/Rescues.txt");
+		
+		try {
+			PackDoptionManager.getInstance().setFilename(null);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(PackDoptionManager.getInstance().getFilename(), "test-files/Rescues.txt");
+		}
 	}
 
 	/**
@@ -57,7 +53,8 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testSetChanged() {
-		fail("Not yet implemented");
+		PackDoptionManager.getInstance().setChanged(true);
+		assertEquals(PackDoptionManager.getInstance().isChanged(), true);
 	}
 
 	/**
@@ -65,23 +62,31 @@ import org.junit.Test;
 	 */
 	@Test
 	public void testLoadFile() {
-		fail("Not yet implemented");
+		try {
+			PackDoptionManager.getInstance().loadFile(null);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertFalse(PackDoptionManager.getInstance().isChanged());
+		}
 	}
 
 	/**
 	 * Tests the saveFile method for proper saving of Rescues to a file
 	 */
 	@Test
-	public void testSaveFile() {
-		fail("Not yet implemented");
+	public void testSaveLoadFile() {
+		PackDoptionManager.getInstance().loadFile("test-files/Rescues.txt");
+		PackDoptionManager.getInstance().saveFile("test-files/Rescues.txt");
+		PackDoptionManager.getInstance().loadFile("test-files/Rescues.txt");
+		assertEquals(PackDoptionManager.getInstance().getRescueList().size(), 2);
+		
+		try {
+			PackDoptionManager.getInstance().saveFile(null);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertFalse(PackDoptionManager.getInstance().isChanged());
+		}
 	}
 
-	/**
-	 * Tests the getRescueList method for proper reporting of the PackDoptionManager's rescue list
-	 */
-	@Test
-	public void testGetRescueList() {
-		fail("Not yet implemented");
-	}
 
 }

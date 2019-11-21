@@ -1,5 +1,7 @@
 package edu.ncsu.csc216.packdoption.model.manager;
 
+import edu.ncsu.csc216.packdoption.model.io.PackDoptionReader;
+import edu.ncsu.csc216.packdoption.model.io.PackDoptionWriter;
 import edu.ncsu.csc216.packdoption.model.rescue.RescueList;
 
 /**
@@ -15,6 +17,8 @@ public class PackDoptionManager {
 	private String filename;
 	/** Whether or not the data has changed from the last save */
 	private boolean changed;
+	/** List of rescues which this class is to maintain */
+	private RescueList list;
 	
 	private static PackDoptionManager instance;
 	
@@ -23,6 +27,8 @@ public class PackDoptionManager {
 	 * Constructs a singleton object of the PackDoptionManager
 	 */
 	private PackDoptionManager() {
+		changed = false;
+		list = new RescueList();
 		
 	}
 	
@@ -31,14 +37,17 @@ public class PackDoptionManager {
 	 * @return this instance of the PackDoptionManager
 	 */
 	public static PackDoptionManager getInstance() {
-		return null;
+		if(instance == null) {
+			instance = new PackDoptionManager();
+		}
+		return instance;
 	}
 	
 	/**
 	 * Creates a new list of rescues
 	 */
 	public void newList() {
-		return;
+		list = new RescueList();
 	}
 	
 	/**
@@ -47,7 +56,7 @@ public class PackDoptionManager {
 	 * @return true if the data has changed since the last save, false if not
 	 */
 	public boolean isChanged() {
-		return false;
+		return changed;
 	}
 	
 	/**
@@ -56,8 +65,7 @@ public class PackDoptionManager {
 	 * @return name of the file that is being used by this class
 	 */
 	public String getFilename() {
-		return null;
-		
+		return filename;
 	}
 	
 	/**
@@ -66,7 +74,10 @@ public class PackDoptionManager {
 	 * @throws IllegalArgumentException if the filename is null or an string of whitespace
 	 */
 	public void setFilename(String filename) {
-		
+		if(filename == null || filename.isBlank()) {
+			throw new IllegalArgumentException();
+		}
+		this.filename = filename.trim();
 	}
 	
 	/**
@@ -75,7 +86,7 @@ public class PackDoptionManager {
 	 * since last save, false if not
 	 */
 	public void setChanged(boolean isChanged) {
-		
+		this.changed = isChanged;
 	}
 	
 	/**
@@ -84,7 +95,12 @@ public class PackDoptionManager {
 	 * @throws IllegalArgumentException if any errors occur while reading the file
 	 */
 	public void loadFile(String filename) {
-		
+		try {
+			list = PackDoptionReader.readRescueListFile(filename);
+			changed = false;
+		} catch (Exception e) {
+			throw new IllegalArgumentException();
+		}
 	}
 	
 	/**
@@ -93,7 +109,12 @@ public class PackDoptionManager {
 	 * @throws IllegalArgumentException if any errors occur while writing the file
 	 */
 	public void saveFile(String filename) {
-		
+		try {
+			PackDoptionWriter.writeRescueFile(filename, list);
+			changed = false;
+		} catch (Exception e) {
+			throw new IllegalArgumentException();
+		}
 	}
 	
 	/**
@@ -101,6 +122,6 @@ public class PackDoptionManager {
 	 * @return RescueList of all the rescues currently loaded in to the PackDoptionManager
 	 */
 	public RescueList getRescueList() {
-		return null;
+		return list;
 	}
 }
