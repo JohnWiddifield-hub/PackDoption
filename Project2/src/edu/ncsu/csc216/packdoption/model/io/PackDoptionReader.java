@@ -113,6 +113,10 @@ public class PackDoptionReader {
 							rescue.addAnimal(new Dog(name, birthday, size, isHouseTrained, isGoodWithKids, notes, dateEntered, adopted, adoptedDate, owner, breed));
 							
 						} else {
+							if(next.contentEquals("false")) {
+								lineReader.close();
+								throw new IllegalArgumentException();
+							}
 							breed = Breed.valueOf(next);
 							@SuppressWarnings("unused")
 							String notesToken = lineReader.next();
@@ -127,6 +131,7 @@ public class PackDoptionReader {
 						}
 						
 					} else {
+						lineReader.close();
 						throw new Exception();
 					}
 					lineReader.close();
