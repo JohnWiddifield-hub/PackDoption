@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import edu.ncsu.csc216.packdoption.view.ui.PackDoptionGUI;
 
 /**
  * This tests the PackDoptionManager class for proper implementation
