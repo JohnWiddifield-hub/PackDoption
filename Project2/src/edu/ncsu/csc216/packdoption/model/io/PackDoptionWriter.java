@@ -23,7 +23,10 @@ public class PackDoptionWriter {
 	public static void writeRescueFile(String fileName, RescueList list) {
 		try {
 			 PrintStream fileWriter = new PrintStream(new File(fileName));
-			 
+			 if(list.size() == 0) {
+				 fileWriter.close();
+				 return;
+			 }
 			 for (int i = 0; i < list.size(); i++) {
 		        	Rescue r = list.getRescue(i);
 		        	if(i > 0) {
