@@ -171,6 +171,9 @@ public class PackDoptionReader {
 					lineReader.close();
 				} else if(line.isEmpty()) {
 					blankCntr++;
+					if(rescueCntr == 0 && blankCntr > 0) {
+						throw new Exception();
+					}
 				}
 			}
 			fileReader.close();
