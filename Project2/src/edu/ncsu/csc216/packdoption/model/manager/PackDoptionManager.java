@@ -98,6 +98,7 @@ public class PackDoptionManager {
 		try {
 			list = PackDoptionReader.readRescueListFile(filename);
 			changed = false;
+			this.setFilename(filename);
 		} catch (Exception e) {
 			throw new IllegalArgumentException();
 		}
