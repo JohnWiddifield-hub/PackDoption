@@ -72,6 +72,35 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		assertEquals(cat.getSize(), Size.MEDIUM);
 		assertEquals(cat.getName(), "Boots2");
 		
+		try {
+			cat.setOwner("");
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(cat.getName(), "Boots2");
+		}
+		
+		try {
+			cat.setBirthday(null);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(cat.getName(), "Boots2");
+		}
+		
+		try {
+			cat.setDateAdopted(new Date(1, 1, 2000));
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(cat.getName(), "Boots2");
+		}
+		
+		try {
+			cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+					new Date(1, 5, 2000), false, new Date(1, 10, 2000), "Bilob");
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(cat.getName(), "Boots2");
+		}
+		
 		
 	}
 
@@ -233,6 +262,11 @@ import edu.ncsu.csc216.packdoption.util.SortedLinkedList;
 		} catch (IllegalArgumentException e) {
 			assertEquals(cat.getName(), "Boots");
 		}
+		
+		cat = new Cat("Boots", new Date(1, 1, 2000), Size.SMALL, true, true, notes,
+				new Date(1, 5, 2000), true, new Date(1, 10, 2000), "Bilob");
+		assertEquals(cat.getDaysAvailableForAdoption(new Date(1, 10, 2000)), -1);
+		
 	}
 
 }
