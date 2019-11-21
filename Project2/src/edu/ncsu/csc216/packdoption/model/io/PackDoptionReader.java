@@ -42,6 +42,8 @@ public class PackDoptionReader {
 		Date adoptedDate = null;
 		String owner = "";
 		Breed breed = null;
+		int rescueCntr = 0;
+		int blankCntr = 0;
 		
 		try {
 			Scanner fileReader = new Scanner(new FileInputStream(fileName));
@@ -51,6 +53,10 @@ public class PackDoptionReader {
 					line = line.replace("# ", "");
 					rescue = new Rescue(line);
 					list.addRescue(rescue);
+					if(rescueCntr > blankCntr) {
+						throw new Exception();
+					}
+					rescueCntr++;
 				} else if(line.startsWith("*")) {
 					line = line.replace("* ", "");
 					Scanner lineReader = new Scanner(line);
@@ -130,6 +136,8 @@ public class PackDoptionReader {
 					Date aptBday = new Date(lineReader.next());
 					rescue.addAppointment(rescue.getAnimal(aptName, aptBday));
 					lineReader.close();
+				} else if(line.isEmpty()) {
+					blankCntr++;
 				}
 			}
 			fileReader.close();
